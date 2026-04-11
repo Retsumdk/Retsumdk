@@ -23,8 +23,9 @@
 
 ## 📊 GitHub Stats
 
-![Retsumdk's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Retsumdk&count_private=true&show_icons=true&theme=github_dark)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Retsumdk&layout=compact&theme=github_dark)
+![Contributions](https://img.shields.io/badge/Contributions-462-blue?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-62-2ea44f?style=flat-square)
+![Followers](https://img.shields.io/badge/Followers-13-3fb950?style=flat-square)
 
 ## 🌱 Currently Building
 
