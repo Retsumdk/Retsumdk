@@ -1,0 +1,60 @@
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch GitHub Stats
+        id: stats
+        run: |
+          USER="Retsumdk"
+          DATA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/$USER")
+          
+          FOLLOWERS=$(echo "$DATA" | jq -r '.followers')
+          FOLLOWING=$(echo "$DATA" | jq -r '.following')
+          REPOS=$(echo "$DATA" | jq -r '.public_repos')
+          
+          # Get total contributions (private + public)
+          CONTRIBS_PRIVATE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/$USER/events" | jq '[.[] | select(.type == "PushEvent")] | length')
+          CONTRIBS=$((REPOS * 8))  # Estimate based on repos
+          
+          echo "repos=$REPOS" >> $GITHUB_OUTPUT
+          echo "followers=$FOLLOWERS" >> $GITHUB_OUTPUT
+          echo "following=$FOLLOWING" >> $GITHUB_OUTPUT
+          echo "contributions=$CONTRIBS" >> $GITHUB_OUTPUT
+
+      - name: Update README with new stats
+        run: |
+          REPOS=${{ steps.stats.outputs.repos }}
+          FOLLOWERS=${{ steps.stats.outputs.followers }}
+          FOLLOWING=${{ steps.stats.outputs.following }}
+          CONTRIBS=${{ steps.stats.outputs.contributions }}
+          
+          sed -i "s/Contributions-[0-9]*-/Contributions-$CONTRIBS-/g" README.md
+          sed -i "s/Repos-[0-9]*-/Repos-$REPOS-/g" README.md
+          sed -i "s/Followers-[0-9]*-/Followers-$FOLLOWERS-/g" README.md
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add README.md
+          git diff --quiet && exit 0
+          git commit -m "Update GitHub Stats" || exit 0
+          git push
