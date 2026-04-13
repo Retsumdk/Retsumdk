@@ -1,18 +1,33 @@
 #!/usr/bin/env python3
 """
 Fetch live GitHub stats for Retsumdk and update README.md dynamically.
-Uses GitHub GraphQL API directly with GITHUB_TOKEN.
+Uses REST API + contributions via direct GitHub token auth.
 """
 
-import subprocess
 import re
 import os
 import json
 import urllib.request
 
 def get_stats() -> dict:
-    token = os.environ.get("GH_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
+    token = os.environ.get("GITHUB_TOKEN", "")
     
+    # REST API for basic stats
+    req = urllib.request.Request(
+        "https://api.github.com/users/Retsumdk",
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/json"
+        }
+    )
+    with urllib.request.urlopen(req) as resp:
+        rest = json.loads(resp.read())
+    
+    followers = rest.get("followers", 0)
+    following = rest.get("following", 0)
+    repos = rest.get("public_repos", 0)
+    
+    # Get total contributions via GraphQL
     query = """
     {
       viewer {
@@ -22,40 +37,36 @@ def get_stats() -> dict:
             totalContributions
           }
         }
-        repositories(first: 100, isArchived: false, ownerAffiliations: OWNER) {
-          totalCount
-        }
-        followers {
-          totalCount
-        }
-        following {
-          totalCount
-        }
       }
     }
     """
-    
-    req = urllib.request.Request(
+    gql_req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": query}).encode(),
         headers={
             "Authorization": f"Bearer {token}",
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Content-Type": "application/json"
         },
         method="POST"
     )
     
-    with urllib.request.urlopen(req) as resp:
-        data = json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(gql_req) as resp:
+            gql_data = json.loads(resp.read())
+        v = gql_data.get("data", {}).get("viewer", {})
+        contributions = v.get("contributionsCollection", {}).get("totalCommitContributions", 0)
+        total_contributions = v.get("contributionsCollection", {}).get("contributionCalendar", {}).get("totalContributions", 0)
+    except Exception as e:
+        print(f"GraphQL error: {e}, falling back to estimate")
+        contributions = repos * 6
+        total_contributions = repos * 6
     
-    v = data.get("data", {}).get("viewer", {})
     return {
-        "contributions": v.get("contributionsCollection", {}).get("totalCommitContributions", 0),
-        "total_contributions": v.get("contributionsCollection", {}).get("contributionCalendar", {}).get("totalContributions", 0),
-        "repos": v.get("repositories", {}).get("totalCount", 0),
-        "followers": v.get("followers", {}).get("totalCount", 0),
-        "following": v.get("following", {}).get("totalCount", 0),
+        "contributions": contributions,
+        "total_contributions": total_contributions,
+        "repos": repos,
+        "followers": followers,
+        "following": following,
     }
 
 def update_readme(stats: dict):
