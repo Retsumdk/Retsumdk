@@ -1,26 +1,20 @@
 #!/usr/bin/env python3
 """
 Fetch live GitHub stats for Retsumdk and update README.md dynamically.
-Uses gh CLI for authenticated GraphQL queries.
+Uses GitHub GraphQL API directly with GITHUB_TOKEN.
 """
 
 import subprocess
 import re
 import os
-
-def gh_graphql(query: str) -> dict:
-    result = subprocess.run(
-        ["gh", "api", "graphql", "-f", f"query={query}"],
-        capture_output=True, text=True
-    )
-    if result.returncode != 0:
-        print(f"GraphQL error: {result.stderr}", file=__import__('sys').stderr)
-        return {}
-    import json
-    return json.loads(result.stdout)
+import json
+import urllib.request
 
 def get_stats() -> dict:
-    query = """{
+    token = os.environ.get("GH_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
+    
+    query = """
+    {
       viewer {
         contributionsCollection {
           totalCommitContributions
@@ -38,8 +32,23 @@ def get_stats() -> dict:
           totalCount
         }
       }
-    }"""
-    data = gh_graphql(query)
+    }
+    """
+    
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": query}).encode(),
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        method="POST"
+    )
+    
+    with urllib.request.urlopen(req) as resp:
+        data = json.loads(resp.read())
+    
     v = data.get("data", {}).get("viewer", {})
     return {
         "contributions": v.get("contributionsCollection", {}).get("totalCommitContributions", 0),
@@ -50,11 +59,10 @@ def get_stats() -> dict:
     }
 
 def update_readme(stats: dict):
-    readme_path = os.path.dirname(os.path.abspath(__file__)) + "/README.md"
+    readme_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.md")
     with open(readme_path, "r") as f:
         content = f.read()
 
-    # Replace stats section with dynamic values
     content = re.sub(
         r"!\[Contributions\]\(https://img\.shields\.io/badge/Contributions-\d+-blue[^)]*\)",
         f"![Contributions](https://img.shields.io/badge/Contributions-{stats['total_contributions']}-blue?style=flat-square)",

@@ -25,7 +25,7 @@ jobs:
 
       - name: Fetch stats and update README
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install requests
           python update_stats.py
