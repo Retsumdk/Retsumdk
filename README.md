@@ -23,10 +23,10 @@
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-462-blue?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-62-2ea44f?style=flat-square)
-![Followers](https://img.shields.io/badge/Followers-13-ffc107?style=flat-square)
-![Following](https://img.shields.io/badge/Following-14-9c27b0?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-474-blue?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-63-2ea44f?style=flat-square)
+![Followers](https://img.shields.io/badge/Followers-12-ffc107?style=flat-square)
+![Following](https://img.shields.io/badge/Following-15-9c27b0?style=flat-square)
 
 ## 🌱 Currently Building
 
