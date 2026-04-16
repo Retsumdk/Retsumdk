@@ -3,28 +3,41 @@
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
 [comment]: # LANGUAGE BADGES START
-![TypeScript](https://img.shields.io/badge/TypeScript-28-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
+![Unknown](https://img.shields.io/badge/Unknown-34-cccccc?style=flat-square&logo=question&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-28-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
 [comment]: # LANGUAGE BADGES END
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-513?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-68?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-514?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-68-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-17-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-16-9c27b0?style=flat-square)
 
+[comment]: # CONTRIBUTION GRAPH START
+<details>
+<summary>📅 Contribution Graph</summary>
+
+```
+Sun ░░░░░░░░░░░░░░░░░░░░▄▄▅▂▂▃
+Mon ░░░░░░░░░░░░░░░░░░░░▃▂▅░▅▅
+Tue ░░░░░░░░░░░░░░░░░░░░▄▂▂▁▂▃
+Wed ░░░░░░░░░░░░░░░░░░░░▄▄▁▅▁▃
+Thu ░░░░░░░░░░░░░░░░░░░░▂▄▂▅▅▄
+Fri ░░░░░░░░░░░░░░░░░░░░▅▄▁▁▄ 
+Sat ░░░░░░░░░░░░░░░░░░░▂▄▅▅▅▃ 
+```
+_Last 26 weeks · 514 total contributions · 🔥 23 day longest streak_
+
+</details>
+[comment]: # CONTRIBUTION GRAPH END
+
 ## 🔥 Top Repos
 
 | Repository | Description | Stars / Forks | Language |
 |---|---|---|---|
-| [agent-a2a-bridge](https://github.com/Retsumdk/agent-a2a-bridge) | Production-ready A2A (Agent-to-Agent) protocol implementation for buil | ⭐ 1&nbsp;🍴 0 | `TypeScript` |
-| [Retsumdk](https://github.com/Retsumdk/Retsumdk) | AI Agent Infrastructure Expert - Building the future of autonomous AI  | ⭐ 0&nbsp;🍴 0 | `Python` |
-| [cron-scheduler-service](https://github.com/Retsumdk/cron-scheduler-service) | Distributed cron with leader election | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
-| [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control system for AI prompts with diffing, rollback, and bran | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
-| [retry-queue-worker](https://github.com/Retsumdk/retry-queue-worker) | Exponential backoff retry queue for failed jobs | ⭐ 0&nbsp;🍴 0 | `Code` |
-| [json-schema-validator](https://github.com/Retsumdk/json-schema-validator) | Fast JSON Schema validation middleware | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
+| Loading... | | | |
 
 ## 🛠️ Tech Stack
 
