@@ -2,16 +2,29 @@
 
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
-## 🔥 Pinned Repos
+[comment]: # LANGUAGE BADGES START
+![TypeScript](https://img.shields.io/badge/TypeScript-28-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
+[comment]: # LANGUAGE BADGES END
 
-| Repository | Description | Language |
-|------------|-------------|----------|
-| [ai-agent-infrastructure](https://github.com/Retsumdk/ai-agent-infrastructure) | BOLT Marketplace, SCIEL Multi-Agent System, PromptForge | TypeScript |
-| [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control system for AI prompts with diffing & rollback | TypeScript |
-| [agent-memory-store](https://github.com/Retsumdk/agent-memory-store) | Persistent memory storage for AI agents with retrieval | TypeScript |
-| [agent-task-queue](https://github.com/Retsumdk/agent-task-queue) | Priority task queue for AI agents with retry logic | JavaScript |
-| [agent-workflow-orchestrator](https://github.com/Retsumdk/agent-workflow-orchestrator) | Orchestrate complex workflows with state machines | Python/TS |
-| [ai-response-validator](https://github.com/Retsumdk/ai-response-validator) | Validate and verify AI responses against expected formats | TypeScript |
+## 📊 GitHub Stats
+
+![Contributions](https://img.shields.io/badge/Contributions-513?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-68?style=flat-square)
+![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
+![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
+![Followers](https://img.shields.io/badge/Followers-17-ffc107?style=flat-square)
+![Following](https://img.shields.io/badge/Following-16-9c27b0?style=flat-square)
+
+## 🔥 Top Repos
+
+| Repository | Description | Stars / Forks | Language |
+|---|---|---|---|
+| [agent-a2a-bridge](https://github.com/Retsumdk/agent-a2a-bridge) | Production-ready A2A (Agent-to-Agent) protocol implementation for buil | ⭐ 1&nbsp;🍴 0 | `TypeScript` |
+| [Retsumdk](https://github.com/Retsumdk/Retsumdk) | AI Agent Infrastructure Expert - Building the future of autonomous AI  | ⭐ 0&nbsp;🍴 0 | `Python` |
+| [cron-scheduler-service](https://github.com/Retsumdk/cron-scheduler-service) | Distributed cron with leader election | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
+| [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control system for AI prompts with diffing, rollback, and bran | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
+| [retry-queue-worker](https://github.com/Retsumdk/retry-queue-worker) | Exponential backoff retry queue for failed jobs | ⭐ 0&nbsp;🍴 0 | `Code` |
+| [json-schema-validator](https://github.com/Retsumdk/json-schema-validator) | Fast JSON Schema validation middleware | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
 
 ## 🛠️ Tech Stack
 
@@ -21,17 +34,10 @@
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 
-## 📊 GitHub Stats
-
-![Contributions](https://img.shields.io/badge/Contributions-512-blue?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-68-2ea44f?style=flat-square)
-![Followers](https://img.shields.io/badge/Followers-17-ffc107?style=flat-square)
-![Following](https://img.shields.io/badge/Following-16-9c27b0?style=flat-square)
-
 ## 🌱 Currently Building
 
 - **SCIEL Multi-Agent System** — Autonomous agents that collaborate, delegate, and self-improve
-- **BOLT Marketplace** — Agent marketplace for buying and selling AI capabilities  
+- **BOLT Marketplace** — Agent marketplace for buying and selling AI capabilities
 - **PromptForge** — Professional prompt engineering and versioning tools
 
 ## 🔗 Ecosystem
@@ -42,10 +48,14 @@
 | [agent-error-handler](https://github.com/Retsumdk/agent-error-handler) | Robust error handling with circuit breakers |
 | [ai-prompt-optimizer](https://github.com/Retsumdk/ai-prompt-optimizer) | Analyze and optimize AI prompts |
 | [quality-evaluator](https://github.com/Retsumdk/quality-evaluator) | Evaluate agent output quality |
+| [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control for AI prompts with diffing & rollback |
+| [agent-memory-store](https://github.com/Retsumdk/agent-memory-store) | Persistent memory storage for AI agents |
+| [agent-task-queue](https://github.com/Retsumdk/agent-task-queue) | Priority task queue with retry logic |
+| [agent-workflow-orchestrator](https://github.com/Retsumdk/agent-workflow-orchestrator) | Orchestrate workflows with state machines |
 
 ## 🏆 Achievements
 
-- 49+ production repositories
+- **49+ production repositories** across the SCIEL, BOLT, and PromptForge ecosystems
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 
