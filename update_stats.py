@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Fetch live GitHub stats for Retsumdk and update README.md dynamically.
+Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamically.
 Covers: contributions, repos, followers, following, stars, forks, languages,
-streak, pinned repos, and more.
+streak, top repos, and live SCIEL/BOLT/AION stats from zo.space APIs.
 """
 import re, os, json, urllib.request
 from datetime import datetime, timezone
@@ -10,6 +10,7 @@ from collections import defaultdict
 
 GH_API = "https://api.github.com"
 GRAPHQL_API = "https://api.github.com/graphql"
+ZO_SPACE = "https://thebookmaster.zo.space"
 
 def gh_get(url: str, token: str) -> dict:
     req = urllib.request.Request(url, headers={
@@ -31,6 +32,26 @@ def gh_graphql(query: str, token: str) -> dict:
     )
     with urllib.request.urlopen(req) as resp:
         return json.loads(resp.read())
+
+def fetch_zo_stats() -> dict:
+    """Fetch live SCIEL/BOLT/AION stats from zo.space aggregator API."""
+    stats = {"sciel_agents": None, "bolt_listings": None, "aion_agents": None, "routes": None}
+    try:
+        req = urllib.request.Request(
+            "https://thebookmaster.zo.space/api/repo-stats",
+            headers={"User-Agent": "Mozilla/5.0 (compatible; GitHub-Actions/1.0)"}
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+            if data.get("success"):
+                d = data.get("data", {})
+                stats["bolt_listings"] = d.get("bolt", {}).get("listings")
+                stats["aion_agents"] = d.get("aion", {}).get("agents")
+                stats["sciel_agents"] = d.get("sciel", {}).get("agents")
+                stats["routes"] = d.get("routes")
+    except Exception as e:
+        print(f"zo.space stats error: {e}")
+    return stats
 
 def get_stats(token: str) -> dict:
     # REST API - profile + repos
@@ -56,20 +77,6 @@ def get_stats(token: str) -> dict:
     # GraphQL - contributions
     gql_query = """
     {
-      viewer {
-        contributionsCollection {
-          totalCommitContributions
-          contributionCalendar {
-            totalContributions
-            weeks {
-              contributionDays {
-                contributionCount
-                date
-              }
-            }
-          }
-        }
-      }
       user(login: "Retsumdk") {
         contributionsCollection {
           totalCommitContributions
@@ -92,7 +99,6 @@ def get_stats(token: str) -> dict:
         cal = gql.get("data", {}).get("user", {}).get("contributionsCollection", {}).get("contributionCalendar", {})
         total_contributions = cal.get("totalContributions", 0)
 
-        # Calculate streak
         weeks = cal.get("weeks", [])
         streak = 0
         longest = 0
@@ -110,7 +116,6 @@ def get_stats(token: str) -> dict:
                     streak = 0
         longest = max(longest, streak)
 
-        # Build ASCII contribution graph (last 26 weeks)
         weeks_data = weeks[-26:] if len(weeks) > 26 else weeks
         graph_lines = []
         days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -169,6 +174,9 @@ def get_stats(token: str) -> dict:
         print(f"Pinned query error: {e}")
         pinned_repos = []
 
+    # Fetch live zo.space stats
+    zo_stats = fetch_zo_stats()
+
     return {
         "contributions": total_contributions,
         "repos": public_repos,
@@ -182,6 +190,7 @@ def get_stats(token: str) -> dict:
         "current_streak": 0,
         "graph_lines": graph_lines,
         "pinned_repos": pinned_repos,
+        **zo_stats,
     }
 
 def update_readme(stats: dict):
@@ -217,7 +226,6 @@ def update_readme(stats: dict):
             f"![{lang}](https://img.shields.io/badge/{lang}-{count}-{color}?style=flat-square&logo={logo}&logoColor=white)"
         )
     lang_badges_str = "  ".join(lang_badges)
-    # Support both [comment]: # and HTML <!-- --> comment styles
     content = re.sub(
         r"(?:\[comment\]: # LANGUAGE BADGES START|<!-- LANGUAGE BADGES START -->)\n.*?\n(?:\[comment\]: # LANGUAGE BADGES END|<!-- LANGUAGE BADGES END -->)",
         f"<!-- LANGUAGE BADGES START -->\n{lang_badges_str}\n<!-- LANGUAGE BADGES END -->",
@@ -257,7 +265,7 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         content, flags=re.DOTALL
     )
 
-    # Repos table — use pinned if available, otherwise top_repos by stars/forks
+    # Repos table
     if stats["pinned_repos"]:
         repo_rows = stats["pinned_repos"]
     else:
@@ -284,9 +292,34 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         repos_table = "\n".join(rows)
         content = re.sub(
             r"\| Repository \| Description \| Stars / Forks \| Language \|\n\|---\|---\|---\|---\|\n.*?(?=\n## )",
-            "| Repository | Description | Stars / Forks | Language |\n|---|---|---|---|\n" + repos_table + "\n",
+            "| Repository | Description | Stars / Forks | Language |\n|---|---|---|---|---|\n" + repos_table + "\n",
             content, flags=re.DOTALL
         )
+
+    # Currently Building — live SCIEL/BOLT/AION stats
+    sciel = f"**SCIEL Multi-Agent System**"
+    if stats.get("sciel_agents"):
+        sciel += f" — **{stats['sciel_agents']} active agents**"
+
+    bolt = f"**BOLT Marketplace**"
+    if stats.get("bolt_listings"):
+        bolt += f" — **{stats['bolt_listings']} listings**"
+
+    aion = f"**AION Blockchain**"
+    if stats.get("aion_agents"):
+        aion += f" — **{stats['aion_agents']} registered agents**"
+
+    building_lines = "\n".join([
+        f"- {sciel} — Autonomous agents that collaborate, delegate, and self-improve",
+        f"- {bolt} — Agent marketplace for buying and selling AI capabilities",
+        f"- **PromptForge** — Professional prompt engineering and versioning tools",
+    ])
+
+    content = re.sub(
+        r"(\[comment\]: # CURRENTLY BUILDING START\n.*?\n\[comment\]: # CURRENTLY BUILDING END\n)",
+        f"[comment]: # CURRENTLY BUILDING START\n{building_lines}\n[comment]: # CURRENTLY BUILDING END\n",
+        content, flags=re.DOTALL
+    )
 
     with open(readme_path, "w") as f:
         f.write(content)
@@ -294,7 +327,10 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
     print(f"Updated stats: contributions={stats['contributions']}, repos={stats['repos']}, "
           f"followers={stats['followers']}, stars={stats['stars']}, "
           f"forks={stats['forks']}, languages={list(stats['languages'].keys())[:5]}, "
-          f"longest_streak={stats['longest_streak']}")
+          f"longest_streak={stats['longest_streak']}, "
+          f"sciel_agents={stats.get('sciel_agents')}, "
+          f"bolt_listings={stats.get('bolt_listings')}, "
+          f"aion_agents={stats.get('aion_agents')}")
 
 if __name__ == "__main__":
     token = os.environ.get("GITHUB_TOKEN", "")
