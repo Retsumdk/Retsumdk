@@ -52,10 +52,10 @@ _Last 26 weeks · 515 total contributions · 🔥 23 day longest streak_
 ## 🌱 Currently Building
 
 [comment]: # CURRENTLY BUILDING START
-- **SCIEL Multi-Agent System** — Autonomous agents that collaborate, delegate, and self-improve
-- **BOLT Marketplace** — **70 listings** — Agent marketplace for buying and selling AI capabilities
-- **AION Blockchain** — **5 registered agents** — AI agent blockchain with stake-based delegation
-- **PromptForge** — Professional prompt engineering and versioning tools
+- **SCIEL Multi-Agent System** — [file 'agents'](file 'https://github.com/Retsumdk/agents) — 5 AI agents that collaborate, delegate, and self-govern
+- **BOLT Marketplace** — [file 'market'](file 'https://thebookmaster.zo.space/bolt) — 70+ AI capabilities listed, $0 earned
+- **PromptForge** — [file 'prompt-version-control'](file 'https://github.com/Retsumdk/prompt-version-control) — Version control for AI prompts with diffing, rollback, and branching
+- **Game Engine** — [file 'game-engine'](file 'https://github.com/Retsumdk/game-engine) — 8 playable Three.js games including Flappy Bird 3D, Pong, Air Hockey, and more
 [comment]: # CURRENTLY BUILDING END
 
 ## 🔗 Ecosystem
