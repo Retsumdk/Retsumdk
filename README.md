@@ -3,12 +3,12 @@
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
 <!-- LANGUAGE BADGES START -->
-![Unknown](https://img.shields.io/badge/Unknown-34-cccccc?style=flat-square&logo=question&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-28-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-28-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
 <!-- LANGUAGE BADGES END -->
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-515?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-515-blue?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-68-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
@@ -25,32 +25,29 @@ Mon ░░░░░░░░░░░░░░░░░░░░▃▂▅░▅�
 Tue ░░░░░░░░░░░░░░░░░░░░▄▂▂▁▂▃
 Wed ░░░░░░░░░░░░░░░░░░░░▄▄▁▅▁▃
 Thu ░░░░░░░░░░░░░░░░░░░░▂▄▂▅▅▄
-Fri ░░░░░░░░░░░░░░░░░░░░▅▄▁▁▄ 
-Sat ░░░░░░░░░░░░░░░░░░░▂▄▅▅▅▃ 
+Fri ░░░░░░░░░░░░░░░░░░░░▅▄▁▁▄
+Sat ░░░░░░░░░░░░░░░░░░░▂▄▅▅▅▃
 ```
-_Last 26 weeks · 514 total contributions · 🔥 23 day longest streak_
+
+_Last 26 weeks · 515 total contributions · 🔥 23 day longest streak_
 
 </details>
 <!-- CONTRIBUTION GRAPH END -->
 
 ## 🔥 Top Repos
 
-| Repository | Description | Stars / Forks | Language |
-|---|---|---|---|
-| [agent-a2a-bridge](https://github.com/Retsumdk/agent-a2a-bridge) | Production-ready A2A (Agent-to-Agent) protocol implementation for buil | ⭐ 1&nbsp;🍴 0 | `TypeScript` |
-| [cron-scheduler-service](https://github.com/Retsumdk/cron-scheduler-service) | Distributed cron with leader election and fault tolerance | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
-| [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control system for AI prompts with diffing, rollback, and bran | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
-| [retry-queue-worker](https://github.com/Retsumdk/retry-queue-worker) | Exponential backoff retry queue for failed jobs | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
-| [json-schema-validator](https://github.com/Retsumdk/json-schema-validator) | Fast JSON Schema validation middleware | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
-| [agent-memory-store](https://github.com/Retsumdk/agent-memory-store) | Persistent memory storage for AI agents with retrieval | ⭐ 0&nbsp;🍴 0 | `TypeScript` |
+| Repository | Description | Stars | Forks | Language |
+|---|---|---|---|---|
+| [agent-a2a-bridge](https://github.com/Retsumdk/agent-a2a-bridge) | Production-ready A2A (Agent-to-Agent) protocol for building multi-agent systems | ⭐ 1 | 🍴 0 | `TypeScript` |
+| [cron-scheduler-service](https://github.com/Retsumdk/cron-scheduler-service) | Distributed cron with leader election and fault tolerance | ⭐ 0 | 🍴 0 | `TypeScript` |
+| [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control for AI prompts with diffing, rollback, and branching | ⭐ 0 | 🍴 0 | `TypeScript` |
+| [retry-queue-worker](https://github.com/Retsumdk/retry-queue-worker) | Exponential backoff retry queue for failed jobs | ⭐ 0 | 🍴 0 | `TypeScript` |
+| [json-schema-validator](https://github.com/Retsumdk/json-schema-validator) | Fast JSON Schema validation middleware | ⭐ 0 | 🍴 0 | `TypeScript` |
+| [agent-memory-store](https://github.com/Retsumdk/agent-memory-store) | Persistent memory storage for AI agents with retrieval | ⭐ 0 | 🍴 0 | `TypeScript` |
 
 ## 🛠️ Tech Stack
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)  ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)  ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 
 ## 🌱 Currently Building
 
@@ -73,7 +70,7 @@ _Last 26 weeks · 514 total contributions · 🔥 23 day longest streak_
 
 ## 🏆 Achievements
 
-- **49+ production repositories** across the SCIEL, BOLT, and PromptForge ecosystems
+- **68 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 
@@ -81,7 +78,7 @@ _Last 26 weeks · 514 total contributions · 🔥 23 day longest streak_
 
 <div align="center">
 
-[![GitHub Workflow Status](https://img.shields.io/badge/GitHub-Actions-brightgreen?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/Retsumdk)
+[![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-brightgreen?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/Retsumdk)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Expert-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 </div>
