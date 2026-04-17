@@ -217,9 +217,10 @@ def update_readme(stats: dict):
             f"![{lang}](https://img.shields.io/badge/{lang}-{count}-{color}?style=flat-square&logo={logo}&logoColor=white)"
         )
     lang_badges_str = "  ".join(lang_badges)
+    # Support both [comment]: # and HTML <!-- --> comment styles
     content = re.sub(
-        r"\[comment\]: # LANGUAGE BADGES START.*?\[comment\]: # LANGUAGE BADGES END",
-        f"[comment]: # LANGUAGE BADGES START\n{lang_badges_str}\n[comment]: # LANGUAGE BADGES END",
+        r"(?:\[comment\]: # LANGUAGE BADGES START|<!-- LANGUAGE BADGES START -->)\n.*?\n(?:\[comment\]: # LANGUAGE BADGES END|<!-- LANGUAGE BADGES END -->)",
+        f"<!-- LANGUAGE BADGES START -->\n{lang_badges_str}\n<!-- LANGUAGE BADGES END -->",
         content, flags=re.DOTALL
     )
 
@@ -256,22 +257,35 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         content, flags=re.DOTALL
     )
 
-    # Pinned repos table
+    # Repos table — use pinned if available, otherwise top_repos by stars/forks
     if stats["pinned_repos"]:
+        repo_rows = stats["pinned_repos"]
+    else:
+        repo_rows = stats["top_repos"]
+
+    if repo_rows:
         rows = []
-        for r in stats["pinned_repos"]:
-            lang = r.get("primaryLanguage", {}).get("name", "Code") if isinstance(r.get("primaryLanguage"), dict) else (r.get("primaryLanguage") or "Code")
-            desc = (r.get("description") or "No description")[:60]
-            stars = r.get("stargazerCount", 0)
-            forks = r.get("forkCount", 0)
-            name = r.get("name", "")
-            url = r.get("url", f"https://github.com/Retsumdk/{name}")
+        for r in repo_rows:
+            if stats["pinned_repos"]:
+                lang = r.get("primaryLanguage", {}).get("name", "Code") if isinstance(r.get("primaryLanguage"), dict) else (r.get("primaryLanguage") or "Code")
+                desc = (r.get("description") or "No description")[:60]
+                stars = r.get("stargazerCount", 0)
+                forks = r.get("forkCount", 0)
+                name = r.get("name", "")
+                url = r.get("url", f"https://github.com/Retsumdk/{name}")
+            else:
+                lang = r.get("language") or "Code"
+                desc = (r.get("description") or "No description")[:60]
+                stars = r.get("stargazers_count", 0)
+                forks = r.get("forks_count", 0)
+                name = r.get("name", "")
+                url = f"https://github.com/Retsumdk/{name}"
             rows.append(f"| [{name}]({url}) | {desc} | ⭐ {stars}&nbsp;🍴 {forks} | `{lang}` |")
-        pinned_table = "\n".join(rows)
+        repos_table = "\n".join(rows)
         content = re.sub(
-            r"\| Repository \| Description \|\n\|---\|---\|\n\|.*?\|",
-            "| Repository | Description | Stars / Forks | Language |\n|---|---|---|---|\n" + pinned_table + "\n",
-            content
+            r"\| Repository \| Description \| Stars / Forks \| Language \|\n\|---\|---\|---\|---\|\n.*?(?=\n## )",
+            "| Repository | Description | Stars / Forks | Language |\n|---|---|---|---|\n" + repos_table + "\n",
+            content, flags=re.DOTALL
         )
 
     with open(readme_path, "w") as f:
