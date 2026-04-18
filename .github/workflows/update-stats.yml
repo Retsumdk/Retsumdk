@@ -30,11 +30,15 @@ jobs:
           pip install requests
           python update_stats.py
 
+      - name: Fetch and commit SVG
+        run: |
+          curl -s "https://thebookmaster.zo.space/api/daily-commits?format=svg" -o daily-commits.svg
+
       - name: Commit and push
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add README.md
-          git diff --quiet && exit 0
+          git add README.md daily-commits.svg
+          git diff --cached --quiet && exit 0
           git commit -m "📊 Auto-update GitHub stats [skip ci]"
           git push
