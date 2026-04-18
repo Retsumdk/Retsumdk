@@ -17,22 +17,11 @@
 ![Profile Views](https://img.shields.io/badge/Profile%20Views-0-0ea02f?style=flat-square)
 
 <!-- CONTRIBUTION GRAPH START -->
-<details>
-<summary>📅 Contribution Graph</summary>
+<a href="https://github.com/Retsumdk" target="_blank">
+  <img src="https://thebookmaster.zo.space/api/contribution-graph?format=svg" alt="Retsumdk contribution graph" width="100%" />
+</a>
 
-```
-Sun ░░░░░░░░░░░░░░░░░░░░▄▄▅▂▂▃
-Mon ░░░░░░░░░░░░░░░░░░░░▃▂▅░▅▅
-Tue ░░░░░░░░░░░░░░░░░░░░▄▂▂▁▂▃
-Wed ░░░░░░░░░░░░░░░░░░░░▄▄▁▅▁▃
-Thu ░░░░░░░░░░░░░░░░░░░░▂▄▂▅▅▄
-Fri ░░░░░░░░░░░░░░░░░░░░▅▄▁▁▄
-Sat ░░░░░░░░░░░░░░░░░░░▂▄▅▅▅▃
-```
-
-_Last 26 weeks · 515 total contributions · 🔥 23 day longest streak_
-
-</details>
+_Last year · 🔥 23 day longest streak · [Interactive preview](https://thebookmaster.zo.space/api/contribution-graph)_
 <!-- CONTRIBUTION GRAPH END -->
 
 ## 🔥 Top Repos
