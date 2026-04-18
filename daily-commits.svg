@@ -1,158 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="498" height="179" style="background:#0d1117">
-  <style> .bar { opacity:0.9; } .bar:hover { opacity:1; cursor:pointer; } text { font-family:monospace; } </style>
-  <text x="4" y="16" font-size="10" fill="#8b949e">Sun</text>
-  <text x="4" y="57" font-size="10" fill="#8b949e">Mon</text>
-  <text x="4" y="74" font-size="10" fill="#8b949e">Tue</text>
-  <text x="4" y="91" font-size="10" fill="#8b949e">Wed</text>
-  <text x="4" y="108" font-size="10" fill="#8b949e">Thu</text>
-  <text x="4" y="125" font-size="10" fill="#8b949e">Fri</text>
-  <text x="4" y="142" font-size="10" fill="#8b949e">Sat</text>
-  <text x="249" y="12" font-size="12" fill="#c9d1d9" text-anchor="middle" font-weight="bold">24-Hour Commit Activity · 569 total · last 7 days</text>
-  <text x="57" y="174" font-size="9" fill="#8b949e" text-anchor="middle" font-family="monospace">12am</text><text x="125" y="174" font-size="9" fill="#8b949e" text-anchor="middle" font-family="monospace">4am</text><text x="193" y="174" font-size="9" fill="#8b949e" text-anchor="middle" font-family="monospace">8am</text><text x="261" y="174" font-size="9" fill="#8b949e" text-anchor="middle" font-family="monospace">12pm</text><text x="329" y="174" font-size="9" fill="#8b949e" text-anchor="middle" font-family="monospace">4pm</text><text x="397" y="174" font-size="9" fill="#8b949e" text-anchor="middle" font-family="monospace">8pm</text>
-  <rect x="50" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 0:00–0:59</title><rect x="67" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 1:00–1:59</title><rect x="84" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 2:00–2:59</title><rect x="101" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 3:00–3:59</title><rect x="118" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 4:00–4:59</title><rect x="135" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 5:00–5:59</title><rect x="152" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 6:00–6:59</title><rect x="169" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 7:00–7:59</title><rect x="186" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 8:00–8:59</title><rect x="203" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 9:00–9:59</title><rect x="220" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 10:00–10:59</title><rect x="237" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 11:00–11:59</title><rect x="254" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 12:00–12:59</title><rect x="271" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 13:00–13:59</title><rect x="288" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 14:00–14:59</title><rect x="305" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 15:00–15:59</title><rect x="322" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 16:00–16:59</title><rect x="339" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 17:00–17:59</title>
-  <g class="bar">
-    <polygon points="356,22 370,22 370,22 360.2,27.9" fill="#0e4429"/>
-    <polygon points="370,22 370,22 374.2,35.9 370,33.8" fill="#00351a"/>
-    <polygon points="356,22 360.2,27.9 374.2,25.799999999999997 370,22" fill="#2c6247"/>
-    <title>1 commit — Sun 18:00–18:59</title>
-  </g>
-  <g class="bar">
-    <polygon points="373,17 387,17 387,17 377.2,27.9" fill="#006d32"/>
-    <polygon points="387,17 387,17 391.2,40.9 387,38.8" fill="#005e23"/>
-    <polygon points="373,17 377.2,27.9 391.2,25.799999999999997 387,17" fill="#1e8b50"/>
-    <title>2 commits — Sun 19:00–19:59</title>
-  </g><rect x="390" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 20:00–20:59</title>
-  <g class="bar">
-    <polygon points="407,22 421,22 421,22 411.2,27.9" fill="#0e4429"/>
-    <polygon points="421,22 421,22 425.2,35.9 421,33.8" fill="#00351a"/>
-    <polygon points="407,22 411.2,27.9 425.2,25.799999999999997 421,22" fill="#2c6247"/>
-    <title>1 commit — Sun 21:00–21:59</title>
-  </g><rect x="424" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 22:00–22:59</title><rect x="441" y="30" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sun 23:00–23:59</title><rect x="50" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 0:00–0:59</title><rect x="67" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 1:00–1:59</title>
-  <g class="bar">
-    <polygon points="84,4 98,4 98,4 88.2,44.9" fill="#39d353"/>
-    <polygon points="98,4 98,4 102.2,87.9 98,85.80000000000001" fill="#2ac444"/>
-    <polygon points="84,4 88.2,44.9 102.2,42.8 98,4" fill="#57f171"/>
-    <title>9 commits — Mon 2:00–2:59</title>
-  </g><rect x="101" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 3:00–3:59</title><rect x="118" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 4:00–4:59</title><rect x="135" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 5:00–5:59</title><rect x="152" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 6:00–6:59</title><rect x="169" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 7:00–7:59</title><rect x="186" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 8:00–8:59</title><rect x="203" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 9:00–9:59</title><rect x="220" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 10:00–10:59</title><rect x="237" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 11:00–11:59</title><rect x="254" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 12:00–12:59</title>
-  <g class="bar">
-    <polygon points="271,39 285,39 285,39 275.2,44.9" fill="#0e4429"/>
-    <polygon points="285,39 285,39 289.2,52.9 285,50.8" fill="#00351a"/>
-    <polygon points="271,39 275.2,44.9 289.2,42.8 285,39" fill="#2c6247"/>
-    <title>1 commit — Mon 13:00–13:59</title>
-  </g><rect x="288" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 14:00–14:59</title>
-  <g class="bar">
-    <polygon points="305,30 319,30 319,30 309.2,44.9" fill="#006d32"/>
-    <polygon points="319,30 319,30 323.2,61.9 319,59.8" fill="#005e23"/>
-    <polygon points="305,30 309.2,44.9 323.2,42.8 319,30" fill="#1e8b50"/>
-    <title>3 commits — Mon 15:00–15:59</title>
-  </g><rect x="322" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 16:00–16:59</title><rect x="339" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 17:00–17:59</title><rect x="356" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 18:00–18:59</title><rect x="373" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 19:00–19:59</title><rect x="390" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 20:00–20:59</title>
-  <g class="bar">
-    <polygon points="407,30 421,30 421,30 411.2,44.9" fill="#006d32"/>
-    <polygon points="421,30 421,30 425.2,61.9 421,59.8" fill="#005e23"/>
-    <polygon points="407,30 411.2,44.9 425.2,42.8 421,30" fill="#1e8b50"/>
-    <title>3 commits — Mon 21:00–21:59</title>
-  </g><rect x="424" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 22:00–22:59</title><rect x="441" y="47" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Mon 23:00–23:59</title><rect x="50" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 0:00–0:59</title><rect x="67" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 1:00–1:59</title><rect x="84" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 2:00–2:59</title><rect x="101" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 3:00–3:59</title><rect x="118" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 4:00–4:59</title><rect x="135" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 5:00–5:59</title><rect x="152" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 6:00–6:59</title><rect x="169" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 7:00–7:59</title><rect x="186" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 8:00–8:59</title><rect x="203" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 9:00–9:59</title><rect x="220" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 10:00–10:59</title><rect x="237" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 11:00–11:59</title><rect x="254" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 12:00–12:59</title>
-  <g class="bar">
-    <polygon points="271,51 285,51 285,51 275.2,61.9" fill="#006d32"/>
-    <polygon points="285,51 285,51 289.2,74.9 285,72.80000000000001" fill="#005e23"/>
-    <polygon points="271,51 275.2,61.9 289.2,59.8 285,51" fill="#1e8b50"/>
-    <title>2 commits — Tue 13:00–13:59</title>
-  </g><rect x="288" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 14:00–14:59</title><rect x="305" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 15:00–15:59</title><rect x="322" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 16:00–16:59</title><rect x="339" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 17:00–17:59</title><rect x="356" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 18:00–18:59</title><rect x="373" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 19:00–19:59</title><rect x="390" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 20:00–20:59</title><rect x="407" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 21:00–21:59</title><rect x="424" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 22:00–22:59</title><rect x="441" y="64" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Tue 23:00–23:59</title><rect x="50" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 0:00–0:59</title><rect x="67" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 1:00–1:59</title><rect x="84" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 2:00–2:59</title><rect x="101" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 3:00–3:59</title><rect x="118" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 4:00–4:59</title><rect x="135" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 5:00–5:59</title><rect x="152" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 6:00–6:59</title><rect x="169" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 7:00–7:59</title><rect x="186" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 8:00–8:59</title><rect x="203" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 9:00–9:59</title><rect x="220" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 10:00–10:59</title><rect x="237" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 11:00–11:59</title><rect x="254" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 12:00–12:59</title>
-  <g class="bar">
-    <polygon points="271,73 285,73 285,73 275.2,78.9" fill="#0e4429"/>
-    <polygon points="285,73 285,73 289.2,86.9 285,84.80000000000001" fill="#00351a"/>
-    <polygon points="271,73 275.2,78.9 289.2,76.80000000000001 285,73" fill="#2c6247"/>
-    <title>1 commit — Wed 13:00–13:59</title>
-  </g><rect x="288" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 14:00–14:59</title>
-  <g class="bar">
-    <polygon points="305,55 319,55 319,55 309.2,78.9" fill="#26a641"/>
-    <polygon points="319,55 319,55 323.2,104.9 319,102.80000000000001" fill="#179732"/>
-    <polygon points="305,55 309.2,78.9 323.2,76.80000000000001 319,55" fill="#44c45f"/>
-    <title>5 commits — Wed 15:00–15:59</title>
-  </g><rect x="322" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 16:00–16:59</title><rect x="339" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 17:00–17:59</title><rect x="356" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 18:00–18:59</title><rect x="373" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 19:00–19:59</title><rect x="390" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 20:00–20:59</title>
-  <g class="bar">
-    <polygon points="407,64 421,64 421,64 411.2,78.9" fill="#006d32"/>
-    <polygon points="421,64 421,64 425.2,95.9 421,93.80000000000001" fill="#005e23"/>
-    <polygon points="407,64 411.2,78.9 425.2,76.80000000000001 421,64" fill="#1e8b50"/>
-    <title>3 commits — Wed 21:00–21:59</title>
-  </g><rect x="424" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 22:00–22:59</title><rect x="441" y="81" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Wed 23:00–23:59</title><rect x="50" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 0:00–0:59</title><rect x="67" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 1:00–1:59</title><rect x="84" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 2:00–2:59</title><rect x="101" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 3:00–3:59</title><rect x="118" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 4:00–4:59</title><rect x="135" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 5:00–5:59</title><rect x="152" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 6:00–6:59</title><rect x="169" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 7:00–7:59</title><rect x="186" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 8:00–8:59</title><rect x="203" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 9:00–9:59</title><rect x="220" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 10:00–10:59</title><rect x="237" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 11:00–11:59</title><rect x="254" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 12:00–12:59</title>
-  <g class="bar">
-    <polygon points="271,90 285,90 285,90 275.2,95.9" fill="#0e4429"/>
-    <polygon points="285,90 285,90 289.2,103.9 285,101.80000000000001" fill="#00351a"/>
-    <polygon points="271,90 275.2,95.9 289.2,93.80000000000001 285,90" fill="#2c6247"/>
-    <title>1 commit — Thu 13:00–13:59</title>
-  </g><rect x="288" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 14:00–14:59</title>
-  <g class="bar">
-    <polygon points="305,72 319,72 319,72 309.2,95.9" fill="#26a641"/>
-    <polygon points="319,72 319,72 323.2,121.9 319,119.80000000000001" fill="#179732"/>
-    <polygon points="305,72 309.2,95.9 323.2,93.80000000000001 319,72" fill="#44c45f"/>
-    <title>5 commits — Thu 15:00–15:59</title>
-  </g><rect x="322" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 16:00–16:59</title><rect x="339" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 17:00–17:59</title><rect x="356" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 18:00–18:59</title><rect x="373" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 19:00–19:59</title><rect x="390" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 20:00–20:59</title>
-  <g class="bar">
-    <polygon points="407,90 421,90 421,90 411.2,95.9" fill="#0e4429"/>
-    <polygon points="421,90 421,90 425.2,103.9 421,101.80000000000001" fill="#00351a"/>
-    <polygon points="407,90 411.2,95.9 425.2,93.80000000000001 421,90" fill="#2c6247"/>
-    <title>1 commit — Thu 21:00–21:59</title>
-  </g><rect x="424" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 22:00–22:59</title><rect x="441" y="98" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Thu 23:00–23:59</title>
-  <g class="bar">
-    <polygon points="50,85 64,85 64,85 54.2,112.9" fill="#26a641"/>
-    <polygon points="64,85 64,85 68.2,142.9 64,140.8" fill="#179732"/>
-    <polygon points="50,85 54.2,112.9 68.2,110.80000000000001 64,85" fill="#44c45f"/>
-    <title>6 commits — Fri 0:00–0:59</title>
-  </g><rect x="67" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 1:00–1:59</title><rect x="84" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 2:00–2:59</title><rect x="101" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 3:00–3:59</title><rect x="118" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 4:00–4:59</title><rect x="135" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 5:00–5:59</title><rect x="152" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 6:00–6:59</title><rect x="169" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 7:00–7:59</title><rect x="186" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 8:00–8:59</title><rect x="203" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 9:00–9:59</title><rect x="220" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 10:00–10:59</title><rect x="237" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 11:00–11:59</title><rect x="254" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 12:00–12:59</title>
-  <g class="bar">
-    <polygon points="271,107 285,107 285,107 275.2,112.9" fill="#0e4429"/>
-    <polygon points="285,107 285,107 289.2,120.9 285,118.80000000000001" fill="#00351a"/>
-    <polygon points="271,107 275.2,112.9 289.2,110.80000000000001 285,107" fill="#2c6247"/>
-    <title>1 commit — Fri 13:00–13:59</title>
-  </g><rect x="288" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 14:00–14:59</title>
-  <g class="bar">
-    <polygon points="305,94 319,94 319,94 309.2,112.9" fill="#26a641"/>
-    <polygon points="319,94 319,94 323.2,133.9 319,131.8" fill="#179732"/>
-    <polygon points="305,94 309.2,112.9 323.2,110.80000000000001 319,94" fill="#44c45f"/>
-    <title>4 commits — Fri 15:00–15:59</title>
-  </g><rect x="322" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 16:00–16:59</title><rect x="339" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 17:00–17:59</title><rect x="356" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 18:00–18:59</title><rect x="373" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 19:00–19:59</title><rect x="390" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 20:00–20:59</title>
-  <g class="bar">
-    <polygon points="407,107 421,107 421,107 411.2,112.9" fill="#0e4429"/>
-    <polygon points="421,107 421,107 425.2,120.9 421,118.80000000000001" fill="#00351a"/>
-    <polygon points="407,107 411.2,112.9 425.2,110.80000000000001 421,107" fill="#2c6247"/>
-    <title>1 commit — Fri 21:00–21:59</title>
-  </g><rect x="424" y="115" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Fri 22:00–22:59</title>
-  <g class="bar">
-    <polygon points="441,98 455,98 455,98 445.2,112.9" fill="#006d32"/>
-    <polygon points="455,98 455,98 459.2,129.9 455,127.80000000000001" fill="#005e23"/>
-    <polygon points="441,98 445.2,112.9 459.2,110.80000000000001 455,98" fill="#1e8b50"/>
-    <title>3 commits — Fri 23:00–23:59</title>
-  </g><rect x="50" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 0:00–0:59</title>
-  <g class="bar">
-    <polygon points="67,28 81,28 81,28 71.2,129.9" fill="#f78166"/>
-    <polygon points="81,28 81,28 85.2,233.9 81,231.8" fill="#e87257"/>
-    <polygon points="67,28 71.2,129.9 85.2,127.80000000000001 81,28" fill="#ff9f84"/>
-    <title>23 commits — Sat 1:00–1:59</title>
-  </g><rect x="84" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 2:00–2:59</title><rect x="101" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 3:00–3:59</title><rect x="118" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 4:00–4:59</title><rect x="135" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 5:00–5:59</title><rect x="152" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 6:00–6:59</title><rect x="169" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 7:00–7:59</title>
-  <g class="bar">
-    <polygon points="186,106 200,106 200,106 190.2,129.9" fill="#26a641"/>
-    <polygon points="200,106 200,106 204.2,155.9 200,153.8" fill="#179732"/>
-    <polygon points="186,106 190.2,129.9 204.2,127.80000000000001 200,106" fill="#44c45f"/>
-    <title>5 commits — Sat 8:00–8:59</title>
-  </g>
-  <g class="bar">
-    <polygon points="203,111 217,111 217,111 207.2,129.9" fill="#26a641"/>
-    <polygon points="217,111 217,111 221.2,150.9 217,148.8" fill="#179732"/>
-    <polygon points="203,111 207.2,129.9 221.2,127.80000000000001 217,111" fill="#44c45f"/>
-    <title>4 commits — Sat 9:00–9:59</title>
-  </g><rect x="220" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 10:00–10:59</title><rect x="237" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 11:00–11:59</title><rect x="254" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 12:00–12:59</title>
-  <g class="bar">
-    <polygon points="271,124 285,124 285,124 275.2,129.9" fill="#0e4429"/>
-    <polygon points="285,124 285,124 289.2,137.9 285,135.8" fill="#00351a"/>
-    <polygon points="271,124 275.2,129.9 289.2,127.80000000000001 285,124" fill="#2c6247"/>
-    <title>1 commit — Sat 13:00–13:59</title>
-  </g><rect x="288" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 14:00–14:59</title><rect x="305" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 15:00–15:59</title><rect x="322" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 16:00–16:59</title><rect x="339" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 17:00–17:59</title>
-  <g class="bar">
-    <polygon points="356,106 370,106 370,106 360.2,129.9" fill="#26a641"/>
-    <polygon points="370,106 370,106 374.2,155.9 370,153.8" fill="#179732"/>
-    <polygon points="356,106 360.2,129.9 374.2,127.80000000000001 370,106" fill="#44c45f"/>
-    <title>5 commits — Sat 18:00–18:59</title>
-  </g><rect x="373" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 19:00–19:59</title><rect x="390" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 20:00–20:59</title><rect x="407" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 21:00–21:59</title><rect x="424" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 22:00–22:59</title><rect x="441" y="132" width="14" height="14" fill="#161b22" rx="1"/><title>No commits — Sat 23:00–23:59</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="588" height="184" style="background:#0d1117;font-family:ui-sans-serif,system-ui,sans-serif">
+  <style>
+    .cell { rx:2 }
+    .label { fill:#8b949e; font-size:11px; font-family:ui-sans-serif,system-ui,sans-serif }
+    .title { fill:#e6edf3; font-size:13px; font-weight:600; font-family:ui-sans-serif,system-ui,sans-serif }
+  </style>
+  <text x="4" y="14" class="title">24-Hour Commit Activity</text>
+  <text x="44" y="59" text-anchor="end" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#8b949e">Mon</text>
+  <text x="44" y="103" text-anchor="end" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#8b949e">Wed</text>
+  <text x="44" y="147" text-anchor="end" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#8b949e">Fri</text>
+  <text x="59" y="180" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#8b949e">0:00</text>
+  <text x="147" y="180" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#8b949e">4:00</text>
+  <text x="235" y="180" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#8b949e">8:00</text>
+  <text x="323" y="180" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#8b949e">12:00</text>
+  <text x="411" y="180" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#8b949e">16:00</text>
+  <text x="499" y="180" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#8b949e">20:00</text>
+  <rect x="50" y="24" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="72" y="24" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="94" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="116" y="24" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="138" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="160" y="24" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="182" y="24" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="204" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="226" y="24" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="248" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="270" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="292" y="24" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="314" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="336" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="380" y="24" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="402" y="24" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="424" y="24" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="446" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="468" y="24" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="490" y="24" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="512" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="534" y="24" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="556" y="24" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="50" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="72" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="94" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="116" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="138" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="160" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="182" y="46" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="204" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="226" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="248" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="270" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="292" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="314" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="336" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="380" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="402" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="424" y="46" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="446" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="468" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="490" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="512" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="534" y="46" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="556" y="46" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="50" y="68" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="72" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="94" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="116" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="138" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="160" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="182" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="204" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="226" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="248" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="270" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="292" y="68" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="314" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="336" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="380" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="402" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="424" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="446" y="68" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="468" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="490" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="512" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="534" y="68" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="556" y="68" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="50" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="72" y="90" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="94" y="90" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="116" y="90" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="138" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="160" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="182" y="90" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="204" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="226" y="90" width="18" height="18" rx="2" fill="#39d353" />
+  <rect x="248" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="270" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="292" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="314" y="90" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="336" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="380" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="402" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="424" y="90" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="446" y="90" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="468" y="90" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="490" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="512" y="90" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="534" y="90" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="556" y="90" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="50" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="72" y="112" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="94" y="112" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="116" y="112" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="138" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="160" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="182" y="112" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="204" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="226" y="112" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="248" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="270" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="292" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="314" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="336" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="380" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="402" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="424" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="446" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="468" y="112" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="490" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="512" y="112" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="534" y="112" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="556" y="112" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="50" y="134" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="72" y="134" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="94" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="116" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="138" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="160" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="182" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="204" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="226" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="248" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="270" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="292" y="134" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="314" y="134" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="336" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="380" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="402" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="424" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="446" y="134" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="468" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="490" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="512" y="134" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="534" y="134" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="556" y="134" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="50" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="72" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="94" y="156" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="116" y="156" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="138" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="160" y="156" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="182" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="204" y="156" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="226" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="248" y="156" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="270" y="156" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="292" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="314" y="156" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="336" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="358" y="156" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="380" y="156" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="402" y="156" width="18" height="18" rx="2" fill="#006d32" />
+  <rect x="424" y="156" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="446" y="156" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="468" y="156" width="18" height="18" rx="2" fill="#161b22" />
+  <rect x="490" y="156" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="512" y="156" width="18" height="18" rx="2" fill="#26a641" />
+  <rect x="534" y="156" width="18" height="18" rx="2" fill="#0e4429" />
+  <rect x="556" y="156" width="18" height="18" rx="2" fill="#161b22" />
+  <text x="464" y="172" class="label">Less</text>
+  <rect x="468" y="162" width="12" height="12" rx="2" fill="#161b22" />
+  <rect x="484" y="162" width="12" height="12" rx="2" fill="#0e4429" />
+  <rect x="500" y="162" width="12" height="12" rx="2" fill="#006d32" />
+  <rect x="516" y="162" width="12" height="12" rx="2" fill="#26a641" />
+  <rect x="532" y="162" width="12" height="12" rx="2" fill="#39d353" />
+  <text x="558" y="172" class="label">More</text>
 </svg>
