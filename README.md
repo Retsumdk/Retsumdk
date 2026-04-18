@@ -16,13 +16,6 @@
 ![Following](https://img.shields.io/badge/Following-16-9c27b0?style=flat-square)
 ![Profile Views](https://img.shields.io/badge/Profile%20Views-0-0ea02f?style=flat-square)
 
-<!-- CONTRIBUTION GRAPH START -->
-<a href="https://github.com/Retsumdk" target="_blank">
-  <img src="https://thebookmaster.zo.space/api/contribution-graph?format=svg" alt="Retsumdk contribution graph" width="100%" />
-</a>
-
-_Last year · 🔥 23 day longest streak · [Interactive preview](https://thebookmaster.zo.space/api/contribution-graph)_
-<!-- CONTRIBUTION GRAPH END -->
 
 <!-- DAILY COMMITS START -->
 <a href="https://thebookmaster.zo.space/api/daily-commits" target="_blank">
