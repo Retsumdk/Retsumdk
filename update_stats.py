@@ -298,22 +298,37 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         )
 
     # Currently Building — live SCIEL/BOLT/AION stats
-    sciel = f"**SCIEL Multi-Agent System**"
+    sciel_link = "[SCIEL Multi-Agent System](https://github.com/Retsumdk/agents)"
+    bolt_link = "[BOLT Marketplace](https://github.com/Retsumdk/market)"
+    game_engine_link = "[Game Engine](https://github.com/Retsumdk/game-engine)"
+    aion_link = "[AION Blockchain](https://github.com/Retsumdk/aion-blockchain)"
+    promptforge_link = "[PromptForge](https://github.com/Retsumdk/prompt-version-control)"
+
+    sciel = f"**{sciel_link}**"
     if stats.get("sciel_agents"):
         sciel += f" — **{stats['sciel_agents']} active agents**"
 
-    bolt = f"**BOLT Marketplace**"
+    bolt = f"**{bolt_link}**"
     if stats.get("bolt_listings"):
         bolt += f" — **{stats['bolt_listings']} listings**"
 
-    aion = f"**AION Blockchain**"
+    game = f"**{game_engine_link}**"
+    routes = stats.get("routes")
+    game_desc = "Three.js game engine with playable games"
+    if routes:
+        game_desc = f"Three.js game engine with {routes} routes and playable games"
+    game += f" — {game_desc}"
+
+    aion = f"**{aion_link}**"
     if stats.get("aion_agents"):
         aion += f" — **{stats['aion_agents']} registered agents**"
 
     building_lines = "\n".join([
         f"- {sciel} — Autonomous agents that collaborate, delegate, and self-improve",
         f"- {bolt} — Agent marketplace for buying and selling AI capabilities",
-        f"- **PromptForge** — Professional prompt engineering and versioning tools",
+        f"- {game}",
+        f"- {aion} — Layer 1 blockchain for AI agent economies",
+        f"- **{promptforge_link}** — Professional prompt engineering and versioning tools",
     ])
 
     content = re.sub(

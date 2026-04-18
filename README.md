@@ -8,7 +8,7 @@
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-554?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-560?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-76-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
@@ -53,9 +53,11 @@ _Last 26 weeks · 515 total contributions · 🔥 23 day longest streak_
 ## 🌱 Currently Building
 
 [comment]: # CURRENTLY BUILDING START
-- **SCIEL Multi-Agent System** — Autonomous agents that collaborate, delegate, and self-improve
-- **BOLT Marketplace** — **72 listings** — Agent marketplace for buying and selling AI capabilities
-- **PromptForge** — Professional prompt engineering and versioning tools
+- **[SCIEL Multi-Agent System](https://github.com/Retsumdk/agents)** — Autonomous agents that collaborate, delegate, and self-improve
+- **[BOLT Marketplace](https://github.com/Retsumdk/market)** — **72 listings** — Agent marketplace for buying and selling AI capabilities
+- **[Game Engine](https://github.com/Retsumdk/game-engine)** — Three.js game engine with playable games
+- **[AION Blockchain](https://github.com/Retsumdk/aion-blockchain)** — **5 registered agents** — Layer 1 blockchain for AI agent economies
+- **[PromptForge](https://github.com/Retsumdk/prompt-version-control)** — Professional prompt engineering and versioning tools
 [comment]: # CURRENTLY BUILDING END
 
 ## 🔗 Ecosystem
