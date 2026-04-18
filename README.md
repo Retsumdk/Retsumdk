@@ -24,6 +24,15 @@
 _Last year · 🔥 23 day longest streak · [Interactive preview](https://thebookmaster.zo.space/api/contribution-graph)_
 <!-- CONTRIBUTION GRAPH END -->
 
+<!-- DAILY COMMITS START -->
+<a href="https://thebookmaster.zo.space/api/daily-commits" target="_blank">
+  <img src="https://thebookmaster.zo.space/api/daily-commits?format=svg" alt="Daily commits by hour" width="100%" />
+</a>
+
+_Last 7 days · commits by hour of day · [Interactive preview](https://thebookmaster.zo.space/api/daily-commits)_
+<!-- DAILY COMMITS END -->
+
+
 ## 🔥 Top Repos
 
 | Repository | Description | Stars | Forks | Language |
