@@ -2,7 +2,7 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily at midnight
+    - cron: '0 */6 * * *'  # Every 6 hours
   workflow_dispatch:
   push:
     branches:
@@ -17,29 +17,44 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Fetch stats and update README
+      - name: Fetch latest and stash any local changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch origin main
+          git stash push --include-untracked -m "local-changes-$(date +%s)" || true
+
+      - name: Pull latest
+        run: |
+          git pull --ff-only origin main || echo "Already up to date"
+
+      - name: Generate heatmap SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install requests
-          python update_stats.py
+          python gen_heatmap.py
 
-      - name: Fetch and commit SVG
+      - name: Update README with cache-busting URL
         run: |
-          curl -s "https://thebookmaster.zo.space/api/daily-commits?format=svg" -o daily-commits.svg
+          TS=$(date +%s)
+          sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
 
       - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git pull --rebase
-          git add README.md daily-commits.svg
-          git diff --cached --quiet && exit 0
-          git commit -m "📊 Auto-update GitHub stats [skip ci]"
+          git add README.md heatmap.svg || true
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "📊 Auto-update GitHub stats + heatmap [skip ci]"
           git push
+          echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
