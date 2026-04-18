@@ -77,6 +77,39 @@ _Last 26 weeks · 515 total contributions · 🔥 23 day longest streak_
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 
+## 🧬 Commit DNA
+## 🧬 Commit DNA
+
+> 🧬 Your commit history as a biological signature — unique to you.
+
+**DNA Hash:** `init│feat│fix│refactor│docs│test│chore│perf`
+
+Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, then iterate fast.
+
+| Signature | Value | Percentile |
+|---|---|---|
+| Consistency | 0.81 | Top 18% |
+| Depth | 0.74 | Top 24% |
+| Focus | 0.89 | Top 9% |
+
+*Auto-generated weekly by GitHub Actions · [View](https://github.com/Retsumdk/dna)*
+
+---
+
+## 🪐 Reputation Orbit
+
+> 🪐 Gravitational visualization of the SCIEL ecosystem.
+
+```
+         ● BOLT (trust 0.91)
+          \
+           ●───● SCIEL-CORE (trust 0.98)
+          /
+         ● AION (trust 0.89)
+```
+
+*Auto-updated every 6 hours · [View](https://github.com/Retsumdk/reputation-orbit)*
+
 ---
 
 <div align="center">
