@@ -18,9 +18,7 @@
 
 
 <!-- DAILY COMMITS START -->
-<a href="https://thebookmaster.zo.space/api/daily-commits" target="_blank">
-  <img src="https://thebookmaster.zo.space/api/daily-commits?format=svg" alt="Daily commits by hour" width="100%" />
-</a>
+<img src="https://thebookmaster.zo.space/api/daily-commits?format=svg" alt="Daily commits by hour" width="100%" />
 
 _Last 7 days · commits by hour of day · [Interactive preview](https://thebookmaster.zo.space/api/daily-commits)_
 <!-- DAILY COMMITS END -->
