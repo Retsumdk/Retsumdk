@@ -3,13 +3,13 @@
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
 <!-- LANGUAGE BADGES START -->
-![Unknown](https://img.shields.io/badge/Unknown-39-cccccc?style=flat-square&logo=question&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-29-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
+![Unknown](https://img.shields.io/badge/Unknown-41-cccccc?style=flat-square&logo=question&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-29-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
 <!-- LANGUAGE BADGES END -->
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-535?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-74-2ea44f?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-554?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-76-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-17-ffc107?style=flat-square)
@@ -77,7 +77,6 @@ _Last 26 weeks · 515 total contributions · 🔥 23 day longest streak_
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 
-## 🧬 Commit DNA
 ## 🧬 Commit DNA
 
 > 🧬 Your commit history as a biological signature — unique to you.
