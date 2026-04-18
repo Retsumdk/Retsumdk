@@ -234,12 +234,13 @@ def update_readme(stats: dict):
 
     # Stats badges
     replacements = {
-        "!\\[Contributions\\].*?\\)": f"![Contributions](https://img.shields.io/badge/Contributions-{stats['contributions']}?style=flat-square)",
-        "!\\[Repos\\].*?\\)": f"![Repos](https://img.shields.io/badge/Repos-{stats['repos']}-2ea44f?style=flat-square)",
-        "!\\[Stars\\].*?\\)": f"![Stars](https://img.shields.io/badge/Stars-{stats['stars']}-2ea44f?style=flat-square)",
-        "!\\[Forks\\].*?\\)": f"![Forks](https://img.shields.io/badge/Forks-{stats['forks']}-2ea44f?style=flat-square)",
-        "!\\[Followers\\].*?\\)": f"![Followers](https://img.shields.io/badge/Followers-{stats['followers']}-ffc107?style=flat-square)",
-        "!\\[Following\\].*?\\)": f"![Following](https://img.shields.io/badge/Following-{stats['following']}-9c27b0?style=flat-square)",
+        r"!\[Contributions\]\(https://img\.shields\.io/badge/Contributions-\d[^)]*\)": f"![Contributions](https://img.shields.io/badge/Contributions-{stats['contributions']}?style=flat-square)",
+        r"!\[Repos\]\(https://img\.shields\.io/badge/Repos-\d[^)]*\)": f"![Repos](https://img.shields.io/badge/Repos-{stats['repos']}-2ea44f?style=flat-square)",
+        r"!\[Stars\]\(https://img\.shields\.io/badge/Stars-\d[^)]*\)": f"![Stars](https://img.shields.io/badge/Stars-{stats['stars']}-2ea44f?style=flat-square)",
+        r"!\[Forks\]\(https://img\.shields\.io/badge/Forks-\d[^)]*\)": f"![Forks](https://img.shields.io/badge/Forks-{stats['forks']}-2ea44f?style=flat-square)",
+        r"!\[Followers\]\([^)]+\)": f"![Followers](https://img.shields.io/badge/Followers-{stats['followers']}-ffc107?style=flat-square)",
+        r"!\[Following\]\([^)]+\)": f"![Following](https://img.shields.io/badge/Following-{stats['following']}-9c27b0?style=flat-square)",
+        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://img.shields.io/badge/Profile%20Views-{stats.get('profile_views', 0)}-0ea02f?style=flat-square)",
     }
     for pattern, repl in replacements.items():
         content = re.sub(pattern, repl, content)
