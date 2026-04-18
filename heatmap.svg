@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 170" width="100%">
 <style>.t{font-size:13px;font-weight:600;fill:#e6edf3}.l{font-size:10px;fill:#8b949e}</style>
 <rect width="420" height="170" fill="#0d1117"/>
-<text x="4" y="20" class="t">24-Hour Commit Activity &middot; 86 total &middot; last 7 days</text>
+<text x="4" y="20" class="t">24-Hour Commit Activity - 87 total - last 7 days</text>
 <text x="3" y="41.0" class="l" dominant-baseline="middle" text-anchor="start">Sun</text><text x="3" y="57.0" class="l" dominant-baseline="middle" text-anchor="start">Mon</text><text x="3" y="73.0" class="l" dominant-baseline="middle" text-anchor="start">Tue</text><text x="3" y="89.0" class="l" dominant-baseline="middle" text-anchor="start">Wed</text><text x="3" y="105.0" class="l" dominant-baseline="middle" text-anchor="start">Thu</text><text x="3" y="121.0" class="l" dominant-baseline="middle" text-anchor="start">Fri</text><text x="3" y="137.0" class="l" dominant-baseline="middle" text-anchor="start">Sat</text>
 <text x="36" y="24" class="l">12am</text>
 <text x="128" y="24" class="l">6am</text>
