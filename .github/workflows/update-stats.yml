@@ -41,6 +41,8 @@ jobs:
         run: |
           pip install requests
           python gen_heatmap.py
+          cp /tmp/heatmap.svg images/heatmap.svg
+          cp /tmp/heatmap.svg heatmap.svg
 
       - name: Update README with cache-busting URL
         run: |
@@ -53,7 +55,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add README.md heatmap.svg || true
+          git add README.md images/heatmap.svg heatmap.svg || true
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "📊 Auto-update GitHub stats + heatmap [skip ci]"
           git push
