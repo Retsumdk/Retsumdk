@@ -18,7 +18,7 @@
 
 
 <!-- DAILY COMMITS START -->
-<img src="https://thebookmaster.zo.space/https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1776567906?v=1776564098" />
+<img src="https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1776570921" />
 
 _Last 7 days · commits by hour of day · [Interactive preview](https://thebookmaster.zo.space/api/daily-commits)_
 <!-- DAILY COMMITS END -->
