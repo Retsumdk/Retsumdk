@@ -25,7 +25,7 @@
 
 ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white)
-![](https://img.shields.io/badge/Zo_Space-4ecdc4?style=flat-square&logo=cloud&logoColor=white)
+![](https://img.shields.io/badge/RepoInfo?style=flat-square&logo=cloud&logoColor=white)
 
 **Engine:** Three.js · **Frontend:** React · **Hosting:** 
 
