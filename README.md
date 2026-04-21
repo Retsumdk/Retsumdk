@@ -13,12 +13,12 @@
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-21-ffc107?style=flat-square)
-![Following](https://img.shields.io/badge/Following-24-9c27b0?style=flat-square)
+![Following](https://img.shields.io/badge/Following-23-9c27b0?style=flat-square)
 ![Profile Views](https://img.shields.io/badge/Profile%20Views-0-0ea02f?style=flat-square)
 
 
 <!-- DAILY COMMITS START -->
-![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/heatmap.svg?v=1776790241)
+![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/heatmap.svg?v=1776798198)
 
 _Last 7 days · commits by hour of day · [Interactive preview](https://thebookmaster.zo.space/api/daily-commits)_
 <!-- DAILY COMMITS END -->
