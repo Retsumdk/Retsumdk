@@ -44,10 +44,18 @@ jobs:
           cp /tmp/heatmap.svg images/heatmap.svg
           cp /tmp/heatmap.svg heatmap.svg
 
+      - name: Fetch stats and update README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pip install requests
+          python update_stats.py
+
       - name: Update README with cache-busting URL
         run: |
           TS=$(date +%s)
           sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
+          sed -i "s|heatmap.svg?v=[0-9]*|heatmap.svg?v=${TS}|g" README.md
 
       - name: Commit and push
         env:
