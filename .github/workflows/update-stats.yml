@@ -63,8 +63,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add README.md images/heatmap.svg heatmap.svg || true
-          git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "📊 Auto-update GitHub stats + heatmap [skip ci]"
-          git push
-          echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          git add README.md images/heatmap.svg heatmap.svg
+          git status
+          git commit -m "📊 Auto-update GitHub stats + heatmap [skip ci]" || echo "Nothing to commit"
+          git push || echo "Push failed"
