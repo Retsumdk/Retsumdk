@@ -35,6 +35,19 @@ jobs:
         run: |
           git pull --ff-only origin main || echo "Already up to date"
 
+      - name: Check for conflicting SCIEL-CICD push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Abort if SCIEL-CICD pushed since last scheduled run to avoid overwriting each other
+          LAST_SCIEL=$(gh api repos/Retsumdk/Retsumdk/commits --jq '.[] | select(.commit.author.name == "SCIEL-CICD") | .sha' 2>/dev/null | head -1)
+          if [ -n "$LAST_SCIEL" ]; then
+            echo "SCIEL-CICD pushed recently — aborting this run to prevent conflicts"
+            echo "Sciiel-HC will refresh on next scheduled run"
+            exit 0
+          fi
+          echo "No SCIEL-CICD conflict — proceeding"
+
       - name: Generate heatmap SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
