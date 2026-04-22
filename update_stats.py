@@ -337,6 +337,19 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         content, flags=re.DOTALL
     )
 
+    # Fix heatmap URL to use local file
+    content = content.replace(
+        "![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg",
+        "![](images/heatmap.svg"
+    )
+    # Strip double cache-busting params that other agents may add
+    content = re.sub(r"\?v=\d+\?v=\d+", "?v=\g<0>.split('?v=').pop()", content)
+    content = re.sub(r"\?v=\d+\?v=\d+", lambda m: f"?v={max(int(x) for x in m.group().split('?v=') if x.isdigit())}", content)
+    content = re.sub(r"\?\d+\?v=\d+", lambda m: f"?v={max(int(x.split('v=')[1]) for x in m.group().split('?') if 'v=' in x)}", content)
+    # Ensure we always point to local SVG
+    content = re.sub(r"!\[\]\(https://[^)]*heatmap\.svg[^)]*\)", "![Daily commits](images/heatmap.svg)", content)
+    content = re.sub(r"!\[\]\(images/heatmap\.svg\?v=\d+\?v=\d+\)", "![Daily commits](images/heatmap.svg)", content)
+
     with open(readme_path, "w") as f:
         f.write(content)
 
