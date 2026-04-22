@@ -20,7 +20,7 @@
 <!-- DAILY COMMITS START -->
 ![](images/heatmap.svg?v=1776884669)
 
-_Last 7 days · commits by hour of day · [Interactive preview](https://thebookmaster.zo.space/api/daily-commits)_
+_Last 7 days · commits by hour of day · [Interactive preview](https://github.com/Retsumdk/Retsumdk/actions/workflows/update-stats.yml)_
 <!-- DAILY COMMITS END -->
 
 
