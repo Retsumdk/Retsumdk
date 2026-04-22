@@ -18,7 +18,7 @@
 
 
 <!-- DAILY COMMITS START -->
-![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1776891981?v=1776887328)
+![](images/heatmap.svg?v=1776887328)
 
 _Last 7 days · commits by hour of day · [Interactive preview](https://github.com/Retsumdk/Retsumdk/actions/workflows/update-stats.yml)_
 <!-- DAILY COMMITS END -->
