@@ -337,6 +337,18 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         content, flags=re.DOTALL
     )
 
+    # Replace the entire DAILY COMMITS section with a clean static reference
+    # This cannot be corrupted by other agents since we own the whole block
+    daily_section = """<!-- DAILY COMMITS START -->
+![](images/heatmap.svg)
+
+<!-- DAILY COMMITS END -->"""
+    content = re.sub(
+        r"<!-- DAILY COMMITS START -->.*?<!-- DAILY COMMITS END -->",
+        daily_section,
+        content, flags=re.DOTALL
+    )
+
     # Fix heatmap URL to use local file
     content = content.replace(
         "![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg",
