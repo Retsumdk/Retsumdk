@@ -35,7 +35,7 @@ def gh_graphql(query: str, token: str) -> dict:
 
 def fetch_zo_stats() -> dict:
     """Fetch live SCIEL/BOLT/AION stats from zo.space aggregator API."""
-    stats = {"sciel_agents": None, "bolt_listings": None, "aion_agents": None, "routes": None}
+    stats = {"profile_views": 0, "sciel_agents": None, "bolt_listings": None, "aion_agents": None, "routes": None}
     try:
         req = urllib.request.Request(
             "https://thebookmaster.zo.space/api/repo-stats",
@@ -57,6 +57,20 @@ def get_stats(token: str) -> dict:
     # REST API - profile + repos
     user = gh_get(f"{GH_API}/users/Retsumdk", token)
     repos_data = gh_get(f"{GH_API}/users/Retsumdk/repos?sort=updated&per_page=100&type=public", token)
+
+    # Fetch live profile views from self-hosted Zo Space API
+    try:
+        req = urllib.request.Request(
+            "https://thebookmaster.zo.space/api/profile-views?username=Retsumdk",
+            headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            svg = resp.read().decode()
+            import re
+            m = re.search(r'<text x="[^"]+" y="14"[^>]*>([0-9,]+)</text>', svg)
+            if m: stats["profile_views"] = int(m.group(1).replace(",", ""))
+    except Exception as e:
+        print(f"Profile views fetch error: {e}")
 
     followers = user.get("followers", 0)
     following = user.get("following", 0)
@@ -240,7 +254,7 @@ def update_readme(stats: dict):
         r"!\[Forks\]\(https://img\.shields\.io/badge/Forks-\d[^)]*\)": f"![Forks](https://img.shields.io/badge/Forks-{stats['forks']}-2ea44f?style=flat-square)",
         r"!\[Followers\]\([^)]+\)": f"![Followers](https://img.shields.io/badge/Followers-{stats['followers']}-ffc107?style=flat-square)",
         r"!\[Following\]\([^)]+\)": f"![Following](https://img.shields.io/badge/Following-{stats['following']}-9c27b0?style=flat-square)",
-        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://img.shields.io/badge/Profile%20Views-{stats.get('profile_views', 0)}-0ea02f?style=flat-square)",
+        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://thebookmaster.zo.space/api/profile-views?username=Retsumdk)",
     }
     for pattern, repl in replacements.items():
         content = re.sub(pattern, repl, content)
