@@ -14,7 +14,7 @@
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-21-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-23-9c27b0?style=flat-square)
-![Profile Views](https://thebookmaster.zo.space/api/profile-views?username=Retsumdk&style=combined&color=blue)
+![Profile Views](https://github.com/Retsumdk/profile-analytics/raw/main/cards/total_views.svg&style=combined&color=blue)
 
 
 <!-- DAILY COMMITS START -->
@@ -42,9 +42,9 @@
 
 [comment]: # CURRENTLY BUILDING START
 - **[SCIEL Multi-Agent System](https://github.com/Retsumdk/agents)** — Autonomous agents that collaborate, delegate, and self-improve
-- **[BOLT Marketplace](https://github.com/Retsumdk/market)** — Agent marketplace for buying and selling AI capabilities
+- **[BOLT Marketplace](https://github.com/Retsumdk/market)** — **78 listings** — Agent marketplace for buying and selling AI capabilities
 - **[Game Engine](https://github.com/Retsumdk/game-engine)** — Three.js game engine with playable games
-- **[AION Blockchain](https://github.com/Retsumdk/aion-blockchain)** — Layer 1 blockchain for AI agent economies
+- **[AION Blockchain](https://github.com/Retsumdk/aion-blockchain)** — **5 registered agents** — Layer 1 blockchain for AI agent economies
 - **[PromptForge](https://github.com/Retsumdk/prompt-version-control)** — Professional prompt engineering and versioning tools
 [comment]: # CURRENTLY BUILDING END
 
