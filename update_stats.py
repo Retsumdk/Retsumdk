@@ -61,7 +61,7 @@ def get_stats(token: str) -> dict:
     # Fetch live profile views from self-hosted Zo Space API
     try:
         req = urllib.request.Request(
-            "https://thebookmaster.zo.space/api/profile-views?username=Retsumdk&style=combined&color=blue",
+            "https://github.com/Retsumdk/profile-analytics/raw/main/cards/total_views.svg&style=combined&color=blue",
             headers={"User-Agent": "Mozilla/5.0"}
         )
         with urllib.request.urlopen(req, timeout=5) as resp:
@@ -254,7 +254,7 @@ def update_readme(stats: dict):
         r"!\[Forks\]\(https://img\.shields\.io/badge/Forks-\d[^)]*\)": f"![Forks](https://img.shields.io/badge/Forks-{stats['forks']}-2ea44f?style=flat-square)",
         r"!\[Followers\]\([^)]+\)": f"![Followers](https://img.shields.io/badge/Followers-{stats['followers']}-ffc107?style=flat-square)",
         r"!\[Following\]\([^)]+\)": f"![Following](https://img.shields.io/badge/Following-{stats['following']}-9c27b0?style=flat-square)",
-        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://thebookmaster.zo.space/api/profile-views?username=Retsumdk&style=combined&color=blue)",
+        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://github.com/Retsumdk/profile-analytics/raw/main/cards/total_views.svg&style=combined&color=blue)",
     }
     for pattern, repl in replacements.items():
         content = re.sub(pattern, repl, content)
