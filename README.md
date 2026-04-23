@@ -18,7 +18,7 @@
 
 
 ### 📋 Profile Visitors
-[![Visitor Tracker](https://thebookmaster.zo.space/api/track-visitor?username=Retsumdk&repo=Retsumdk)](https://thebookmaster.zo.space/profile-analytics)
+[![Visitor Tracker](https://thebookmaster.zo.space/api/shield?label=Visitors&value=Retsumdk&color=green)](https://thebookmaster.zo.space/profile-analytics)
 
 
 
