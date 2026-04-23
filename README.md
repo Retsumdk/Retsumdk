@@ -17,6 +17,11 @@
 ![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/227541c135975c2f65435be0d529c34571baaef3/cards/total_views.svg)
 
 
+
+<!-- GITHUB VISITOR TRACKER START -->
+<img src="https://thebookmaster.zo.space/api/track-visitor?username=Retsumdk" width="1" height="1" style="display:none" alt="tracker"/>
+<!-- GITHUB VISITOR TRACKER END -->
+
 <!-- DAILY COMMITS START -->
 ![](images/heatmap.svg)
 
