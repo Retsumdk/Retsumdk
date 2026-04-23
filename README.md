@@ -14,7 +14,7 @@
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-21-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-23-9c27b0?style=flat-square)
-![Profile Views](https://thebookmaster.zo.space/api/profile-views)
+![Profile Views](https://img.shields.io/badge/Profile%20Views-0-0ea02f?style=flat-square)
 
 
 <!-- DAILY COMMITS START -->
