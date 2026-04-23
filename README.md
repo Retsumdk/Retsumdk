@@ -8,13 +8,13 @@
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-752?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-753?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-84-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-21-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-23-9c27b0?style=flat-square)
-[![Profile Views](https://thebookmaster.zo.space/api/profile-views?username=Retsumdk&format=svg)](https://github.com/Retsumdk)
+[![Profile Views](https://img.shields.io/badge/Profile%20Views-0-0ea02f?style=flat-square)](https://github.com/Retsumdk)
 
 
 <!-- DAILY COMMITS START -->
