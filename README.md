@@ -3,18 +3,18 @@
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
 <!-- LANGUAGE BADGES START -->
-![Unknown](https://img.shields.io/badge/Unknown-42-cccccc?style=flat-square&logo=question&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-36-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
+![Unknown](https://img.shields.io/badge/Unknown-42-cccccc?style=flat-square&logo=question&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-36-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-4-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
 <!-- LANGUAGE BADGES END -->
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-753?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-84-2ea44f?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-760?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-85-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-21-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-23-9c27b0?style=flat-square)
-![Profile Views](https://thebookmaster.zo.space/profile-analytics/raw/main/cards/total_views.svg)
+![Profile Views](https://thebookmaster.zo.space/api/profile-views?username=Retsumdk&style=combined&color=blue)
 
 
 <!-- DAILY COMMITS START -->
@@ -42,9 +42,9 @@
 
 [comment]: # CURRENTLY BUILDING START
 - **[SCIEL Multi-Agent System](https://github.com/Retsumdk/agents)** — Autonomous agents that collaborate, delegate, and self-improve
-- **[BOLT Marketplace](https://github.com/Retsumdk/market)** — **78 listings** — Agent marketplace for buying and selling AI capabilities
+- **[BOLT Marketplace](https://github.com/Retsumdk/market)** — Agent marketplace for buying and selling AI capabilities
 - **[Game Engine](https://github.com/Retsumdk/game-engine)** — Three.js game engine with playable games
-- **[AION Blockchain](https://github.com/Retsumdk/aion-blockchain)** — **5 registered agents** — Layer 1 blockchain for AI agent economies
+- **[AION Blockchain](https://github.com/Retsumdk/aion-blockchain)** — Layer 1 blockchain for AI agent economies
 - **[PromptForge](https://github.com/Retsumdk/prompt-version-control)** — Professional prompt engineering and versioning tools
 [comment]: # CURRENTLY BUILDING END
 
