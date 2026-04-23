@@ -90,11 +90,6 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 ---
 
-## 🪐 Reputation Orbit
-
-
----
-
 ## 📊 Live Analytics Dashboard
 
 🐙 **[View Real-Time Dashboard](https://thebookmaster.zo.space/profile-analytics)**
@@ -102,6 +97,9 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 *Live tracking of profile visits, unique visitors, device breakdown, and recent visits - updated automatically.*
 
 
+## 🪐 Reputation Orbit
+
+---
 
 > 🪐 Gravitational visualization of the SCIEL ecosystem.
 
