@@ -14,7 +14,7 @@
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-21-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-23-9c27b0?style=flat-square)
-![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/227541c135975c2f65435be0d529c34571baaef3/cards/total_views.svg)
+![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg)
 
 
 <!-- DAILY COMMITS START -->
