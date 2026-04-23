@@ -9,7 +9,7 @@
 ## 📊 GitHub Stats
 
 ![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/227541c135975c2f65435be0d529c34571baaef3/cards/total_views.svg)
-![Contributions](https://img.shields.io/badge/Contributions-760?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-761?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-85-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
