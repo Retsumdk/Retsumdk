@@ -123,15 +123,14 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 </div>
 
 <!-- RECENT_VISITS_START -->
-
 <details>
 <summary>📊 Recent Visits (2 total)</summary>
 
 | Time | Location | Device | Browser | Source | Duration |
 |------|----------|--------|---------|--------|----------|
-| Apr 23 22:33 | IN Tokyo | Desktop | Chrome | direct | 1m |
-| Apr 23 22:21 | FR Toronto | Desktop | Chrome | direct | 8m |
+| 04-23T22:33 | IN Tokyo | Desktop | Chrome | direct | 1m |
+| 04-23T22:21 | FR Toronto | Desktop | Chrome | direct | 8m |
 
-*Updated automatically via GitHub Actions*</details>
-
+*Updated automatically via GitHub Actions*
+</details>
 <!-- RECENT_VISITS_END -->
