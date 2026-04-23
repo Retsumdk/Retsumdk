@@ -61,7 +61,7 @@ def get_stats(token: str) -> dict:
     # Fetch live profile views from self-hosted Zo Space API
     try:
         req = urllib.request.Request(
-            "https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg",
+            "https://raw.githubusercontent.com/Retsumdk/profile-analytics/227541c135975c2f65435be0d529c34571baaef3/cards/total_views.svg",
             headers={"User-Agent": "Mozilla/5.0"}
         )
         with urllib.request.urlopen(req, timeout=5) as resp:
@@ -254,7 +254,7 @@ def update_readme(stats: dict):
         r"!\[Forks\]\(https://img\.shields\.io/badge/Forks-\d[^)]*\)": f"![Forks](https://img.shields.io/badge/Forks-{stats['forks']}-2ea44f?style=flat-square)",
         r"!\[Followers\]\([^)]+\)": f"![Followers](https://img.shields.io/badge/Followers-{stats['followers']}-ffc107?style=flat-square)",
         r"!\[Following\]\([^)]+\)": f"![Following](https://img.shields.io/badge/Following-{stats['following']}-9c27b0?style=flat-square)",
-        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg)",
+        r"!\[Profile Views\]\([^)]+\)": f"![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/227541c135975c2f65435be0d529c34571baaef3/cards/total_views.svg)",
     }
     for pattern, repl in replacements.items():
         content = re.sub(pattern, repl, content)
