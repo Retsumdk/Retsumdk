@@ -18,20 +18,7 @@
 
 
 
-<!-- GITHUB VISITOR TRACKER START -->
-<script>
-(function() {
-  var username = "Retsumdk";
-  var repo = encodeURIComponent(window.location.pathname.split("/")[1] || "");
-  var ref = encodeURIComponent(document.referrer || "direct");
-  var ua = encodeURIComponent(navigator.userAgent || "unknown");
-  var w = window.innerWidth;
-  var device = w < 768 ? "Mobile" : (w < 1024 ? "Tablet" : "Desktop");
-  var img = new Image();
-  img.src = "https://thebookmaster.zo.space/api/track-js?u=" + username + "&r=" + repo + "&ref=" + ref + "&ua=" + ua + "&d=" + device + "&t=" + Date.now();
-})();
-</script>
-<!-- GITHUB VISITOR TRACKER END -->
+
 
 <!-- DAILY COMMITS START -->
 ![](images/heatmap.svg)
