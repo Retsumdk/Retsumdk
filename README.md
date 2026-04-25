@@ -15,7 +15,7 @@
 ![Followers](https://img.shields.io/badge/Followers-22-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-22-9c27b0?style=flat-square)
 ![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg)
-<!-- profile-pixels:track --><img src="https://thebookmaster.zo.space/pixel.gif?u=Retsumdk" width="0" height="0" style="border:none;position:absolute" alt="">
+<!-- profile-pixels:track --><img src="https://retsumdk.zo.space/pixel.gif?u=Retsumdk" width="0" height="0" style="border:none;position:absolute" alt="">
 
 
 
@@ -91,7 +91,7 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 ## 📊 Live Analytics Dashboard
 
-🐙 **[View Real-Time Dashboard](https://thebookmaster.zo.space/profile-analytics)**
+🐙 **[View Real-Time Dashboard](https://retsumdk.zo.space/profile-analytics)**
 
 *Live tracking of profile visits, unique visitors, device breakdown, and recent visits - updated automatically.*
 
