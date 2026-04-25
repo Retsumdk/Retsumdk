@@ -125,8 +125,8 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 <details>
 <summary>📊 Recent Visits (79 total · live)</summary>
 
-| Time | Location | Device | Browser | Source | Duration |
-|------|----------|--------|---------|--------|----------|
+| Time | Location | IP | Device | Browser | Source | Duration |
+|------|----------|-----|--------|---------|--------|----------|
 | 04-25 17:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
 | 04-25 17:10 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
 | 04-25 16:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
