@@ -1,93 +1,198 @@
 #!/usr/bin/env python3
-"""Fetch analytics and update README with recent visits table."""
+"""Clean up duplicate visits tables from the README and replace with a proper marker-wrapped version."""
 
-import json, os, base64, re, requests
+import json
+import os
+import base64
+import urllib.request
+import urllib.error
+import re as re_module
 from datetime import datetime
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO = "Retsumdk/Retsumdk"
 API_BASE = "https://api.github.com"
-ZO_API = "https://thebookmaster.zo.space/api/profile-views"
+ZO_API = "https://thebookmaster.zo.space/api"
+
+COUNTRY_EMOJI = {
+    "US": "🇺🇸", "CA": "🇨🇦", "GB": "🇬🇧", "DE": "🇩🇪", "FR": "🇫🇷",
+    "JP": "🇯🇵", "AU": "🇦🇺", "IN": "🇮🇳", "BR": "🇧🇷", "SG": "🇸🇬",
+    "NL": "🇳🇱", "SE": "🇸🇪", "NO": "🇳🇴", "DK": "🇩🇰", "FI": "🇫🇮",
+    "PL": "🇵🇱", "IT": "🇮🇹", "ES": "🇪🇸", "MX": "🇲🇽", "KR": "🇰🇷",
+    "CN": "🇨🇳", "RU": "🇷🇺", "ZA": "🇿🇦", "AE": "🇦🇪", "??": "🌍",
+}
+
 
 def fetch_analytics():
     try:
-        resp = requests.get(ZO_API, headers={"User-Agent": "GitHub-Actions"}, timeout=10)
-        if resp.status_code == 200:
-            return resp.json()
-    except:
-        pass
-    return None
+        req = urllib.request.Request(
+            f"{ZO_API}/profile-views",
+            headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return json.loads(resp.read())
+    except urllib.error.URLError as e:
+        print(f"Failed to fetch analytics: {e}")
+        return None
+
 
 def get_readme():
-    headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
-    resp = requests.get(f"{API_BASE}/repos/{REPO}/contents/README.md", headers=headers)
-    if resp.status_code == 200:
-        data = resp.json()
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    req = urllib.request.Request(
+        f"{API_BASE}/repos/{REPO}/contents/README.md",
+        headers=headers
+    )
+    with urllib.request.urlopen(req) as resp:
+        data = json.loads(resp.read())
         return base64.b64decode(data["content"]).decode("utf-8"), data["sha"]
-    return None, None
 
-def update_readme(content, sha, visits):
-    VISITS_START = "<!-- RECENT_VISITS_START -->"
-    VISITS_END = "<!-- RECENT_VISITS_END -->"
 
-    table = f"\n<details>\n<summary>📊 Recent Visits ({len(visits)} total)</summary>\n\n"
-    table += "| Time | Location | IP | Device | Browser | Source | Duration |\n"
-    table += "|------|----------|-----|--------|---------|--------|----------|\n"
+def parse_iso(ts: str):
+    if not ts:
+        return None
+    try:
+        ts = ts.replace("Z", "+00:00")
+        return datetime.fromisoformat(ts)
+    except Exception:
+        return None
 
-    for v in visits:
-        ts = v.get("time", "")
-        if ts:
-            dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
-            time_str = dt.strftime("%m-%d %H:%M")
-        else:
-            time_str = "??-?? ??:??"
 
+def build_visits_table(visitors, detailed, max_rows=10):
+    rows = []
+    for v in visitors:
+        ts = v.get("time") or v.get("lastSeen")
+        dt = parse_iso(ts) if ts else None
+        time_str = dt.strftime("%m-%d %H:%M") if dt else "Unknown"
         country = v.get("country", "??")
-        city = v.get("city", "")
-        loc = f"🇺🇸 {country} {city}".strip()
-        ip = v.get("ip", "-")
+        city = (v.get("city") or "").strip()
+        location = f"{country}" + (f" {city}" if city else "")
         device = v.get("device", "Unknown")
         browser = v.get("browser", "Unknown")
-        referrer = v.get("referrer", "direct")
+        source = v.get("source", "direct")
         duration = v.get("duration", "-")
-        table += f"| {time_str} | {loc} | `{ip}` | {device} | {browser} | {referrer} | {duration} |\n"
+        rows.append({"_dt": dt, "time": time_str, "location": location,
+                     "device": device, "browser": browser, "source": source, "duration": duration})
 
-    table += "\n*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*</details>\n"
+    if not rows:
+        for v in detailed:
+            ts = v.get("time")
+            dt = parse_iso(ts) if ts else None
+            time_str = dt.strftime("%m-%d %H:%M") if dt else "Unknown"
+            country = v.get("country", "??")
+            device = v.get("device", "Unknown")
+            browser = v.get("browser", "Unknown")
+            source = v.get("referrer", "direct")
+            duration = v.get("duration", "-")
+            rows.append({"_dt": dt, "time": time_str, "location": country,
+                         "device": device, "browser": browser, "source": source, "duration": duration})
 
-    if VISITS_START in content and VISITS_END in content:
-        pattern = re.compile(f"{re.escape(VISITS_START)}.*?{re.escape(VISITS_END)}", re.DOTALL)
-        content = pattern.sub(table, content)
-    else:
-        content += f"\n{VISITS_START}\n{table}\n{VISITS_END}\n"
+    rows.sort(key=lambda r: r["_dt"] or datetime.min, reverse=True)
+    rows = rows[:max_rows]
+
+    total = len(visitors) + len(detailed)
+    lines = []
+    lines.append(f"\n<!-- RECENT_VISITS_START -->\n<details>")
+    lines.append(f"<summary>📊 Recent Visits ({total} total · live)</summary>\n")
+    lines.append("| Time | Location | Device | Browser | Source | Duration |")
+    lines.append("|------|----------|--------|---------|--------|----------|")
+    for r in rows:
+        flag = COUNTRY_EMOJI.get(r["location"][:2] if r["location"] else "??", "🌍")
+        loc = f"{flag} {r['location']}"
+        dev_icon = "🖥️" if r["device"] == "desktop" else "📱"
+        lines.append(
+            f"| {r['time']} | {loc} | {dev_icon} {r['device']} | {r['browser']} | "
+            f"{r['source']} | {r['duration']} |"
+        )
+    lines.append("\n*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*")
+    lines.append("</details>\n<!-- RECENT_VISITS_END -->\n")
+    return "\n".join(lines)
+
+
+def clean_and_replace(content, visits_table):
+    # Remove ALL duplicate <details> blocks containing "Recent Visits" that are NOT wrapped in markers
+    # Pattern: standalone <details> blocks (not inside RECENT_VISITS markers)
+    # These appear as duplicates between line 124-142 and 145-163 in the README
+
+    # First, remove the RECENT_VISITS markers section if it exists (dirty state)
+    marker_pat = re_module.compile(
+        re_module.escape("<!-- RECENT_VISITS_START -->") + r".*?" + re_module.escape("<!-- RECENT_VISITS_END -->"),
+        re_module.DOTALL
+    )
+    content = marker_pat.sub("", content)
+
+    # Remove standalone duplicate <details> blocks (lines 124-142 and 145-163)
+    # Match <details> that has "Recent Visits" in its <summary> and is NOT preceded by RECENT_VISITS_START
+    # We remove these by matching them specifically
+    dup_pat = re_module.compile(
+        r"\s*<details>\s*\n<summary>📊 Recent Visits.*?</details>",
+        re_module.DOTALL
+    )
+    content = dup_pat.sub("", content)
+
+    # Now append the proper marker-wrapped table at the end
+    content = content.rstrip() + "\n" + visits_table
 
     return content
 
+
+def commit_readme(content, sha):
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+    }
+    payload = json.dumps({
+        "message": "📊 Auto-update recent visits table [fix duplicates]",
+        "content": base64.b64encode(content.encode()).decode(),
+        "sha": sha
+    }).encode()
+
+    req = urllib.request.Request(
+        f"{API_BASE}/repos/{REPO}/contents/README.md",
+        data=payload,
+        headers=headers,
+        method="PUT"
+    )
+    try:
+        with urllib.request.urlopen(req) as resp:
+            print(f"✅ README cleaned and updated")
+            return True
+    except urllib.error.HTTPError as e:
+        body = e.read().decode()
+        print(f"❌ HTTP {e.code}: {body}")
+        return False
+
+
 def main():
+    if not GITHUB_TOKEN:
+        print("❌ GITHUB_TOKEN not set")
+        return 1
+
     analytics = fetch_analytics()
     if not analytics:
-        print("Failed to fetch analytics")
+        print("❌ Could not fetch analytics from zo.space")
         return 1
+
+    visitors = analytics.get("visitors", [])
+    detailed = analytics.get("detailed", [])
+
+    print(f"Fetched {len(visitors)} visitors, {len(detailed)} detailed records")
 
     content, sha = get_readme()
     if not sha:
-        print("Failed to get README")
+        print("❌ Could not read current README")
         return 1
 
-    detailed = analytics.get("detailed", [])
-    visits = sorted(detailed, key=lambda x: x.get("time", ""), reverse=True)[:10]
+    visits_table = build_visits_table(visitors, detailed, max_rows=10)
+    new_content = clean_and_replace(content, visits_table)
 
-    new_content = update_readme(content, sha, visits)
-
-    headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
-    data = {"message": "📊 Add IP column to recent visits table", "content": base64.b64encode(new_content.encode()).decode(), "sha": sha}
-    resp = requests.put(f"{API_BASE}/repos/{REPO}/contents/README.md", headers=headers, json=data)
-
-    if resp.status_code == 200:
-        print(f"✅ Updated README with {len(visits)} visits (incl. IP)")
+    if commit_readme(new_content, sha):
         return 0
-    else:
-        print(f"❌ Failed: {resp.status_code} {resp.text}")
-        return 1
+    return 1
+
 
 if __name__ == "__main__":
     exit(main())

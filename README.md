@@ -8,7 +8,7 @@
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-813?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-820?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-87-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
@@ -121,12 +121,12 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 </div>
 
-<!-- RECENT_VISITS_START -->
+
 <details>
 <summary>📊 Recent Visits (79 total · live)</summary>
 
-| Time | Location | IP | Device | Browser | Source | Duration |
-|------|----------|-----|--------|---------|--------|----------|
+| Time | Location | Device | Browser | Source | Duration |
+|------|----------|--------|---------|--------|----------|
 | 04-25 17:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
 | 04-25 17:10 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
 | 04-25 16:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
@@ -140,4 +140,25 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 *Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
 </details>
-<!-- RECENT_VISITS_END -->
+
+
+
+<details>
+<summary>📊 Recent Visits (79 total · live)</summary>
+
+| Time | Location | Device | Browser | Source | Duration |
+|------|----------|--------|---------|--------|----------|
+| 04-25 17:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 17:10 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 16:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 07:50 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 05:51 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 05:46 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 05:44 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 02:41 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-24 23:11 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-24 22:57 | 🇺🇸 US | 🖥️ desktop | Chrome | direct | - |
+
+*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
+</details>
+
