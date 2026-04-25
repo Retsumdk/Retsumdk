@@ -22,7 +22,11 @@
 
 
 <!-- DAILY COMMITS START -->
-![](images/heatmap.svg)
+<<<<<<< Updated upstream
+![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777086363)
+=======
+![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777067812)
+>>>>>>> Stashed changes
 
 <!-- DAILY COMMITS END -->
 
