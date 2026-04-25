@@ -162,3 +162,25 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 *Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
 </details>
 
+
+<!-- RECENT_VISITS_START -->
+
+<details>
+<summary>📊 Recent Visits (10 total)</summary>
+
+| Time | Location | Device | Browser | Source | Duration |
+|------|----------|--------|---------|--------|----------|
+| Unknown | US  | desktop | Chrome | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+| Unknown | US  | desktop | Other | direct | - |
+
+*Updated automatically via GitHub Actions*</details>
+
+<!-- RECENT_VISITS_END -->
