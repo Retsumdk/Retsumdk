@@ -2,33 +2,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 524 336" width="100%">
 <rect width="100%" height="100%" fill="#0d1117"/>
 <text x="10" y="20" font-size="14" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Daily commits</text>
-<text x="10" y="38" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">232 commits · last 7 days</text>
-<rect x="10" y="50" width="60" height="200" rx="6" fill="#39d353"/>
-<text x="40" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">81</text>
-<text x="40" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">81</text>
-<text x="40" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Sat</text>
-<rect x="82" y="142" width="60" height="108" rx="6" fill="#26a641"/>
-<text x="112" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">44</text>
-<text x="112" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">44</text>
-<text x="112" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Sun</text>
-<rect x="154" y="233" width="60" height="17" rx="6" fill="#0e4429"/>
-<text x="184" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">7</text>
-<text x="184" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Mon</text>
-<rect x="226" y="228" width="60" height="22" rx="6" fill="#0e4429"/>
-<text x="256" y="246" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">9</text>
-<text x="256" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">9</text>
-<text x="256" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Tue</text>
-<rect x="298" y="120" width="60" height="130" rx="6" fill="#26a641"/>
-<text x="328" y="138" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">53</text>
-<text x="328" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">53</text>
-<text x="328" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Wed</text>
-<rect x="370" y="176" width="60" height="74" rx="6" fill="#006d32"/>
-<text x="400" y="194" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">30</text>
-<text x="400" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">30</text>
-<text x="400" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Thu</text>
-<rect x="442" y="231" width="60" height="19" rx="6" fill="#0e4429"/>
-<text x="472" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">8</text>
-<text x="472" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Fri</text>
+<text x="10" y="38" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">152 commits · last 7 days</text>
+<rect x="10" y="84" width="60" height="166" rx="6" fill="#39d353"/>
+<text x="40" y="102" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">44</text>
+<text x="40" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">44</text>
+<text x="40" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Sun</text>
+<rect x="82" y="224" width="60" height="26" rx="6" fill="#0e4429"/>
+<text x="112" y="242" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">7</text>
+<text x="112" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">7</text>
+<text x="112" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Mon</text>
+<rect x="154" y="217" width="60" height="33" rx="6" fill="#0e4429"/>
+<text x="184" y="235" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">9</text>
+<text x="184" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">9</text>
+<text x="184" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Tue</text>
+<rect x="226" y="50" width="60" height="200" rx="6" fill="#39d353"/>
+<text x="256" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">53</text>
+<text x="256" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">53</text>
+<text x="256" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Wed</text>
+<rect x="298" y="137" width="60" height="113" rx="6" fill="#26a641"/>
+<text x="328" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">30</text>
+<text x="328" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">30</text>
+<text x="328" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Thu</text>
+<rect x="370" y="217" width="60" height="33" rx="6" fill="#0e4429"/>
+<text x="400" y="235" text-anchor="middle" font-size="11" font-weight="600" fill="#c9d1d9" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">9</text>
+<text x="400" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">9</text>
+<text x="400" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Fri</text>
+<rect x="442" y="250" width="60" height="0" rx="6" fill="#161b22"/>
+<text x="472" y="266" text-anchor="middle" font-size="12" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">0</text>
+<text x="472" y="284" text-anchor="middle" font-size="11" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Sat</text>
 <text x="10" y="306" font-size="10" fill="#6e7681" font-family="-apple-system,BlinkMacSystemFont,&apos;Segoe UI&apos;,Helvetica,Arial,sans-serif">Less</text>
 <rect x="40" y="296" width="13" height="13" rx="2" fill="#161b22"/>
 <rect x="56" y="296" width="13" height="13" rx="2" fill="#0e4429"/>
