@@ -73,8 +73,10 @@ def build_visits_table(visitors, detailed, max_rows=10):
         browser = v.get("browser", "Unknown")
         source = v.get("source", "direct")
         duration = v.get("duration", "-")
+        ip = v.get("ip", "-")
         rows.append({"_dt": dt, "time": time_str, "location": location,
-                     "device": device, "browser": browser, "source": source, "duration": duration})
+                     "device": device, "browser": browser, "source": source,
+                     "duration": duration, "ip": ip})
 
     if not rows:
         for v in detailed:
@@ -86,8 +88,10 @@ def build_visits_table(visitors, detailed, max_rows=10):
             browser = v.get("browser", "Unknown")
             source = v.get("referrer", "direct")
             duration = v.get("duration", "-")
+            ip = v.get("ip", "-")
             rows.append({"_dt": dt, "time": time_str, "location": country,
-                         "device": device, "browser": browser, "source": source, "duration": duration})
+                         "device": device, "browser": browser, "source": source,
+                         "duration": duration, "ip": ip})
 
     rows.sort(key=lambda r: r["_dt"] or datetime.min, reverse=True)
     rows = rows[:max_rows]
@@ -96,15 +100,15 @@ def build_visits_table(visitors, detailed, max_rows=10):
     lines = []
     lines.append(f"\n<!-- RECENT_VISITS_START -->\n<details>")
     lines.append(f"<summary>📊 Recent Visits ({total} total · live)</summary>\n")
-    lines.append("| Time | Location | Device | Browser | Source | Duration |")
-    lines.append("|------|----------|--------|---------|--------|----------|")
+    lines.append("| Time | Location | Device | Browser | Source | Duration | IP |")
+    lines.append("|------|----------|--------|---------|--------|----------|-----|")
     for r in rows:
         flag = COUNTRY_EMOJI.get(r["location"][:2] if r["location"] else "??", "🌍")
         loc = f"{flag} {r['location']}"
         dev_icon = "🖥️" if r["device"] == "desktop" else "📱"
         lines.append(
             f"| {r['time']} | {loc} | {dev_icon} {r['device']} | {r['browser']} | "
-            f"{r['source']} | {r['duration']} |"
+            f"{r['source']} | {r['duration']} | {r['ip']} |"
         )
     lines.append("\n*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*")
     lines.append("</details>\n<!-- RECENT_VISITS_END -->\n")
