@@ -121,15 +121,23 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 </div>
 
-<!-- RECENT_VISITS_START -->
+
 <details>
-<summary>📊 Recent Visits (2 total)</summary>
+<summary>📊 Recent Visits (79 total · live)</summary>
 
 | Time | Location | Device | Browser | Source | Duration |
 |------|----------|--------|---------|--------|----------|
-| 04-23T22:33 | IN Tokyo | Desktop | Chrome | direct | 1m |
-| 04-23T22:21 | FR Toronto | Desktop | Chrome | direct | 8m |
+| 04-25 17:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 17:10 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 16:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 07:50 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 05:51 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 05:46 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 05:44 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-25 02:41 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-24 23:11 | 🇺🇸 US | 🖥️ desktop | Other | direct | - |
+| 04-24 22:57 | 🇺🇸 US | 🖥️ desktop | Chrome | direct | - |
 
-*Updated automatically via GitHub Actions*
+*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
 </details>
-<!-- RECENT_VISITS_END -->
+
