@@ -21,4 +21,11 @@ jobs:
       - name: Run update script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python update_readme.py
+        run: |
+          python update_readme.py
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/Retsumdk/Retsumdk.git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --exit-code --quiet || git commit -m "📊 Auto-update recent visits table [skip ci]"
+          git push origin HEAD:main
