@@ -352,9 +352,10 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
     )
 
     # Replace the entire DAILY COMMITS section with a clean static reference
-    # This cannot be corrupted by other agents since we own the whole block
-    daily_section = """<!-- DAILY COMMITS START -->
-![](images/heatmap.svg)
+    # Always use zo.pub CDN URL with dynamic cache-buster so both agents agree
+    ts = int(os.times().real * 1000)  # rough ms timestamp
+    daily_section = f"""<!-- DAILY COMMITS START -->
+![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v={ts})
 
 <!-- DAILY COMMITS END -->"""
     content = re.sub(
