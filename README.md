@@ -8,7 +8,7 @@
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-856?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-858?style=flat-square)
 ![Public Repos](https://img.shields.io/badge/Repos-87-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
@@ -22,7 +22,7 @@
 
 
 <!-- DAILY COMMITS START -->
-![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777312242000)
+![](images/heatmap.svg?v=1777314908328)
 
 <!-- DAILY COMMITS END -->
 

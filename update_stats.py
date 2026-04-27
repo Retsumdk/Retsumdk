@@ -355,7 +355,7 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
     # Always use zo.pub CDN URL with dynamic cache-buster so both agents agree
     ts = int(time.time() * 1000)  # ms timestamp
     daily_section = f"""<!-- DAILY COMMITS START -->
-![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v={ts})
+![](images/heatmap.svg?v={ts})
 
 <!-- DAILY COMMITS END -->"""
     content = re.sub(
