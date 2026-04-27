@@ -4,7 +4,7 @@ Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamicall
 Covers: contributions, repos, followers, following, stars, forks, languages,
 streak, top repos, and live SCIEL/BOLT/AION stats from zo.space APIs.
 """
-import re, os, json, urllib.request
+import re, os, json, urllib.request, time
 from datetime import datetime, timezone
 from collections import defaultdict
 
@@ -353,7 +353,7 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
 
     # Replace the entire DAILY COMMITS section with a clean static reference
     # Always use zo.pub CDN URL with dynamic cache-buster so both agents agree
-    ts = int(os.times().real * 1000)  # rough ms timestamp
+    ts = int(time.time() * 1000)  # ms timestamp
     daily_section = f"""<!-- DAILY COMMITS START -->
 ![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v={ts})
 
