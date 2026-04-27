@@ -354,16 +354,15 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
     # Replace the entire DAILY COMMITS section with a clean static reference
     # Always use zo.pub CDN URL with dynamic cache-buster so both agents agree
     ts = int(time.time() * 1000)  # ms timestamp
-    daily_section = f"""<!-- DAILY COMMITS START -->
-![](images/heatmap.svg?v={ts})
+    daily_section = """<!-- DAILY COMMITS START -->
+![](images/heatmap.svg?v=%(ts)s)
 
-<!-- DAILY COMMITS END -->"""
+<!-- DAILY COMMITS END -->""" % {"ts": int(os.times().real * 1000) if hasattr(os, "times") else int(time.time() * 1000)}
     content = re.sub(
         r"<!-- DAILY COMMITS START -->.*?<!-- DAILY COMMITS END -->",
         daily_section,
         content, flags=re.DOTALL
     )
-    # Normalize heatmap URLs — strip CDN prefixes, extra ?v= chains, and any alt text
     # DO NOT do this - it breaks the zo.pub URL that works on GitHub
     # content = re.sub(r"!?\[\([^\)]*heatmap\.svg[^\)]*\)", "![](images/heatmap.svg)", content)
 

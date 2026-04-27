@@ -116,6 +116,13 @@ def build_visits_table(visitors, detailed, max_rows=10):
 
 
 def clean_and_replace(content, visits_table):
+    # PROTECT the DAILY COMMITS section — do not touch it
+    daily_match = re_module.search(
+        re_module.escape("<!-- DAILY COMMITS START -->") + r".*?" + re_module.escape("<!-- DAILY COMMITS END -->"),
+        content, re_module.DOTALL
+    )
+    daily_block = daily_match.group(0) if daily_match else ""
+
     # Remove ALL duplicate <details> blocks containing "Recent Visits" that are NOT wrapped in markers
     # Pattern: standalone <details> blocks (not inside RECENT_VISITS markers)
     # These appear as duplicates between line 124-142 and 145-163 in the README
@@ -138,6 +145,13 @@ def clean_and_replace(content, visits_table):
 
     # Now append the proper marker-wrapped table at the end
     content = content.rstrip() + "\n" + visits_table
+
+    # Restore DAILY COMMITS block exactly as it was (do not let visits table overwrite it)
+    if daily_block:
+        content = re_module.sub(
+            re_module.escape("<!-- DAILY COMMITS START -->") + r".*?" + re_module.escape("<!-- DAILY COMMITS END -->"),
+            daily_block, content, flags=re_module.DOTALL
+        )
 
     return content
 
