@@ -9,7 +9,7 @@
 ## 📊 GitHub Stats
 
 ![Contributions](https://img.shields.io/badge/Contributions-836?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-87-2ea44f?style=flat-square)
+![Public Repos](https://img.shields.io/badge/Repos-87-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-25-ffc107?style=flat-square)
