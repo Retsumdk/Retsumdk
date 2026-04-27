@@ -22,7 +22,7 @@
 
 
 <!-- DAILY COMMITS START -->
-![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777324211?v=1777316896)
+![](images/heatmap.svg?v=1777324211?v=1777316896)
 
 <!-- DAILY COMMITS END -->
 
