@@ -364,7 +364,8 @@ _Last 26 weeks · {stats['contributions']} total contributions · 🔥 {stats['l
         content, flags=re.DOTALL
     )
     # Normalize heatmap URLs — strip CDN prefixes, extra ?v= chains, and any alt text
-    content = re.sub(r"!?\[\([^\)]*heatmap\.svg[^\)]*\)\]", "![](images/heatmap.svg)", content)
+    # DO NOT do this - it breaks the zo.pub URL that works on GitHub
+    # content = re.sub(r"!?\[\([^\)]*heatmap\.svg[^\)]*\)", "![](images/heatmap.svg)", content)
 
     with open(readme_path, "w") as f:
         f.write(content)
