@@ -4,7 +4,8 @@ Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamicall
 Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
 
-Strategy: gh CLI (--paginate for repos) + requests for GraphQL + Zo Space.
+Architecture: fetch-stats.sh (bash+gh CLI) → JSON files → update_stats.py reads + writes README
+This split ensures gh CLI works correctly in GitHub Actions.
 """
 
 import re
@@ -14,84 +15,18 @@ import json
 import subprocess
 import requests
 
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-
-def gh(cmd: list[str]) -> str:
-    """Run gh CLI, return stdout. Returns '' on failure."""
-    env = os.environ.copy()
-    env["GITHUB_TOKEN"] = GITHUB_TOKEN
-    result = subprocess.run(cmd, capture_output=True, text=True, env=env)
-    return result.stdout if result.returncode == 0 else ""
-
-def get_user_data() -> dict:
-    """Fetch user data via gh CLI."""
-    out = gh(["gh", "api", "user"])
-    if out:
-        try:
-            return json.loads(out)
-        except Exception:
-            pass
-    return {}
-
-def get_repos_data() -> list:
-    """Fetch all repos via gh --paginate (single stream, no per-page logic needed)."""
-    out = gh(["gh", "api", "user/repos", "--paginate", "--jq", "."])
-    if not out:
-        return []
+def read_json(path):
     try:
-        data = json.loads(out)
-        if isinstance(data, list):
-            return [{
-                "name": r.get("name"),
-                "private": r.get("private"),
-                "stargazers_count": r.get("stargazers_count", 0),
-                "forks_count": r.get("forks_count", 0),
-                "language": r.get("language"),
-                "description": r.get("description"),
-            } for r in data]
-    except Exception as e:
-        print(f"[WARNING] Failed to parse repos: {e}", file=sys.stderr)
-    return []
-
-def get_contributions_data() -> dict:
-    """Fetch contributions via GraphQL (gh CLI or requests)."""
-    gql = """query($login: String!) {
-        user(login: $login) {
-            contributionsCollection {
-                contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } }
-            }
-            pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
-        }
-    }"""
-    out = gh(["gh", "api", "graphql", "-f", f"query={gql}", "-f", "login=Retsumdk"])
-    if out:
-        try:
-            return json.loads(out)
-        except Exception:
-            pass
-    # Fallback to requests
-    try:
-        resp = requests.post(
-            "https://api.github.com/graphql",
-            json={"query": gql, "variables": {"login": "Retsumdk"}},
-            headers={
-                "Authorization": f"Bearer {GITHUB_TOKEN}",
-                "Content-Type": "application/json",
-            },
-            timeout=15
-        )
-        if resp.status_code == 200:
-            return resp.json()
+        with open(path) as f:
+            return json.load(f)
     except Exception:
-        pass
-    return {}
+        return None
 
 def get_stats() -> dict:
-    user_data = get_user_data()
-    repos_data = get_repos_data()
-
-    if not repos_data:
-        print("[WARNING] repos_data is empty — this will cause repos=0", file=sys.stderr)
+    # Read data from files written by fetch-stats.sh
+    user_data = read_json("/tmp/gh_user.json") or {}
+    repos_data = read_json("/tmp/gh_repos.json") or []
+    gql_result = read_json("/tmp/gh_graphql.json") or {}
 
     public_repos = user_data.get("public_repos", 0)
     total_private_repos = user_data.get("total_private_repos", 0)
@@ -111,7 +46,6 @@ def get_stats() -> dict:
 
     top_repos = sorted(repos_data, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
 
-    gql_result = get_contributions_data()
     gql_data = gql_result.get("data", {}).get("user", {})
     pinned_repos = gql_data.get("pinnedItems", {}).get("nodes", [])
 

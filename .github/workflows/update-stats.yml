@@ -55,9 +55,41 @@ jobs:
           fi
           echo "No SCIEL-CICD conflict — proceeding"
 
-      - name: Run update script
+      - name: Fetch gh stats to JSON files
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Fetch user data
+          gh api user > /tmp/gh_user.json
+          # Fetch all repos
+          gh api user/repos --paginate > /tmp/gh_repos.json
+          # Fetch contributions via GraphQL
+          gh api graphql -f query='
+          {
+            user(login: "Retsumdk") {
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                  weeks { contributionDays { contributionCount date } }
+                }
+              }
+              pinnedItems(first: 6, types: REPOSITORY) {
+                nodes {
+                  ... on Repository {
+                    name
+                    url
+                    description
+                    primaryLanguage { name }
+                    stargazerCount
+                    forkCount
+                  }
+                }
+              }
+            }
+          }' > /tmp/gh_graphql.json
+          echo "Stats fetched: $(wc -c < /tmp/gh_user.json) bytes user, $(wc -c < /tmp/gh_repos.json) bytes repos"
+
+      - name: Run update script
         run: |
           python update_stats.py 2>&1
 
