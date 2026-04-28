@@ -3,17 +3,17 @@
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
 <!-- LANGUAGE BADGES START -->
-
+![Python](https://img.shields.io/badge/Python-5-3776AB?style=flat-square&logo=python&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-42-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
 <!-- LANGUAGE BADGES END -->
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-890?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-0-2ea44f?style=flat-square)
-![Stars](https://img.shields.io/badge/Stars-0-2ea44f?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-902?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-95-2ea44f?style=flat-square)
+![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
-![Followers](https://img.shields.io/badge/Followers-0-ffc107?style=flat-square)
-![Following](https://img.shields.io/badge/Following-0-9c27b0?style=flat-square)
+![Followers](https://img.shields.io/badge/Followers-32-ffc107?style=flat-square)
+![Following](https://img.shields.io/badge/Following-31-9c27b0?style=flat-square)
 ![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg)
 <!-- profile-pixels:track --><img src="https://thebookmaster.zo.space/pixel.gif?u=Retsumdk" width="0" height="0" style="border:none;position:absolute" alt="">
 
@@ -67,7 +67,7 @@
 
 ## 🏆 Achievements
 
-- **0 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
+- **95 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 
