@@ -3,30 +3,67 @@
 Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamically.
 Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
+
+Uses gh CLI for all GitHub API calls to avoid token/requests issues.
 """
 
 import re
 import os
 import sys
-import time
-import requests
+import json
+import subprocess
 
-CLIENT_ID = os.environ.get("CLIENT_ID", "")
+def gh_graphql(query: str, variables: dict = None) -> dict:
+    """Run a GraphQL query via gh api."""
+    cmd = [
+        "gh", "api", "graphql",
+        "-f", f"query={query}",
+    ]
+    if variables:
+        for k, v in variables.items():
+            cmd += ["-f", f"{k}={v}"]
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    return json.loads(result.stdout)
 
-def get_stats(token: str) -> dict:
-    headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
-    repos_url = "https://api.github.com/user/repos?per_page=100&sort=updated"
-    user_url = "https://api.github.com/user"
+def gh_rest(endpoint: str) -> dict:
+    """Run a REST GET via gh api."""
+    result = subprocess.run(
+        ["gh", "api", f"repos/Retsumdk/Retsumdk/{endpoint}"],
+        capture_output=True, text=True, check=True
+    )
+    return json.loads(result.stdout)
 
-    user_resp = requests.get(user_url, headers=headers, timeout=15)
-    user_data = user_resp.json()
-    total_repos = user_data.get("total_private_repos", 0) + user_data.get("public_repos", 0)
+def gh_user() -> dict:
+    """Get current user info via gh api."""
+    result = subprocess.run(
+        ["gh", "api", "user"],
+        capture_output=True, text=True, check=True
+    )
+    return json.loads(result.stdout)
 
-    repos_resp = requests.get(repos_url, headers=headers, timeout=15)
-    repos = repos_resp.json() if repos_resp.status_code == 200 else []
+def gh_list_repos() -> list:
+    """List all repos (public + private) for Retsumdk."""
+    result = subprocess.run(
+        ["gh", "api", "user/repos", "--paginate", "--jq", ".[] | {name, private, stargazers_count, forks_count, language, description}"],
+        capture_output=True, text=True, check=True
+    )
+    repos = []
+    for line in result.stdout.strip().split("\n"):
+        if line:
+            repos.append(json.loads(line))
+    return repos
 
-    repos = [r for r in repos if not r.get("private")]
+def get_stats() -> dict:
+    # User-level stats
+    user = gh_user()
+    public_repos = user.get("public_repos", 0)
+    private_repos = user.get("total_private_repos", 0)
+    total_repos = public_repos + private_repos
+    followers = user.get("followers", 0)
+    following = user.get("following", 0)
 
+    # Repo-level stats (all repos, not just public)
+    repos = gh_list_repos()
     stars = sum(r.get("stargazers_count", 0) for r in repos)
     total_forks = sum(r.get("forks_count", 0) for r in repos)
 
@@ -39,7 +76,7 @@ def get_stats(token: str) -> dict:
     top_repos = sorted(repos, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
 
     # Contribution graph via GraphQL
-    query = """query($login: String!) {
+    gql_query = """query($login: String!) {
         user(login: $login) {
             contributionsCollection {
                 contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } }
@@ -47,24 +84,16 @@ def get_stats(token: str) -> dict:
             pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
         }
     }"""
-    variables = {"login": "Retsumdk"}
-    gql_resp = requests.post(
-        "https://api.github.com/graphql",
-        json={"query": query, "variables": variables},
-        headers={**headers, "Content-Type": "application/json"},
-        timeout=15
-    )
-    gql_data = gql_resp.json().get("data", {}).get("user", {})
+    gql_result = gh_graphql(gql_query, {"login": "Retsumdk"})
+    gql_data = gql_result.get("data", {}).get("user", {})
     pinned_repos = gql_data.get("pinnedItems", {}).get("nodes", [])
 
     cal = gql_data.get("contributionsCollection", {}).get("contributionCalendar", {})
     total_contributions = cal.get("totalContributions", 0)
     weeks = cal.get("weeks", [])
-
     graph_lines = []
     longest = 0
     current = 0
-    day_count = 0
     for week in weeks:
         for day in week.get("contributionDays", []):
             count = day.get("contributionCount", 0)
@@ -73,7 +102,6 @@ def get_stats(token: str) -> dict:
                 current = 1
             else:
                 current = 0
-            day_count += 1
 
     for week in weeks[-26:]:
         days = week.get("contributionDays", [])
@@ -86,7 +114,8 @@ def get_stats(token: str) -> dict:
     # Zo Space dynamic stats
     zo_stats = {}
     try:
-        resp = requests.get(f"https://thebookmaster.zo.space/api/bolt-stats", timeout=10)
+        import requests as _req
+        resp = _req.get("https://thebookmaster.zo.space/api/bolt-stats", timeout=10)
         if resp.status_code == 200:
             data = resp.json()
             zo_stats["bolt_listings"] = data.get("listings", 0)
@@ -95,7 +124,8 @@ def get_stats(token: str) -> dict:
         pass
 
     try:
-        resp2 = requests.get(f"https://thebookmaster.zo.space/api/aion-stats", timeout=10)
+        import requests as _req2
+        resp2 = _req2.get("https://thebookmaster.zo.space/api/aion-stats", timeout=10)
         if resp2.status_code == 200:
             data2 = resp2.json()
             zo_stats["aion_agents"] = data2.get("registered_agents", 0)
@@ -103,7 +133,8 @@ def get_stats(token: str) -> dict:
         pass
 
     try:
-        resp3 = requests.get(f"https://thebookmaster.zo.space/api/game-routes-count", timeout=10)
+        import requests as _req3
+        resp3 = _req3.get("https://thebookmaster.zo.space/api/game-routes-count", timeout=10)
         if resp3.status_code == 200:
             zo_stats["routes"] = resp3.json().get("count", 0)
     except Exception:
@@ -114,8 +145,8 @@ def get_stats(token: str) -> dict:
         "repos": total_repos,
         "stars": stars,
         "forks": total_forks,
-        "followers": user_data.get("followers", 0),
-        "following": user_data.get("following", 0),
+        "followers": followers,
+        "following": following,
         "languages": langs,
         "top_repos": top_repos,
         "longest_streak": longest,
@@ -333,6 +364,5 @@ def update_readme(stats: dict):
 
 
 if __name__ == "__main__":
-    token = os.environ.get("GITHUB_TOKEN", "")
-    stats = get_stats(token)
+    stats = get_stats()
     update_readme(stats)
