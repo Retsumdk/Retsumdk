@@ -59,11 +59,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Fetch user data
-          gh api user > /tmp/gh_user.json
-          # Fetch all repos
-          gh api user/repos --paginate > /tmp/gh_repos.json
-          # Fetch contributions via GraphQL
+          # Full paths avoid any parsing ambiguity with gh
+          gh api /user -X GET > /tmp/gh_user.json
+          gh api /user/repos --paginate -X GET > /tmp/gh_repos.json
           gh api graphql -f query='
           {
             user(login: "Retsumdk") {
