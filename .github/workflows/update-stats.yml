@@ -58,18 +58,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Use gh api for repository-scoped calls
-          # For user-level data, use users/Retsumdk endpoint (public) or repos endpoint
+          # Collect all stats via bash + git + curl (gh api /user consistently fails)
+          # user data via users/Retsumdk (public endpoint, no GitHub App intercept)
           echo "Fetching user data..."
-          # gh api /user fails in Actions context (GitHub App integration intercept)
-          # Use users/Retsumdk for public user data instead
           gh api users/Retsumdk > /tmp/gh_user.json
           echo "  user bytes: $(wc -c < /tmp/gh_user.json)"
 
+          # repos via users/Retsumdk/repos (public repos only, works in Actions)
           echo "Fetching repos..."
-          gh api repos/Retsumdk/Retsumdk/repos --paginate > /tmp/gh_repos.json
+          gh api users/Retsumdk/repos --paginate > /tmp/gh_repos.json
           echo "  repos bytes: $(wc -c < /tmp/gh_repos.json)"
 
+          # Count all commits for contributions (git log from origin/main)
+          echo "Fetching contribution count..."
+          TOTAL_COMMITS=$(git log --oneline origin/main | wc -l)
+          echo "total_contributions: $TOTAL_COMMITS" > /tmp/gh_contributions.txt
+
+          # GraphQL via gh api graphql (this worked in earlier tests)
           echo "Fetching GraphQL..."
           gh api graphql -f query='
             {
