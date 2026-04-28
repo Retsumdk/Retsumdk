@@ -48,6 +48,39 @@ jobs:
           fi
           echo "No SCIEL-CICD conflict — proceeding"
 
+      - name: Run update script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python update_stats.py
+          # Verify no protected sections were accidentally wiped
+          if ! grep -q "## 🔗 Ecosystem" README.md; then
+            echo "ERROR: Ecosystem section missing after update! Restoring from git..."
+            git checkout README.md
+            exit 1
+          fi
+          if ! grep -q "## 🧬 Commit DNA" README.md; then
+            echo "ERROR: Commit DNA section missing after update! Restoring from git..."
+            git checkout README.md
+            exit 1
+          fi
+          if ! grep -q "## 🏆 Achievements" README.md; then
+            echo "ERROR: Achievements section missing after update! Restoring from git..."
+            git checkout README.md
+            exit 1
+          fi
+          if ! grep -q "## 📊 Live Analytics" README.md; then
+            echo "ERROR: Live Analytics section missing after update! Restoring from git..."
+            git checkout README.md
+            exit 1
+          fi
+          if ! grep -q "## 🪐 Reputation Orbit" README.md; then
+            echo "ERROR: Reputation Orbit section missing after update! Restoring from git..."
+            git checkout README.md
+            exit 1
+          fi
+          echo "All protected sections verified present."
+
       - name: Generate heatmap SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,13 +89,6 @@ jobs:
           python gen_heatmap.py
           cp /tmp/heatmap.svg images/heatmap.svg
           cp /tmp/heatmap.svg heatmap.svg
-
-      - name: Fetch stats and update README
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          pip install requests
-          python update_stats.py
 
       - name: Update README with cache-busting URL
         run: |
