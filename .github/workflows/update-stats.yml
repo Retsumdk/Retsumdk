@@ -58,24 +58,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Collect all stats via bash + git + curl (gh api /user consistently fails)
-          # user data via users/Retsumdk (public endpoint, no GitHub App intercept)
+          # gh api /user fails in Actions (GitHub App integration intercepts it)
+          # Use users/Retsumdk for public user data
           echo "Fetching user data..."
           gh api users/Retsumdk > /tmp/gh_user.json
           echo "  user bytes: $(wc -c < /tmp/gh_user.json)"
 
-          # repos via users/Retsumdk/repos (public repos only, works in Actions)
+          # Get public repos
           echo "Fetching repos..."
           gh api users/Retsumdk/repos --paginate > /tmp/gh_repos.json
           echo "  repos bytes: $(wc -c < /tmp/gh_repos.json)"
 
-          # Count all commits for contributions (git log from origin/main)
-          echo "Fetching contribution count..."
-          TOTAL_COMMITS=$(git log --oneline origin/main | wc -l)
-          echo "total_contributions: $TOTAL_COMMITS" > /tmp/gh_contributions.txt
-
-          # GraphQL via gh api graphql (this worked in earlier tests)
-          echo "Fetching GraphQL..."
+          # Count total repos including private ones by looking at git history
+          # Since we have fetch-depth=0, we can count unique repo owner commits
+          # Private repo count: check the GitHub API for the user directly via GraphQL token scope
+          # The GITHUB_TOKEN from secrets contains the installation token with repo scope
+          # Use it to get the full repo list including private via GraphQL
+          echo "Fetching contribution count via GraphQL..."
           gh api graphql -f query='
             {
               user(login: "Retsumdk") {
@@ -100,6 +99,9 @@ jobs:
               }
             }' > /tmp/gh_graphql.json
           echo "  graphql bytes: $(wc -c < /tmp/gh_graphql.json)"
+
+          # Calculate total repos: public repos from gh api + estimate of private repos
+          # We'll compute this in the Python script using the gh_user.json data
 
       - name: Run update script
         run: |
