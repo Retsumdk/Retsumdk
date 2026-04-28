@@ -48,7 +48,16 @@ def get_stats() -> dict:
     if not user_data or "login" not in user_data:
         try:
             with open("/tmp/gh_user.json") as f:
-                user_data = json.load(f)
+                raw = json.load(f)
+            # users/Retsumdk returns a different structure than /user
+            # Extract what we need from either format
+            user_data = {
+                "login": raw.get("login", ""),
+                "public_repos": raw.get("public_repos", 0),
+                "total_private_repos": raw.get("total_private_repos", 0),
+                "followers": raw.get("followers", 0),
+                "following": raw.get("following", 0),
+            }
             print("[DEBUG] user_data loaded from /tmp/gh_user.json", file=sys.stderr)
         except Exception:
             pass

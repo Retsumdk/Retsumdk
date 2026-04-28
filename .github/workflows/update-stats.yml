@@ -58,14 +58,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Use gh CLI for this step — it handles auth differently than curl
-          # gh CLI uses the token configured at auth time, not the Bearer header
+          # Use gh api for repository-scoped calls
+          # For user-level data, use users/Retsumdk endpoint (public) or repos endpoint
           echo "Fetching user data..."
-          gh api /user > /tmp/gh_user.json
+          # gh api /user fails in Actions context (GitHub App integration intercept)
+          # Use users/Retsumdk for public user data instead
+          gh api users/Retsumdk > /tmp/gh_user.json
           echo "  user bytes: $(wc -c < /tmp/gh_user.json)"
 
           echo "Fetching repos..."
-          gh api /user/repos --paginate > /tmp/gh_repos.json
+          gh api repos/Retsumdk/Retsumdk/repos --paginate > /tmp/gh_repos.json
           echo "  repos bytes: $(wc -c < /tmp/gh_repos.json)"
 
           echo "Fetching GraphQL..."
