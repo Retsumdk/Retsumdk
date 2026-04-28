@@ -55,17 +55,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python update_stats.py
-          # Debug: print raw API response
+          python update_stats.py 2>&1
+          echo "---DEBUG: raw API call---"
           python3 -c "
 import os, requests
 token = os.environ.get('GITHUB_TOKEN','')
 headers = {'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json'}
 r = requests.get('https://api.github.com/user', headers=headers)
-print('user API status:', r.status_code, r.text[:200])
-resp2 = requests.get('https://api.github.com/user/repos?per_page=100&sort=updated', headers=headers)
-print('repos API status:', resp2.status_code)
+print('user API status:', r.status_code)
+if r.status_code != 200:
+    print('ERROR BODY:', r.text[:300])
+else:
+    d = r.json()
+    print('login:', d.get('login'), 'public_repos:', d.get('public_repos'), 'followers:', d.get('followers'))
 "
+          echo "---END DEBUG---"
+
+      - name: Verify no protected sections were accidentally wiped
+        run: |
           # Verify no protected sections were accidentally wiped
           if ! grep -q "## 🔗 Ecosystem" README.md; then
             echo "ERROR: Ecosystem section missing after update! Restoring from git..."
