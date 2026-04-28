@@ -22,55 +22,15 @@ GH_HEADERS = {
     "X-GitHub-Api-Version": "2022-11-28",
 }
 
-def gh_fallback(cmd: list[str]) -> str:
-    """Run a gh CLI command, return stdout. Only use as fallback."""
+def gh_api(cmd: list[str]) -> str:
+    """Run a gh CLI command and return stdout. Returns '' on failure."""
     result = subprocess.run(cmd, capture_output=True, text=True)
     return result.stdout if result.returncode == 0 else ""
 
-def gh_graphql(query: str, variables: dict = None) -> dict:
-    """Run a GraphQL query via gh api."""
-    cmd = [
-        "gh", "api", "graphql",
-        "-f", f"query={query}",
-    ]
-    if variables:
-        for k, v in variables.items():
-            cmd += ["-f", f"{k}={v}"]
-    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    return json.loads(result.stdout)
-
-def gh_rest(endpoint: str) -> dict:
-    """Run a REST GET via gh api."""
-    result = subprocess.run(
-        ["gh", "api", f"repos/Retsumdk/Retsumdk/{endpoint}"],
-        capture_output=True, text=True, check=True
-    )
-    return json.loads(result.stdout)
-
-def gh_user() -> dict:
-    """Get current user info via gh api."""
-    result = subprocess.run(
-        ["gh", "api", "user"],
-        capture_output=True, text=True, check=True
-    )
-    return json.loads(result.stdout)
-
-def gh_list_repos() -> list:
-    """List all repos (public + private) for Retsumdk."""
-    result = subprocess.run(
-        ["gh", "api", "user/repos", "--paginate", "--jq", ".[] | {name, private, stargazers_count, forks_count, language, description}"],
-        capture_output=True, text=True, check=True
-    )
-    repos = []
-    for line in result.stdout.strip().split("\n"):
-        if line:
-            repos.append(json.loads(line))
-    return repos
-
 def get_stats() -> dict:
-    # ── Primary: requests-based GitHub API ──────────────────────────────────
+    # ── User data: try requests first, fallback to gh CLI ─────────────────
     user_data = {}
-    repos_data = []
+    user_from_gh = False
 
     try:
         user_resp = requests.get("https://api.github.com/user", headers=GH_HEADERS, timeout=15)
@@ -78,6 +38,26 @@ def get_stats() -> dict:
             user_data = user_resp.json()
     except Exception as e:
         print(f"[WARNING] requests.get /user failed: {e}", file=sys.stderr)
+
+    # Fallback to gh CLI if requests gave empty-looking data
+    if not user_data.get("login"):
+        gh_out = gh_api(["gh", "api", "user"])
+        if gh_out:
+            try:
+                user_data = json.loads(gh_out)
+                user_from_gh = True
+            except Exception:
+                pass
+
+    public_repos = user_data.get("public_repos", 0)
+    total_private_repos = user_data.get("total_private_repos", 0)
+    total_repos = public_repos + total_private_repos
+    followers = user_data.get("followers", 0)
+    following = user_data.get("following", 0)
+
+    # ── Repos data: try requests first, fallback to gh CLI ─────────────────
+    repos_data = []
+    repos_from_gh = False
 
     try:
         repos_resp = requests.get(
@@ -89,33 +69,22 @@ def get_stats() -> dict:
     except Exception as e:
         print(f"[WARNING] requests.get /user/repos failed: {e}", file=sys.stderr)
 
-    # ── Fallback: gh CLI if requests returned empty data ───────────────────
-    if not user_data or not repos_data:
-        print("[INFO] Falling back to gh CLI for GitHub API calls", file=sys.stderr)
-        gh_user_out = gh_fallback(["gh", "api", "user"])
-        if gh_user_out:
-            try:
-                user_data = json.loads(gh_user_out)
-            except Exception:
-                pass
-
-        if not repos_data:
-            gh_repos_out = gh_fallback([
-                "gh", "api", "user/repos", "--paginate", "--jq",
-                ".[] | {name, private, stargazers_count, forks_count, language, description}"
-            ])
-            for line in gh_repos_out.strip().split("\n"):
+    # Fallback to gh CLI if repos list is empty (either from request failure or genuinely empty)
+    if not repos_data:
+        gh_out = gh_api([
+            "gh", "api", "user/repos", "--paginate", "--jq",
+            ".[] | {name, private, stargazers_count, forks_count, language, description}"
+        ])
+        if gh_out:
+            for line in gh_out.strip().split("\n"):
                 if line:
                     try:
                         repos_data.append(json.loads(line))
                     except Exception:
                         pass
-
-    public_repos = user_data.get("public_repos", 0)
-    total_private_repos = user_data.get("total_private_repos", 0)
-    total_repos = public_repos + total_private_repos
-    followers = user_data.get("followers", 0)
-    following = user_data.get("following", 0)
+            if repos_data:
+                repos_from_gh = True
+                print("[INFO] Successfully fetched repos via gh CLI fallback", file=sys.stderr)
 
     # Filter out private repos from stars/forks count
     public_only = [r for r in repos_data if not r.get("private")]
@@ -130,7 +99,7 @@ def get_stats() -> dict:
 
     top_repos = sorted(repos_data, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
 
-    # Contribution graph via GraphQL
+    # ── Contribution graph via GraphQL (always requests, gh for fallback) ───
     gql_query = """query($login: String!) {
         user(login: $login) {
             contributionsCollection {
@@ -139,14 +108,38 @@ def get_stats() -> dict:
             pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
         }
     }"""
-    gql_result = gh_graphql(gql_query, {"login": "Retsumdk"})
+    gql_result = {}
+    try:
+        gql_resp = requests.post(
+            "https://api.github.com/graphql",
+            json={"query": gql_query, "variables": {"login": "Retsumdk"}},
+            headers={**GH_HEADERS, "Content-Type": "application/json"},
+            timeout=15
+        )
+        if gql_resp.status_code == 200:
+            gql_result = gql_resp.json()
+    except Exception as e:
+        print(f"[WARNING] GraphQL request failed: {e}", file=sys.stderr)
+
+    # Fallback GraphQL via gh CLI
+    if not gql_result:
+        gh_gql = gh_api([
+            "gh", "api", "graphql",
+            "-F", "query=" + gql_query.replace("{", "{{").replace("}", "}}").replace('"$login"', '"Retsumdk"'),
+            "-f", "login=Retsumdk"
+        ])
+        if gh_gql:
+            try:
+                gql_result = json.loads(gh_gql)
+            except Exception:
+                pass
+
     gql_data = gql_result.get("data", {}).get("user", {})
     pinned_repos = gql_data.get("pinnedItems", {}).get("nodes", [])
 
     cal = gql_data.get("contributionsCollection", {}).get("contributionCalendar", {})
     total_contributions = cal.get("totalContributions", 0)
     weeks = cal.get("weeks", [])
-    graph_lines = []
     longest = 0
     current = 0
     for week in weeks:
@@ -158,19 +151,10 @@ def get_stats() -> dict:
             else:
                 current = 0
 
-    for week in weeks[-26:]:
-        days = week.get("contributionDays", [])
-        intensities = ["░", "▒", "▓", "█"]
-        line = "".join(intensities[min(count, 3)] for count in
-                     [min(d.get("contributionCount", 0), 4) for d in days])
-        if line.replace("░", ""):
-            graph_lines.append(line)
-
     # Zo Space dynamic stats
     zo_stats = {}
     try:
-        import requests as _req
-        resp = _req.get("https://thebookmaster.zo.space/api/bolt-stats", timeout=10)
+        resp = requests.get("https://thebookmaster.zo.space/api/bolt-stats", timeout=10)
         if resp.status_code == 200:
             data = resp.json()
             zo_stats["bolt_listings"] = data.get("listings", 0)
@@ -179,21 +163,25 @@ def get_stats() -> dict:
         pass
 
     try:
-        import requests as _req2
-        resp2 = _req2.get("https://thebookmaster.zo.space/api/aion-stats", timeout=10)
+        resp2 = requests.get("https://thebookmaster.zo.space/api/aion-stats", timeout=10)
         if resp2.status_code == 200:
-            data2 = resp2.json()
-            zo_stats["aion_agents"] = data2.get("registered_agents", 0)
+            zo_stats["aion_agents"] = resp2.json().get("registered_agents", 0)
     except Exception:
         pass
 
     try:
-        import requests as _req3
-        resp3 = _req3.get("https://thebookmaster.zo.space/api/game-routes-count", timeout=10)
+        resp3 = requests.get("https://thebookmaster.zo.space/api/game-routes-count", timeout=10)
         if resp3.status_code == 200:
             zo_stats["routes"] = resp3.json().get("count", 0)
     except Exception:
         pass
+
+    print(
+        f"[DEBUG] repos={total_repos} ({public_repos} public + {total_private_repos} private), "
+        f"stars={stars}, followers={followers}, contributions={total_contributions}, "
+        f"repos_via_gh={repos_from_gh}, user_via_gh={user_from_gh}",
+        file=sys.stderr
+    )
 
     return {
         "contributions": total_contributions,
@@ -206,7 +194,6 @@ def get_stats() -> dict:
         "top_repos": top_repos,
         "longest_streak": longest,
         "current_streak": current,
-        "graph_lines": graph_lines,
         "pinned_repos": pinned_repos,
         **zo_stats,
     }
@@ -285,7 +272,7 @@ def update_readme(stats: dict):
         f"![Following](https://img.shields.io/badge/Following-{stats['following']}-9c27b0?style=flat-square)",
         content
     )
-    # Profile Views badge — preserve existing URL, don't change it
+    # Profile Views badge — preserve existing URL
     if "profile-analytics" not in content:
         content = re.sub(
             r"(!\[Profile Views\]\()[^)]+(\))",
@@ -293,9 +280,8 @@ def update_readme(stats: dict):
             content
         )
 
-    # ── SECTION 3: Profile tracking pixel — add only if missing ───────────────
+    # ── SECTION 3: Profile tracking pixel ───────────────────────────────────
     if "<!-- profile-pixels:track -->" not in content:
-        # Add right after Profile Views line
         content = re.sub(
             r"(!\[Profile Views\]\(https://raw\.githubusercontent\.com/Retsumdk/profile-analytics/main/cards/total_views\.svg\))\n",
             r"\1\n<!-- profile-pixels:track --><img src=\"https://thebookmaster.zo.space/pixel.gif?u=Retsumdk\" width=\"0\" height=\"0\" style=\"border:none;position:absolute\" alt=\"\">\n",
@@ -303,7 +289,6 @@ def update_readme(stats: dict):
         )
 
     # ── SECTION 4: Daily Commits Heatmap ─────────────────────────────────────
-    # Always use raw.githubusercontent.com — GitHub renders this in README
     daily_section = (
         "<!-- DAILY COMMITS START -->\n"
         "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg)\n"
@@ -390,20 +375,12 @@ def update_readme(stats: dict):
         content, flags=re.DOTALL
     )
 
-    # ── SECTION 7: Achievements — update repo count only, preserve everything else
+    # ── SECTION 7: Achievements — update repo count only ───────────────────
     content = re.sub(
         r"(\*\*)\d+( repositories\*\* across the SCIEL, BOLT, and PromptForge ecosystems)",
         f"**{stats['repos']}\\2",
         content
     )
-
-    # ── PROTECTED SECTIONS — update_stats.py DOES NOT TOUCH THESE: ───────────
-    # ## 🔗 Ecosystem        — NEVER touched
-    # ## 🏆 Achievements     — only repo count patched above
-    # ## 🧬 Commit DNA        — NEVER touched
-    # ## 📊 Live Analytics    — NEVER touched
-    # ## 🪐 Reputation Orbit  — NEVER touched
-    # 📊 Recent Visits        — NEVER touched
 
     with open(readme_path, "w") as f:
         f.write(content)
