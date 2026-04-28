@@ -23,9 +23,11 @@ GH_HEADERS = {
 
 def gh(cmd: list[str], check: bool = False) -> str:
     """Run gh CLI, return stdout. Returns '' on failure or check=False."""
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    env = os.environ.copy()
+    env["GITHUB_TOKEN"] = GITHUB_TOKEN
+    result = subprocess.run(cmd, capture_output=True, text=True, env=env)
     if check and result.returncode != 0:
-        print(f"[WARNING] gh command failed: {' '.join(cmd)} — {result.stderr[:100]}", file=sys.stderr)
+        print(f"[WARNING] gh command failed (code={result.returncode}): {' '.join(cmd)} — {result.stderr[:200]}", file=sys.stderr)
         return ""
     return result.stdout
 
