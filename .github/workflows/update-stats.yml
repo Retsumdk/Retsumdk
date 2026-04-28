@@ -42,8 +42,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Abort if SCIEL-CICD pushed since last scheduled run to avoid overwriting each other
-          LAST_SCIEL=$(gh api repos/Retsumdk/Retsumdk/commits --jq '.[] | select(.commit.author.name == "SCIEL-CICD") | .sha' 2>/dev/null | head -1)
+          # Only abort if SCIEL-CICD pushed WITHIN THE LAST 2 HOURS to avoid overwriting each other
+          # Do NOT abort on first-found historical SCIEL-CICD commit — that would always block runs
+          SINCE=$(date -d '2 hours ago' +%s 2>/dev/null || date -u -v-2H +%s)
+          LAST_SCIEL=$(gh api repos/Retsumdk/Retsumdk/commits --paginate \
+            --jq ".[] | select(.commit.author.name == \"SCIEL-CICD\" and .commit.author.date > \"${SINCE}s\") | .sha" \
+            2>/dev/null | head -1)
           if [ -n "$LAST_SCIEL" ]; then
             echo "SCIEL-CICD pushed recently — aborting this run to prevent conflicts"
             echo "Sciiel-HC will refresh on next scheduled run"
@@ -56,20 +60,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python update_stats.py 2>&1
-          echo "---DEBUG: raw API call---"
-          python3 -c "
-import os, requests
-token = os.environ.get('GITHUB_TOKEN','')
-headers = {'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json'}
-r = requests.get('https://api.github.com/user', headers=headers)
-print('user API status:', r.status_code)
-if r.status_code != 200:
-    print('ERROR BODY:', r.text[:300])
-else:
-    d = r.json()
-    print('login:', d.get('login'), 'public_repos:', d.get('public_repos'), 'followers:', d.get('followers'))
-"
-          echo "---END DEBUG---"
 
       - name: Verify no protected sections were accidentally wiped
         run: |
@@ -79,13 +69,13 @@ else:
             git checkout README.md
             exit 1
           fi
-          if ! grep -q "## 🧬 Commit DNA" README.md; then
-            echo "ERROR: Commit DNA section missing after update! Restoring from git..."
+          if ! grep -q "## 🏆 Achievements" README.md; then
+            echo "ERROR: Achievements section missing after update! Restoring from git..."
             git checkout README.md
             exit 1
           fi
-          if ! grep -q "## 🏆 Achievements" README.md; then
-            echo "ERROR: Achievements section missing after update! Restoring from git..."
+          if ! grep -q "## 🧬 Commit DNA" README.md; then
+            echo "ERROR: Commit DNA section missing after update! Restoring from git..."
             git checkout README.md
             exit 1
           fi
