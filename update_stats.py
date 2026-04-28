@@ -4,7 +4,7 @@ Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamicall
 Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
 
-Strategy: gh CLI for user/repos (most reliable), requests for GraphQL + Zo Space.
+Strategy: gh CLI (--paginate for repos) + requests for GraphQL + Zo Space.
 """
 
 import re
@@ -15,24 +15,16 @@ import subprocess
 import requests
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-GH_HEADERS = {
-    "Authorization": f"Bearer {GITHUB_TOKEN}",
-    "Accept": "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-}
 
-def gh(cmd: list[str], check: bool = False) -> str:
-    """Run gh CLI, return stdout. Returns '' on failure or check=False."""
+def gh(cmd: list[str]) -> str:
+    """Run gh CLI, return stdout. Returns '' on failure."""
     env = os.environ.copy()
     env["GITHUB_TOKEN"] = GITHUB_TOKEN
     result = subprocess.run(cmd, capture_output=True, text=True, env=env)
-    if check and result.returncode != 0:
-        print(f"[WARNING] gh command failed (code={result.returncode}): {' '.join(cmd)} — {result.stderr[:200]}", file=sys.stderr)
-        return ""
-    return result.stdout
+    return result.stdout if result.returncode == 0 else ""
 
 def get_user_data() -> dict:
-    """Fetch user data via gh CLI (most reliable in all environments)."""
+    """Fetch user data via gh CLI."""
     out = gh(["gh", "api", "user"])
     if out:
         try:
@@ -42,32 +34,24 @@ def get_user_data() -> dict:
     return {}
 
 def get_repos_data() -> list:
-    """Fetch all repos via gh CLI — avoid jq pipe which can silently fail in GA."""
-    repos = []
-    page = 1
-    while True:
-        out = gh(["gh", "api", f"user/repos?page={page}&per_page=100&sort=updated"])
-        if not out:
-            break
-        try:
-            batch = json.loads(out)
-            if not isinstance(batch, list) or not batch:
-                break
-            for r in batch:
-                repos.append({
-                    "name": r.get("name"),
-                    "private": r.get("private"),
-                    "stargazers_count": r.get("stargazers_count", 0),
-                    "forks_count": r.get("forks_count", 0),
-                    "language": r.get("language"),
-                    "description": r.get("description"),
-                })
-            if len(batch) < 100:
-                break
-            page += 1
-        except Exception:
-            break
-    return repos
+    """Fetch all repos via gh --paginate (single stream, no per-page logic needed)."""
+    out = gh(["gh", "api", "user/repos", "--paginate", "--jq", "."])
+    if not out:
+        return []
+    try:
+        data = json.loads(out)
+        if isinstance(data, list):
+            return [{
+                "name": r.get("name"),
+                "private": r.get("private"),
+                "stargazers_count": r.get("stargazers_count", 0),
+                "forks_count": r.get("forks_count", 0),
+                "language": r.get("language"),
+                "description": r.get("description"),
+            } for r in data]
+    except Exception as e:
+        print(f"[WARNING] Failed to parse repos: {e}", file=sys.stderr)
+    return []
 
 def get_contributions_data() -> dict:
     """Fetch contributions via GraphQL (gh CLI or requests)."""
@@ -79,7 +63,6 @@ def get_contributions_data() -> dict:
             pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
         }
     }"""
-    # Try gh CLI first (most reliable)
     out = gh(["gh", "api", "graphql", "-f", f"query={gql}", "-f", "login=Retsumdk"])
     if out:
         try:
@@ -91,23 +74,24 @@ def get_contributions_data() -> dict:
         resp = requests.post(
             "https://api.github.com/graphql",
             json={"query": gql, "variables": {"login": "Retsumdk"}},
-            headers={**GH_HEADERS, "Content-Type": "application/json"},
+            headers={
+                "Authorization": f"Bearer {GITHUB_TOKEN}",
+                "Content-Type": "application/json",
+            },
             timeout=15
         )
         if resp.status_code == 200:
             return resp.json()
-    except Exception as e:
-        print(f"[WARNING] GraphQL via requests failed: {e}", file=sys.stderr)
+    except Exception:
+        pass
     return {}
 
 def get_stats() -> dict:
     user_data = get_user_data()
     repos_data = get_repos_data()
 
-    if not user_data:
-        print("[WARNING] Could not fetch user data from gh CLI — repos will be 0!", file=sys.stderr)
     if not repos_data:
-        print("[WARNING] Could not fetch repos from gh CLI — repos will be 0!", file=sys.stderr)
+        print("[WARNING] repos_data is empty — this will cause repos=0", file=sys.stderr)
 
     public_repos = user_data.get("public_repos", 0)
     total_private_repos = user_data.get("total_private_repos", 0)
