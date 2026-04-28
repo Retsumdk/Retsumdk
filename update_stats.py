@@ -4,29 +4,33 @@ Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamicall
 Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
 
-Architecture: fetch-stats.sh (bash+gh CLI) → JSON files → update_stats.py reads + writes README
-This split ensures gh CLI works correctly in GitHub Actions.
+Uses Python requests library with GITHUB_TOKEN from environment.
 """
 
 import re
 import os
 import sys
 import json
-import subprocess
 import requests
 
-def read_json(path):
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except Exception:
-        return None
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+}
 
 def get_stats() -> dict:
-    # Read data from files written by fetch-stats.sh
-    user_data = read_json("/tmp/gh_user.json") or {}
-    repos_data = read_json("/tmp/gh_repos.json") or []
-    gql_result = read_json("/tmp/gh_graphql.json") or {}
+    # ── User data ─────────────────────────────────────────────────────────
+    user_resp = requests.get("https://api.github.com/user", headers=HEADERS, timeout=15)
+    user_data = user_resp.json() if user_resp.status_code == 200 else {}
+
+    # ── Repos data ────────────────────────────────────────────────────────
+    repos_resp = requests.get(
+        "https://api.github.com/user/repos?per_page=100&sort=updated",
+        headers=HEADERS, timeout=15
+    )
+    repos_data = repos_resp.json() if repos_resp.status_code == 200 else []
 
     public_repos = user_data.get("public_repos", 0)
     total_private_repos = user_data.get("total_private_repos", 0)
@@ -46,12 +50,28 @@ def get_stats() -> dict:
 
     top_repos = sorted(repos_data, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
 
-    gql_data = gql_result.get("data", {}).get("user", {})
+    # ── Contribution graph via GraphQL ───────────────────────────────────
+    gql_query = """query($login: String!) {
+        user(login: $login) {
+            contributionsCollection {
+                contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } }
+            }
+            pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
+        }
+    }"""
+    gql_resp = requests.post(
+        "https://api.github.com/graphql",
+        json={"query": gql_query, "variables": {"login": "Retsumdk"}},
+        headers={**HEADERS, "Content-Type": "application/json"},
+        timeout=15
+    )
+    gql_data = gql_resp.json().get("data", {}).get("user", {})
     pinned_repos = gql_data.get("pinnedItems", {}).get("nodes", [])
 
     cal = gql_data.get("contributionsCollection", {}).get("contributionCalendar", {})
     total_contributions = cal.get("totalContributions", 0)
     weeks = cal.get("weeks", [])
+
     longest = 0
     current = 0
     for week in weeks:
@@ -63,34 +83,34 @@ def get_stats() -> dict:
             else:
                 current = 0
 
-    # Zo Space dynamic stats
-    zo_stats = {}
-    try:
-        resp = requests.get("https://thebookmaster.zo.space/api/bolt-stats", timeout=10)
-        if resp.status_code == 200:
-            data = resp.json()
-            zo_stats["bolt_listings"] = data.get("listings", 0)
-            zo_stats["sciel_agents"] = data.get("agents", 0)
-    except Exception:
-        pass
-    try:
-        resp2 = requests.get("https://thebookmaster.zo.space/api/aion-stats", timeout=10)
-        if resp2.status_code == 200:
-            zo_stats["aion_agents"] = resp2.json().get("registered_agents", 0)
-    except Exception:
-        pass
-    try:
-        resp3 = requests.get("https://thebookmaster.zo.space/api/game-routes-count", timeout=10)
-        if resp3.status_code == 200:
-            zo_stats["routes"] = resp3.json().get("count", 0)
-    except Exception:
-        pass
+    graph_lines = []
+    for week in weeks[-26:]:
+        days = week.get("contributionDays", [])
+        intensities = ["░", "▒", "▓", "█"]
+        line = "".join(intensities[min(count, 3)] for count in
+                     [min(d.get("contributionCount", 0), 4) for d in days])
+        if line.replace("░", ""):
+            graph_lines.append(line)
 
-    print(
-        f"[DEBUG] user_data={bool(user_data)}, repos_data={len(repos_data)}, "
-        f"repos={total_repos}, stars={stars}, followers={followers}",
-        file=sys.stderr
-    )
+    # ── Zo Space stats ────────────────────────────────────────────────────
+    zo_stats = {}
+    for url, keys in [
+        ("https://thebookmaster.zo.space/api/bolt-stats", ["bolt_listings", "sciel_agents"]),
+        ("https://thebookmaster.zo.space/api/aion-stats", ["aion_agents"]),
+        ("https://thebookmaster.zo.space/api/game-routes-count", ["routes"]),
+    ]:
+        try:
+            resp = requests.get(url, timeout=10)
+            if resp.status_code == 200:
+                data = resp.json()
+                for k in keys:
+                    if k in data:
+                        zo_stats[k] = data[k]
+        except Exception:
+            pass
+
+    print(f"[DEBUG] repos={total_repos} ({public_repos} public + {total_private_repos} private), "
+          f"stars={stars}, followers={followers}, contributions={total_contributions}", file=sys.stderr)
 
     return {
         "contributions": total_contributions,
@@ -103,6 +123,7 @@ def get_stats() -> dict:
         "top_repos": top_repos,
         "longest_streak": longest,
         "current_streak": current,
+        "graph_lines": graph_lines,
         "pinned_repos": pinned_repos,
         **zo_stats,
     }
