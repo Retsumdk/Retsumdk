@@ -18,7 +18,9 @@ def get_stats(token: str) -> dict:
     repos_url = "https://api.github.com/user/repos?per_page=100&sort=updated"
     user_url = "https://api.github.com/user"
 
+    print(f"DEBUG: token prefix = {token[:8]}...", flush=True)
     user_resp = requests.get(user_url, headers=headers, timeout=15)
+    print(f"DEBUG: user API status = {user_resp.status_code}, body = {user_resp.text[:300]}", flush=True)
     user_data = user_resp.json()
     total_repos = user_data.get("total_private_repos", 0) + user_data.get("public_repos", 0)
 
