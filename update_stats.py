@@ -5,6 +5,8 @@ Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
 
 Uses Python requests library with GITHUB_TOKEN from environment.
+Falls back to reading JSON files written by workflow bash step (/tmp/gh_*.json)
+if the GITHUB_TOKEN is not available.
 """
 
 import re
@@ -20,17 +22,52 @@ HEADERS = {
     "X-GitHub-Api-Version": "2022-11-28",
 }
 
-def get_stats() -> dict:
-    # ── User data ─────────────────────────────────────────────────────────
-    user_resp = requests.get("https://api.github.com/user", headers=HEADERS, timeout=15)
-    user_data = user_resp.json() if user_resp.status_code == 200 else {}
 
-    # ── Repos data ────────────────────────────────────────────────────────
-    repos_resp = requests.get(
+def _fetch_user_via_requests() -> dict:
+    resp = requests.get("https://api.github.com/user", headers=HEADERS, timeout=15)
+    return resp.json() if resp.status_code == 200 else {}
+
+
+def _fetch_repos_via_requests() -> list:
+    resp = requests.get(
         "https://api.github.com/user/repos?per_page=100&sort=updated",
         headers=HEADERS, timeout=15
     )
-    repos_data = repos_resp.json() if repos_resp.status_code == 200 else []
+    return resp.json() if resp.status_code == 200 else []
+
+
+def get_stats() -> dict:
+    # ── User data: try requests first, fall back to JSON file ─────────────
+    user_data = {}
+    if GITHUB_TOKEN:
+        try:
+            user_data = _fetch_user_via_requests()
+        except Exception as e:
+            print(f"[WARNING] requests /user failed: {e}", file=sys.stderr)
+
+    if not user_data or "login" not in user_data:
+        try:
+            with open("/tmp/gh_user.json") as f:
+                user_data = json.load(f)
+            print("[DEBUG] user_data loaded from /tmp/gh_user.json", file=sys.stderr)
+        except Exception:
+            pass
+
+    # ── Repos data: try requests first, fall back to JSON file ────────────
+    repos_data = []
+    if GITHUB_TOKEN:
+        try:
+            repos_data = _fetch_repos_via_requests()
+        except Exception as e:
+            print(f"[WARNING] requests /user/repos failed: {e}", file=sys.stderr)
+
+    if not repos_data:
+        try:
+            with open("/tmp/gh_repos.json") as f:
+                repos_data = json.load(f)
+            print(f"[DEBUG] repos_data ({len(repos_data)} repos) loaded from /tmp/gh_repos.json", file=sys.stderr)
+        except Exception:
+            pass
 
     public_repos = user_data.get("public_repos", 0)
     total_private_repos = user_data.get("total_private_repos", 0)
@@ -51,21 +88,35 @@ def get_stats() -> dict:
     top_repos = sorted(repos_data, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
 
     # ── Contribution graph via GraphQL ───────────────────────────────────
-    gql_query = """query($login: String!) {
-        user(login: $login) {
-            contributionsCollection {
-                contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } }
+    gql_data = {}
+    if GITHUB_TOKEN:
+        gql_query = """query($login: String!) {
+            user(login: $login) {
+                contributionsCollection {
+                    contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } }
+                }
+                pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
             }
-            pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name url description primaryLanguage { name } stargazerCount forkCount } } }
-        }
-    }"""
-    gql_resp = requests.post(
-        "https://api.github.com/graphql",
-        json={"query": gql_query, "variables": {"login": "Retsumdk"}},
-        headers={**HEADERS, "Content-Type": "application/json"},
-        timeout=15
-    )
-    gql_data = gql_resp.json().get("data", {}).get("user", {})
+        }"""
+        try:
+            gql_resp = requests.post(
+                "https://api.github.com/graphql",
+                json={"query": gql_query, "variables": {"login": "Retsumdk"}},
+                headers={**HEADERS, "Content-Type": "application/json"},
+                timeout=15
+            )
+            gql_data = gql_resp.json().get("data", {}).get("user", {})
+        except Exception as e:
+            print(f"[WARNING] GraphQL failed: {e}", file=sys.stderr)
+
+    if not gql_data:
+        try:
+            with open("/tmp/gh_graphql.json") as f:
+                gql_data = json.load(f).get("data", {}).get("user", {})
+            print("[DEBUG] gql_data loaded from /tmp/gh_graphql.json", file=sys.stderr)
+        except Exception:
+            pass
+
     pinned_repos = gql_data.get("pinnedItems", {}).get("nodes", [])
 
     cal = gql_data.get("contributionsCollection", {}).get("contributionCalendar", {})
