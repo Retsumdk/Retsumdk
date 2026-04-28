@@ -40,20 +40,31 @@ def get_user_data() -> dict:
     return {}
 
 def get_repos_data() -> list:
-    """Fetch all repos via gh CLI with pagination."""
+    """Fetch all repos via gh CLI — avoid jq pipe which can silently fail in GA."""
     repos = []
-    out = gh([
-        "gh", "api", "user/repos", "--paginate", "--jq",
-        ".[] | {name, private, stargazers_count, forks_count, language, description}"
-    ])
-    if not out:
-        return []
-    for line in out.strip().split("\n"):
-        if line:
-            try:
-                repos.append(json.loads(line))
-            except Exception:
-                pass
+    page = 1
+    while True:
+        out = gh(["gh", "api", f"user/repos?page={page}&per_page=100&sort=updated"])
+        if not out:
+            break
+        try:
+            batch = json.loads(out)
+            if not isinstance(batch, list) or not batch:
+                break
+            for r in batch:
+                repos.append({
+                    "name": r.get("name"),
+                    "private": r.get("private"),
+                    "stargazers_count": r.get("stargazers_count", 0),
+                    "forks_count": r.get("forks_count", 0),
+                    "language": r.get("language"),
+                    "description": r.get("description"),
+                })
+            if len(batch) < 100:
+                break
+            page += 1
+        except Exception:
+            break
     return repos
 
 def get_contributions_data() -> dict:
