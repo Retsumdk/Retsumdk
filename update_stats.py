@@ -4,7 +4,8 @@ Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamicall
 Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
 
-Uses gh CLI for all GitHub API calls to avoid token/requests issues.
+Uses requests with GITHUB_TOKEN for all GitHub API calls.
+Falls back to gh CLI for user/repo counts if requests fail.
 """
 
 import re
@@ -12,6 +13,19 @@ import os
 import sys
 import json
 import subprocess
+import requests
+
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+GH_HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+}
+
+def gh_fallback(cmd: list[str]) -> str:
+    """Run a gh CLI command, return stdout. Only use as fallback."""
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.stdout if result.returncode == 0 else ""
 
 def gh_graphql(query: str, variables: dict = None) -> dict:
     """Run a GraphQL query via gh api."""
@@ -54,26 +68,67 @@ def gh_list_repos() -> list:
     return repos
 
 def get_stats() -> dict:
-    # User-level stats
-    user = gh_user()
-    public_repos = user.get("public_repos", 0)
-    private_repos = user.get("total_private_repos", 0)
-    total_repos = public_repos + private_repos
-    followers = user.get("followers", 0)
-    following = user.get("following", 0)
+    # ── Primary: requests-based GitHub API ──────────────────────────────────
+    user_data = {}
+    repos_data = []
 
-    # Repo-level stats (all repos, not just public)
-    repos = gh_list_repos()
-    stars = sum(r.get("stargazers_count", 0) for r in repos)
-    total_forks = sum(r.get("forks_count", 0) for r in repos)
+    try:
+        user_resp = requests.get("https://api.github.com/user", headers=GH_HEADERS, timeout=15)
+        if user_resp.status_code == 200:
+            user_data = user_resp.json()
+    except Exception as e:
+        print(f"[WARNING] requests.get /user failed: {e}", file=sys.stderr)
+
+    try:
+        repos_resp = requests.get(
+            "https://api.github.com/user/repos?per_page=100&sort=updated",
+            headers=GH_HEADERS, timeout=15
+        )
+        if repos_resp.status_code == 200:
+            repos_data = repos_resp.json()
+    except Exception as e:
+        print(f"[WARNING] requests.get /user/repos failed: {e}", file=sys.stderr)
+
+    # ── Fallback: gh CLI if requests returned empty data ───────────────────
+    if not user_data or not repos_data:
+        print("[INFO] Falling back to gh CLI for GitHub API calls", file=sys.stderr)
+        gh_user_out = gh_fallback(["gh", "api", "user"])
+        if gh_user_out:
+            try:
+                user_data = json.loads(gh_user_out)
+            except Exception:
+                pass
+
+        if not repos_data:
+            gh_repos_out = gh_fallback([
+                "gh", "api", "user/repos", "--paginate", "--jq",
+                ".[] | {name, private, stargazers_count, forks_count, language, description}"
+            ])
+            for line in gh_repos_out.strip().split("\n"):
+                if line:
+                    try:
+                        repos_data.append(json.loads(line))
+                    except Exception:
+                        pass
+
+    public_repos = user_data.get("public_repos", 0)
+    total_private_repos = user_data.get("total_private_repos", 0)
+    total_repos = public_repos + total_private_repos
+    followers = user_data.get("followers", 0)
+    following = user_data.get("following", 0)
+
+    # Filter out private repos from stars/forks count
+    public_only = [r for r in repos_data if not r.get("private")]
+    stars = sum(r.get("stargazers_count", 0) for r in public_only)
+    total_forks = sum(r.get("forks_count", 0) for r in public_only)
 
     langs = {}
-    for r in repos:
+    for r in repos_data:
         lang = r.get("language")
         if lang:
             langs[lang] = langs.get(lang, 0) + 1
 
-    top_repos = sorted(repos, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
+    top_repos = sorted(repos_data, key=lambda x: x.get("stargazers_count", 0), reverse=True)[:6]
 
     # Contribution graph via GraphQL
     gql_query = """query($login: String!) {
