@@ -92,9 +92,11 @@ jobs:
 
       - name: Update README with cache-busting URL
         run: |
+          # Always use raw.githubusercontent.com for the heatmap in README (GitHub renders it)
           TS=$(date +%s)
-          sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
-          sed -i "s|heatmap.svg?v=[0-9]*|heatmap.svg?v=${TS}|g" README.md
+          sed -i "s|https://zo\.pub/[^)]*heatmap\.svg[^)]*|https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
+          sed -i "s|https://thebookmaster\.zo\.space/images/heatmap\.svg[^)]*|https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
+          sed -i "s|images/heatmap\.svg?v=[0-9]*|https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
 
       - name: Commit and push
         env:
