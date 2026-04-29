@@ -157,17 +157,18 @@ jobs:
           # patterns, as those were mangling the path into a double-path
           sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
 
-      - name: Fix heatmap URL if SCIEL-GIT overwrote it
+      - name: Fix heatmap URL — always enforce raw.githubusercontent.com
         run: |
-          # SCIEL-GIT writes zo.pub URLs — we need raw.githubusercontent.com
-          # If our last commit didn't win (SCIEL-GIT runs more frequently),
-          # force-correct the URL back to raw.githubusercontent.com
-          CURRENT_URL=$(grep -m1 "heatmap" README.md | sed 's/.*!\[\](//' | sed 's/).*//')
-          echo "Current heatmap URL: $CURRENT_URL"
-          if echo "$CURRENT_URL" | grep -q "zo.pub"; then
-            echo "SCIEL-GIT URL detected — force-correcting to raw.githubusercontent.com"
-            TS=$(date +%s)
+          # SCIEL-GIT writes zo.pub URLs. We always need raw.githubusercontent.com.
+          # Overwrite the URL every time we see zo.pub — no skip logic, no author check.
+          # Whoever pushes last wins on main; we want "us" to be the one who pushes last.
+          TS=$(date +%s)
+          if grep -q "zo.pub" README.md; then
+            echo "SCIEL-GIT zo.pub URL detected — force-correcting to raw.githubusercontent.com"
             sed -i "s|![](https://zo\.pub/[^)]*heatmap\.svg)[^)]*)|![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS})|g" README.md
+          else
+            echo "URL is already correct — only updating cache-bust param"
+            sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
           fi
 
       - name: Commit and push
