@@ -277,10 +277,14 @@ def update_readme(stats: dict):
         )
 
     # ── SECTION 4: Daily Commits Heatmap ─────────────────────────────────────
+    # Heatmap: always use raw.githubusercontent.com, never zo.pub
+    # The sed step in the workflow handles ?v= update, so we just write the correct base URL
     daily_section = (
         "<!-- DAILY COMMITS START -->\n"
-        "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=)\n"
-        "\n<!-- DAILY COMMITS END -->"
+        "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v="
+        + str(int(time.time()))
+        + ")\n\n"
+        "<!-- DAILY COMMITS END -->"
     )
     content = re.sub(
         r"<!-- DAILY COMMITS START -->.*?<!-- DAILY COMMITS END -->",
