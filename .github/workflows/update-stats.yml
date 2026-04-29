@@ -163,7 +163,23 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
+
+          # Detect if the README was last modified by SCIEL-GIT (SCIEL's timer runs ~2min before ours)
+          # If SCIEL-GIT was last to touch README, skip pushing — let its version stand
+          LAST_AUTHOR=$(gh api repos/Retsumdk/Retsumdk/commits --paginate \
+            -H "Accept: application/vnd.github+json" \
+            --jq '.[] | select(.files[].filename == "README.md") | .commit.author.name' 2>/dev/null | head -1)
+          echo "Last README author: $LAST_AUTHOR"
+          if [ "$LAST_AUTHOR" = "SCIEL-CICD" ]; then
+            echo "SCIEL-GIT was last to update README — skipping push to avoid overwriting its URL"
+            exit 0
+          fi
+
           git add README.md images/heatmap.svg heatmap.svg
-          git status
-          git commit -m "📊 Auto-update GitHub stats + heatmap [skip ci]" || echo "Nothing to commit"
-          git push || echo "Push failed"
+          if git diff --cached --quiet; then
+            echo "No meaningful changes to commit."
+          else
+            git status
+            git commit -m "📊 Auto-update GitHub stats + heatmap [skip ci]" || echo "Nothing to commit"
+            git push || echo "Push failed"
+          fi
