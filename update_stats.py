@@ -4,16 +4,15 @@ Fetch live GitHub + ecosystem stats for Retsumdk and update README.md dynamicall
 Covers: contributions, repos, stars, forks, languages, streaks, top repos,
 and live SCIEL/BOLT/AION stats from thebookmaster.zo.space.
 
-Uses Python requests library with GITHUB_TOKEN from environment.
-Falls back to reading JSON files written by workflow bash step (/tmp/gh_*.json)
-if the GITHUB_TOKEN is not available.
+Uses gh CLI for all GitHub API calls to avoid token/requests issues in CI.
 """
 
 import re
 import os
 import sys
 import json
-import requests
+import time
+import subprocess
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 HEADERS = {
@@ -280,7 +279,7 @@ def update_readme(stats: dict):
     # ── SECTION 4: Daily Commits Heatmap ─────────────────────────────────────
     daily_section = (
         "<!-- DAILY COMMITS START -->\n"
-        "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg)\n"
+        "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=)\n"
         "\n<!-- DAILY COMMITS END -->"
     )
     content = re.sub(
