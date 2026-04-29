@@ -90,6 +90,17 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 ---
 
 ## 📊 Live Analytics Dashboard
+<details>
+<summary>📊 Recent Visits (1 total · live)</summary>
+
+| Time | Location | Device | Browser | Source | IP | Duration |
+|------|----------|--------|---------|--------|---|----------|
+| -- loading -- | -- | -- | -- | -- | -- | -- |
+
+*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
+</details>
+
+
 
 🐙 **[View Real-Time Dashboard](https://thebookmaster.zo.space/profile-analytics)**
 
@@ -123,170 +134,34 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-28 22:43 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
-| 04-28 21:05 | 🇺🇸 US | 🖥️ desktop | Other | direct | `18.205.154.4` | 0s |
-| 04-28 21:00 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.62` | 0s |
-| 04-28 20:34 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.254` | 0s |
-| 04-28 20:32 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.241` | 0s |
-| 04-28 20:22 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.149` | 0s |
-| 04-28 19:59 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.253` | 0s |
-| 04-28 19:48 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-28 19:44 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.151` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
-
-
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-28 22:43 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
-| 04-28 21:05 | 🇺🇸 US | 🖥️ desktop | Other | direct | `18.205.154.4` | 0s |
-| 04-28 21:00 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.62` | 0s |
-| 04-28 20:34 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.254` | 0s |
-| 04-28 20:32 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.241` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-28 22:43 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
-| 04-28 21:05 | 🇺🇸 US | 🖥️ desktop | Other | direct | `18.205.154.4` | 0s |
-| 04-28 21:00 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.62` | 0s |
-| 04-28 20:34 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.254` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-28 22:43 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
-| 04-28 21:05 | 🇺🇸 US | 🖥️ desktop | Other | direct | `18.205.154.4` | 0s |
-| 04-28 21:00 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.62` | 0s |
-| 04-28 20:34 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.254` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 03:42 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.162` | 0s |
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-28 22:43 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
-| 04-28 21:05 | 🇺🇸 US | 🖥️ desktop | Other | direct | `18.205.154.4` | 0s |
-| 04-28 21:00 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.62` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 17:20 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.173` | 0s |
-| 04-29 17:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.242` | 0s |
-| 04-29 15:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.159` | 0s |
-| 04-29 03:42 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.162` | 0s |
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 17:20 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.173` | 0s |
-| 04-29 17:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.242` | 0s |
-| 04-29 15:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.159` | 0s |
-| 04-29 03:42 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.162` | 0s |
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
 
 
 
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
 
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 17:20 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.173` | 0s |
-| 04-29 17:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.242` | 0s |
-| 04-29 15:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.159` | 0s |
-| 04-29 03:42 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.162` | 0s |
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-| 04-29 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.52` | 0s |
-| 04-29 01:55 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.115` | 0s |
-| 04-29 00:58 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.59` | 0s |
-| 04-29 00:24 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.91` | 0s |
-| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
 
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
+
+
+
+
+
+
+
+
 
 
 <!-- RECENT_VISITS_START -->

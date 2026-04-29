@@ -72,15 +72,14 @@ def update_readme(content, sha, visitors):
     
     table += "\n*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*\n</details>\n"
     
-    # Replace or insert
-    VISITS_START = "<!-- RECENT_VISITS_START -->"
-    VISITS_END = "<!-- RECENT_VISITS_END -->"
+    # Replace using block-match (no markers needed — SCIEL-GIT removes them)
+    # Match from "<details>" through the next "</details>" that contains "Recent Visits"
     import re
-    if VISITS_START in content and VISITS_END in content:
-        pattern = re.compile(f"{re.escape(VISITS_START)}.*?{re.escape(VISITS_END)}", re.DOTALL)
-        content = pattern.sub(table, content)
-    else:
-        content += f"\n{VISITS_START}\n{table}\n{VISITS_END}\n"
+    block_pattern = re.compile(
+        r'<details>\s*<summary>📊 Recent Visits.*?</details>',
+        re.DOTALL
+    )
+    content = block_pattern.sub(table, content, count=1)
     
     return content
 
