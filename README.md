@@ -268,7 +268,6 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 </details>
 
 
-<!-- RECENT_VISITS_START -->
 
 <details>
 <summary>📊 Recent Visits (10 total · live)</summary>
@@ -289,4 +288,3 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 *Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
 </details>
 
-<!-- RECENT_VISITS_END -->
