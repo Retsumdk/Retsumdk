@@ -141,3 +141,26 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 *Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
 </details>
+
+<!-- RECENT_VISITS_START -->
+
+<details>
+<summary>📊 Recent Visits (10 total · live)</summary>
+
+| Time | Location | Device | Browser | Source | IP | Duration |
+|------|----------|--------|---------|--------|---|----------|
+| 04-28 23:53 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
+| 04-28 22:43 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
+| 04-28 21:05 | 🇺🇸 US | 🖥️ desktop | Other | direct | `18.205.154.4` | 0s |
+| 04-28 21:00 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.62` | 0s |
+| 04-28 20:34 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.254` | 0s |
+| 04-28 20:32 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.241` | 0s |
+| 04-28 20:22 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.149` | 0s |
+| 04-28 19:59 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.253` | 0s |
+| 04-28 19:48 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
+| 04-28 19:44 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.151` | 0s |
+
+*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
+</details>
+
+<!-- RECENT_VISITS_END -->
