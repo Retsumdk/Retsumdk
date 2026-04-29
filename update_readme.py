@@ -63,15 +63,12 @@ def update_readme(content, sha, visitors):
             source = "GitHub"
         elif "google" in source.lower():
             source = "Google"
-        ip = v.get("ip", "unknown")
-        # Mask partial IPs for privacy display
-        if ip and ip != "unknown" and len(ip) > 6:
-            ip_display = ip[:len(ip)//2] + "***"
-        else:
-            ip_display = ip
+        ip = v.get("ip", "-")
+        if ip and ip != "-":
+            ip = f"`{ip}`"
         duration = v.get("duration", "-")
         
-        table += f"| {time_str} | {loc} | {device_icon} {device} | {browser} | {source} | `{ip_display}` | {duration} |\n"
+        table += f"| {time_str} | {loc} | {device_icon} {device} | {browser} | {source} | {ip} | {duration} |\n"
     
     table += "\n*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*\n</details>\n"
     
