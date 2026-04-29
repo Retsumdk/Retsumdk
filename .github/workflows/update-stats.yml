@@ -152,9 +152,13 @@ jobs:
       - name: Update README with cache-busting URL
         run: |
           TS=$(date +%s)
-          sed -i "s|https://zo\.pub/[^)]*heatmap\.svg[^)]*|https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
-          sed -i "s|https://thebookmaster\.zo\.space/images/heatmap\.svg[^)]*|https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
-          sed -i "s|images/heatmap\.svg?v=[0-9]*|https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
+          # Only update the v= parameter on the already-correct raw.githubusercontent URL
+          # This avoids the double-path corruption that happens when sed tries to rewrite a zo.pub URL into a raw URL
+          sed -i "s|/Retsumdk/Retsumdk/main/heatmap.svg?v=[0-9]*|/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
+          sed -i "s|/Retsumdk/Retsumdk/main/images/heatmap.svg?v=[0-9]*|/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS}|g" README.md
+          # Fix any previously corrupted URLs (double-path: main/https://...)
+          sed -i "s|main/https://zo\\.pub/|main/images/heatmap.svg?v=${TS}|g" README.md
+          sed -i "s|main/https://thebookmaster\\.zo\\.space/|main/images/heatmap.svg?v=${TS}|g" README.md
 
       - name: Commit and push
         env:
