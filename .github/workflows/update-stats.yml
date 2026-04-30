@@ -174,8 +174,8 @@ jobs:
           match = re.search(r'<!-- HEATMAP LOCKED: Do not edit.*?-->\s*(!\[.*?\])\((https://raw\.githubusercontent\.com/Retsumdk/Retsumdk/main/images/heatmap\.svg)\?[^)]*\)', content, re.DOTALL)
           if match:
               locked_comment = match.group(1)  # <!-- HEATMAP LOCKED: ... -->
-              url = match.group(2) + f"?v={ts}"
-              new_line = f"{locked_comment}\n{url}"
+              url = "https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=" + ts
+              new_line = f"{locked_comment}\n![]({url})"
               old_pattern = r'<!-- HEATMAP LOCKED: Do not edit this line\. Route: raw\.githubusercontent\.com only -->\s*!\[.*?\]\([^\)]+\)'
               if re.search(old_pattern, content):
                   new_content = re.sub(old_pattern, new_line, content, flags=re.DOTALL)
