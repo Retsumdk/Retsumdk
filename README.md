@@ -8,14 +8,9 @@
 
 ## 📊 GitHub Stats
 
-<<<<<<< Updated upstream
-![Contributions](https://img.shields.io/badge/Contributions-910?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-90-2ea44f?style=flat-square)
-=======
 ![Contributions](https://img.shields.io/badge/Contributions-907?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-95-2ea44f?style=flat-square)
->>>>>>> Stashed changes
-![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-92-2ea44f?style=flat-square)
+![Stars](https://img.shields.io/badge/Stars-15-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-32-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-32-9c27b0?style=flat-square)
@@ -27,7 +22,6 @@
 
 <!-- DAILY COMMITS START -->
 ![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777543412)
-
 <!-- DAILY COMMITS END -->
 
 
@@ -36,10 +30,10 @@
 | Repository | Description | Stars | Forks | Language |
 |---|---|---|---|---|
 | [agent-a2a-bridge](https://github.com/Retsumdk/agent-a2a-bridge) | Production-ready A2A (Agent-to-Agent) protocol for building multi-agent systems | ⭐ 1 | 🍴 0 | `TypeScript` |
+| [agent-identity-passport](https://github.com/Retsumdk/agent-identity-passport) | Cryptographic identity management for AI agents with verifiable credentials | ⭐ 0 | 🍴 0 | `TypeScript` |
+| [agent-verification-trust](https://github.com/Retsumdk/agent-verification-trust) | Agent verification and trust system with drift detection | ⭐ 0 | 🍴 0 | `TypeScript` |
 | [cron-scheduler-service](https://github.com/Retsumdk/cron-scheduler-service) | Distributed cron with leader election and fault tolerance | ⭐ 0 | 🍴 0 | `TypeScript` |
 | [prompt-version-control](https://github.com/Retsumdk/prompt-version-control) | Version control for AI prompts with diffing, rollback, and branching | ⭐ 0 | 🍴 0 | `TypeScript` |
-| [retry-queue-worker](https://github.com/Retsumdk/retry-queue-worker) | Exponential backoff retry queue for failed jobs | ⭐ 0 | 🍴 0 | `TypeScript` |
-| [json-schema-validator](https://github.com/Retsumdk/json-schema-validator) | Fast JSON Schema validation middleware | ⭐ 0 | 🍴 0 | `TypeScript` |
 | [agent-memory-store](https://github.com/Retsumdk/agent-memory-store) | Persistent memory storage for AI agents with retrieval | ⭐ 0 | 🍴 0 | `TypeScript` |
 
 ## 🛠️ Tech Stack
@@ -61,6 +55,8 @@
 
 | Project | Description |
 |---------|-------------|
+| [agent-identity-passport](https://github.com/Retsumdk/agent-identity-passport) | Cryptographic identity for AI agents with session continuity |
+| [agent-verification-trust](https://github.com/Retsumdk/agent-verification-trust) | Agent verification and behavioral drift detection |
 | [agent-memory-federation](https://github.com/Retsumdk/agent-memory-federation) | Distributed memory sharing between agents |
 | [agent-error-handler](https://github.com/Retsumdk/agent-error-handler) | Robust error handling with circuit breakers |
 | [ai-prompt-optimizer](https://github.com/Retsumdk/ai-prompt-optimizer) | Analyze and optimize AI prompts |
@@ -72,7 +68,7 @@
 
 ## 🏆 Achievements
 
-- **90 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
+- **92 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 
@@ -85,7 +81,7 @@
 Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, then iterate fast.
 
 | Signature | Value | Percentile |
-|---|---|---|
+| --- | --- | --- |
 | Consistency | 0.81 | Top 18% |
 | Depth | 0.74 | Top 24% |
 | Focus | 0.89 | Top 9% |
@@ -96,18 +92,10 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 
 ## 📊 Live Analytics Dashboard
 
-
-
-
-
-
-
-
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
+📊 Recent Visits (10 total · live)
 
 | Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
+| --- | --- | --- | --- | --- | --- | --- |
 | 04-30 09:13 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.63` | 0s |
 | 04-30 09:13 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.152` | 0s |
 | 04-30 09:06 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.108` | 0s |
@@ -120,22 +108,10 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 | 04-30 02:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.25` | 0s |
 
 *Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
-
-
-
-
-
-
-
-
-
-
 
 🐙 **[View Real-Time Dashboard](https://thebookmaster.zo.space/profile-analytics)**
 
 *Live tracking of profile visits, unique visitors, device breakdown, and recent visits - updated automatically.*
-
 
 ## 🪐 Reputation Orbit
 
@@ -161,58 +137,3 @@ Archetype: **THE ARCHITECT-BUILDER** — You build foundational systems first, t
 [![TypeScript](https://img.shields.io/badge/TypeScript-Expert-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- RECENT_VISITS_START -->
-
-<details>
-<summary>📊 Recent Visits (10 total · live)</summary>
-
-| Time | Location | Device | Browser | Source | IP | Duration |
-|------|----------|--------|---------|--------|---|----------|
-| 04-29 19:21 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.54` | 0s |
-| 04-29 19:20 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.89` | 0s |
-| 04-29 19:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.89` | 0s |
-| 04-29 17:42 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.250` | 0s |
-| 04-29 17:40 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.174` | 0s |
-| 04-29 17:20 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.173` | 0s |
-| 04-29 17:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.242` | 0s |
-| 04-29 15:19 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.159` | 0s |
-| 04-29 03:42 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.162` | 0s |
-| 04-29 03:31 | 🇺🇸 US | 🖥️ desktop | Other | direct | `140.82.115.99` | 0s |
-
-*Updated automatically via GitHub Actions · [View live dashboard →](https://thebookmaster.zo.space/profile-analytics)*
-</details>
-
-<!-- RECENT_VISITS_END -->
