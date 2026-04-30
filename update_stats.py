@@ -24,7 +24,10 @@ HEADERS = {
 
 
 def _fetch_user_via_requests() -> dict:
-    resp = requests.get("https://api.github.com/user", headers=HEADERS, timeout=15)
+    # NOTE: GITHUB_TOKEN in Actions is a GitHub App installation token.
+    # Calling /user with it returns the app identity (github-actions[bot]),
+    # NOT the user. We must use the /users/Retsumdk endpoint instead.
+    resp = requests.get("https://api.github.com/users/Retsumdk", headers=HEADERS, timeout=15)
     return resp.json() if resp.status_code == 200 else {}
 
 
