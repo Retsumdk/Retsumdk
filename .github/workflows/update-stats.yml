@@ -34,11 +34,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch origin main
-          git stash push --include-untracked -m "local-changes-$(date +%s)" || true
 
       - name: Pull latest
         run: |
-          git pull --ff-only origin main || echo "Already up to date"
+          # Use recursive merge strategy to auto-merge incoming changes
+          git pull --no-rebase -X ours origin main 2>&1 || echo "Pull complete / already up to date"
 
       - name: Check for conflicting SCIEL-CICD push
         env:
