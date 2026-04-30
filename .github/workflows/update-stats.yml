@@ -176,6 +176,24 @@ jobs:
           FIXSCRIPT
 
 
+      - name: Validate README URLs before commit
+        run: |
+          python3 << "VALIDSCRIPT"
+          import re, sys
+          with open("README.md", "r") as f:
+              content = f.read()
+          # Guard: reject zo.pub / thebookmaster URLs for heatmap.svg
+          bad = re.findall(r'https?://(?:zo\.pub|thebookmaster\.zo\.space)[^)]*heatmap\.svg[^)]*\)', content)
+          if bad:
+              print("ERROR: Corrupted heatmap URL(s) detected:")
+              for b in bad:
+                  print(f"  {b}")
+              print("Heatmap URL must be: https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg")
+              sys.exit(1)
+          print("✅ All heatmap URLs are valid")
+          VALIDSCRIPT
+
+
       - name: Commit and push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
