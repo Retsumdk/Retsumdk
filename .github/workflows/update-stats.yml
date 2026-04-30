@@ -194,9 +194,10 @@ jobs:
               sys.exit(1)
 
           # Validate: detect any remaining HEATMAP corruption
-          # Specifically flag zo.pub / thebookmaster.zo.space URLs pointing to heatmap.svg
-          # pixel.gif (profile tracking) does NOT contain "heatmap" in its URL — it is legitimate
-          bad = re.findall(r'https?://(?:zo\.pub|thebookmaster\.zo\.space)[^)]*heatmap\.svg', content)
+          # Flag ONLY heatmap.svg URLs served from zo.pub / thebookmaster.zo.space
+          # pixel.gif is a profile tracker — never contains "heatmap", exclude it explicitly
+          bad = [m for m in re.findall(r'https?://zo\.pub/[^)\s]+|https?://thebookmaster\.zo\.space/[^)\s]+', content)
+                 if 'heatmap' in m and 'pixel' not in m]
           if bad:
               print(f"FATAL: {len(bad)} corrupt URL(s) remain after healing:")
               for b in bad: print(f"  {b}")
