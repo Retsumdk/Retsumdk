@@ -21,8 +21,8 @@
 
 
 <!-- DAILY COMMITS START -->
-![]
-https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1777591320
+<!-- HEATMAP LOCKED: Do not edit this line. Route: raw.githubusercontent.com only -->
+![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1777591320)
 <!-- DAILY COMMITS END -->
 
 
