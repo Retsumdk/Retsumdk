@@ -8,8 +8,13 @@
 
 ## 📊 GitHub Stats
 
+<<<<<<< Updated upstream
 ![Contributions](https://img.shields.io/badge/Contributions-910?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-90-2ea44f?style=flat-square)
+=======
+![Contributions](https://img.shields.io/badge/Contributions-907?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-95-2ea44f?style=flat-square)
+>>>>>>> Stashed changes
 ![Stars](https://img.shields.io/badge/Stars-1-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-32-ffc107?style=flat-square)
@@ -21,7 +26,7 @@
 
 
 <!-- DAILY COMMITS START -->
-![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1777519077)
+![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777543412)
 
 <!-- DAILY COMMITS END -->
 
