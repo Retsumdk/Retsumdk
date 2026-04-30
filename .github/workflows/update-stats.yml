@@ -157,41 +157,50 @@ jobs:
           # patterns, as those were mangling the path into a double-path
           sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
 
-      - name: Fix heatmap URL — always raw.githubusercontent.com
+      - name: Lock heatmap URL (heal corruption, then validate)
         run: |
           python3 << "FIXSCRIPT"
-          import re
-          TS = __import__("time").strftime("%s")
+          import re, sys, time
+          ts = str(int(time.time()))
           with open("README.md", "r") as f:
               content = f.read()
-          # Replace any line containing heatmap.svg with the correct URL
-          lines = content.split("\n")
-          for i, line in enumerate(lines):
-              if "heatmap.svg" in line:
-                  lines[i] = "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=" + TS + ")"
-                  print(f"Fixed line {i+1}")
-          with open("README.md", "w") as f:
-              f.write("\n".join(lines))
-          print("Heatmap URL fixed to raw.githubusercontent.com")
-          FIXSCRIPT
 
+          # Pattern: find the LOCKED comment line and restore from it
+          # This repairs corruption from ANY external script (SCIEL-CICD, SCIEL-GIT, etc.)
+          match = re.search(r'<!-- HEATMAP LOCKED: Do not edit.*-->\s*(!\[.*?\])\((https://raw\.githubusercontent\.com/Retsumdk/Retsumdk/main/images/heatmap\.svg)\?[^)]*\)', content, re.DOTALL)
+          if match:
+              locked_comment = match.group(1)  # <!-- HEATMAP LOCKED: ... -->
+              url = match.group(2) + f"?v={ts}"
+              new_line = f"{locked_comment}\n{url}"
+              old_pattern = r'<!-- HEATMAP LOCKED: Do not edit this line\. Route: raw\.githubusercontent\.com only -->\s*!\[.*?\]\([^\)]+\)'
+              if re.search(old_pattern, content):
+                  new_content = re.sub(old_pattern, new_line, content, flags=re.DOTALL)
+                  if new_content != content:
+                      print(f"HEALED: Restored heatmap URL from locked comment (v={ts})")
+                  else:
+                      print("OK: Heatmap URL already correct")
+              else:
+                  print("WARNING: Locked comment exists but pattern doesn't match, rebuilding...")
+                  new_content = re.sub(
+                      r'<!-- DAILY COMMITS START -->.*?<!-- DAILY COMMITS END -->',
+                      f'<!-- DAILY COMMITS START -->\n<!-- HEATMAP LOCKED: Do not edit this line. Route: raw.githubusercontent.com only -->\n![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v={ts})\n<!-- DAILY COMMITS END -->',
+                      content, flags=re.DOTALL
+                  )
+                  print("REBUILT: Replaced entire DAILY COMMITS section from scratch")
+              with open("README.md", "w") as f:
+                  f.write(new_content)
+          else:
+              print("ERROR: No LOCKED marker found — heatmap section missing!")
+              sys.exit(1)
 
-      - name: Validate README URLs before commit
-        run: |
-          python3 << "VALIDSCRIPT"
-          import re, sys
-          with open("README.md", "r") as f:
-              content = f.read()
-          # Guard: reject zo.pub / thebookmaster URLs for heatmap.svg
+          # Validate: detect any remaining corruption
           bad = re.findall(r'https?://(?:zo\.pub|thebookmaster\.zo\.space)[^)]*heatmap\.svg[^)]*\)', content)
           if bad:
-              print("ERROR: Corrupted heatmap URL(s) detected:")
-              for b in bad:
-                  print(f"  {b}")
-              print("Heatmap URL must be: https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg")
+              print(f"FATAL: {len(bad)} corrupt URL(s) remain after healing:")
+              for b in bad: print(f"  {b}")
               sys.exit(1)
-          print("✅ All heatmap URLs are valid")
-          VALIDSCRIPT
+          print("✅ Heatmap URL verified clean — raw.githubusercontent.com")
+          FIXSCRIPT
 
 
       - name: Commit and push

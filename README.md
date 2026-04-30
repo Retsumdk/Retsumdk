@@ -3,17 +3,17 @@
 > AI Agent Infrastructure Expert — Building autonomous systems that think, adapt, and scale.
 
 <!-- LANGUAGE BADGES START -->
-![TypeScript](https://img.shields.io/badge/TypeScript-41-3178C6?style=flat-square&logo=typescript&logoColor=white)  ![Python](https://img.shields.io/badge/Python-4-3776AB?style=flat-square&logo=python&logoColor=white)  ![JavaScript](https://img.shields.io/badge/JavaScript-3-F7DF1E?style=flat-square&logo=javascript&logoColor=white)
+
 <!-- LANGUAGE BADGES END -->
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-907?style=flat-square)
-![Repos](https://img.shields.io/badge/Repos-92-2ea44f?style=flat-square)
-![Stars](https://img.shields.io/badge/Stars-15-2ea44f?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-0?style=flat-square)
+![Repos](https://img.shields.io/badge/Repos-0-2ea44f?style=flat-square)
+![Stars](https://img.shields.io/badge/Stars-0-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-0-2ea44f?style=flat-square)
-![Followers](https://img.shields.io/badge/Followers-32-ffc107?style=flat-square)
-![Following](https://img.shields.io/badge/Following-32-9c27b0?style=flat-square)
+![Followers](https://img.shields.io/badge/Followers-0-ffc107?style=flat-square)
+![Following](https://img.shields.io/badge/Following-0-9c27b0?style=flat-square)
 ![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg)
 <!-- profile-pixels:track --><img src="https://thebookmaster.zo.space/pixel.gif?u=Retsumdk" width="0" height="0" style="border:none;position:absolute" alt="">
 
@@ -21,7 +21,8 @@
 
 
 <!-- DAILY COMMITS START -->
-![](https://zo.pub/thebookmaster/sciel-git/heatmap.svg?v=1777543412)
+<!-- HEATMAP LOCKED: Do not edit this line. Route: raw.githubusercontent.com only -->
+![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1777570833)
 <!-- DAILY COMMITS END -->
 
 
@@ -68,7 +69,7 @@
 
 ## 🏆 Achievements
 
-- **92 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
+- **0 repositories** across the SCIEL, BOLT, and PromptForge ecosystems
 - Full CI/CD pipeline on all major projects
 - MIT licensed throughout
 

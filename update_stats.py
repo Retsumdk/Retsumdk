@@ -12,6 +12,7 @@ import os
 import sys
 import json
 import time
+import requests
 import subprocess
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -277,13 +278,14 @@ def update_readme(stats: dict):
         )
 
     # ── SECTION 4: Daily Commits Heatmap ─────────────────────────────────────
-    # Heatmap: always use raw.githubusercontent.com, never zo.pub
-    # The sed step in the workflow handles ?v= update, so we just write the correct base URL
+    # HEATMAP URL IS LOCKED — only update_stats.py writes this section
+    # URL is hardcoded to raw.githubusercontent.com — never zo.pub
+    # Pattern matches the LOCKED marker to ensure no other script can corrupt it
+    ts = str(int(time.time()))
     daily_section = (
         "<!-- DAILY COMMITS START -->\n"
-        "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v="
-        + str(int(time.time()))
-        + ")\n\n"
+        "<!-- HEATMAP LOCKED: Do not edit this line. Route: raw.githubusercontent.com only -->\n"
+        f"![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v={ts})\n"
         "<!-- DAILY COMMITS END -->"
     )
     content = re.sub(
