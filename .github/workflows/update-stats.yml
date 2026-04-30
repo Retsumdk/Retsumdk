@@ -193,9 +193,10 @@ jobs:
               print("ERROR: No LOCKED marker found — heatmap section missing!")
               sys.exit(1)
 
-          # Validate: detect any remaining HEATMAP corruption (zo.pub/thebookmaster URLs only for heatmap.svg)
-          # Do NOT flag the profile tracking pixel (pixel.gif) — that is legitimate
-          bad = re.findall(r'https?://(?:zo\.pub|thebookmaster\.zo\.space)[^)]*heatmap\.svg[^)]*\)', content)
+          # Validate: detect any remaining HEATMAP corruption
+          # Specifically flag zo.pub / thebookmaster.zo.space URLs pointing to heatmap.svg
+          # pixel.gif (profile tracking) does NOT contain "heatmap" in its URL — it is legitimate
+          bad = re.findall(r'https?://(?:zo\.pub|thebookmaster\.zo\.space)[^)]*heatmap\.svg', content)
           if bad:
               print(f"FATAL: {len(bad)} corrupt URL(s) remain after healing:")
               for b in bad: print(f"  {b}")
