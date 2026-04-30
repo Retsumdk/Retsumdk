@@ -157,19 +157,24 @@ jobs:
           # patterns, as those were mangling the path into a double-path
           sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
 
-      - name: Fix heatmap URL — always enforce raw.githubusercontent.com
+      - name: Fix heatmap URL — always raw.githubusercontent.com
         run: |
-          # SCIEL-GIT writes zo.pub URLs. We always need raw.githubusercontent.com.
-          # Overwrite the URL every time we see zo.pub — no skip logic, no author check.
-          # Whoever pushes last wins on main; we want "us" to be the one who pushes last.
-          TS=$(date +%s)
-          if grep -q "zo.pub" README.md; then
-            echo "SCIEL-GIT zo.pub URL detected — force-correcting to raw.githubusercontent.com"
-            sed -i "s|![](https://zo\.pub/[^)]*heatmap\.svg)[^)]*)|![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=${TS})|g" README.md
-          else
-            echo "URL is already correct — only updating cache-bust param"
-            sed -i "s|images/heatmap.svg?v=[0-9]*|images/heatmap.svg?v=${TS}|g" README.md
-          fi
+          python3 << "FIXSCRIPT"
+          import re
+          TS = __import__("time").strftime("%s")
+          with open("README.md", "r") as f:
+              content = f.read()
+          # Replace any line containing heatmap.svg with the correct URL
+          lines = content.split("\n")
+          for i, line in enumerate(lines):
+              if "heatmap.svg" in line:
+                  lines[i] = "![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=" + TS + ")"
+                  print(f"Fixed line {i+1}")
+          with open("README.md", "w") as f:
+              f.write("\n".join(lines))
+          print("Heatmap URL fixed to raw.githubusercontent.com")
+          FIXSCRIPT
+
 
       - name: Commit and push
         env:
