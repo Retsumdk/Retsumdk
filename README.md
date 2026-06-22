@@ -12,8 +12,8 @@
 ![Repos](https://img.shields.io/badge/Repos-147-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-5-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-1-2ea44f?style=flat-square)
-![Followers](https://img.shields.io/badge/Followers-61-ffc107?style=flat-square)
-![Following](https://img.shields.io/badge/Following-120-9c27b0?style=flat-square)
+![Followers](https://img.shields.io/badge/Followers-72-ffc107?style=flat-square)
+![Following](https://img.shields.io/badge/Following-133-9c27b0?style=flat-square)
 ![Profile Views](https://raw.githubusercontent.com/Retsumdk/profile-analytics/main/cards/total_views.svg)
 <!-- profile-pixels:track --><img src="https://thebookmaster.zo.space/pixel.gif?u=Retsumdk" width="0" height="0" style="border:none;position:absolute" alt="">
 
@@ -22,7 +22,7 @@
 
 <!-- DAILY COMMITS START -->
 ![]
-![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1782101487)
+![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1782129205)
 <!-- DAILY COMMITS END -->
 
 
