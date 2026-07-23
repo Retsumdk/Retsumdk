@@ -10,7 +10,7 @@
 
 ![Contributions](https://img.shields.io/badge/Contributions-1150?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-166-2ea44f?style=flat-square)
-![Stars](https://img.shields.io/badge/Stars-2-2ea44f?style=flat-square)
+![Stars](https://img.shields.io/badge/Stars-3-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-1-2ea44f?style=flat-square)
 ![Followers](https://img.shields.io/badge/Followers-109-ffc107?style=flat-square)
 ![Following](https://img.shields.io/badge/Following-165-9c27b0?style=flat-square)
@@ -22,7 +22,7 @@
 
 <!-- DAILY COMMITS START -->
 ![]
-![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1784814975)
+![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1784834139)
 <!-- DAILY COMMITS END -->
 
 
