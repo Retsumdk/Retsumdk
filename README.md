@@ -8,7 +8,7 @@
 
 ## 📊 GitHub Stats
 
-![Contributions](https://img.shields.io/badge/Contributions-1250?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-1251?style=flat-square)
 ![Repos](https://img.shields.io/badge/Repos-196-2ea44f?style=flat-square)
 ![Stars](https://img.shields.io/badge/Stars-5-2ea44f?style=flat-square)
 ![Forks](https://img.shields.io/badge/Forks-1-2ea44f?style=flat-square)
@@ -22,7 +22,7 @@
 
 <!-- DAILY COMMITS START -->
 ![]
-![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1789244021)
+![](https://raw.githubusercontent.com/Retsumdk/Retsumdk/main/images/heatmap.svg?v=1789269746)
 <!-- DAILY COMMITS END -->
 
 
